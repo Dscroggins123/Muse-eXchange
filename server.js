@@ -20,7 +20,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/requestLineDB", //update db name
+  process.env.MONGODB_URI || "mongodb://localhost/musicExchangeDB", //update db name
   {
       useNewUrlParser: true,
       useUnifiedTopology: true,
