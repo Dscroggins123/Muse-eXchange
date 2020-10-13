@@ -81,7 +81,7 @@ const NavbarComponent = ({handleLogout}) => {
     
 
     return (
-      <Navbar bg="black" variant="dark" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Link to="/">
           <Navbar.Brand>Music e<span style={styles.X} >X</span>change</Navbar.Brand>
         </Link>
@@ -91,15 +91,12 @@ const NavbarComponent = ({handleLogout}) => {
             <Nav.Link href="/" style={styles.link}>
               <Link to="/" style={styles.link}>Home</Link>
             </Nav.Link>
-            {/* <Nav.Link href="/" style={styles.link}>
-              <Link to="/" style={styles.link}>Musicians</Link>
-            </Nav.Link> */}
             <Nav.Link onClick={handleShow} style={styles.link}>
               Sell
             </Nav.Link>
           </Nav>
           <Form inline>
-            <input type="text" placeholder="Search"  className="mr-sm-2" list="data" onChange={handleInputChange} ref={inputRef} style={{borderRadius: "3%"}}/>
+          <Form.Control type="text" placeholder="Search"  className="mr-sm-2" list="data" onChange={handleInputChange} ref={inputRef} style={{height: '100%'}}/>
   
             <datalist id="data">
             {result.map(item =>
