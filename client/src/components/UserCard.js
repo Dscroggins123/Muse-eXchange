@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 const UserCard = ({ user }) => {
   const [hover, setHover] = useState(false);
   const [close, setClose] = useState(false);
@@ -50,12 +52,19 @@ const UserCard = ({ user }) => {
         style={cardStyle}
         onMouseEnter={hoverTrue} onMouseLeave={hoverFalse}
         className='d-flex justify-content-center'>
-        <Link to={`/profile/${user.username}`} className='align-self-center'>
-          <Button variant='outline-light'>
-            Visit Profile
-          </Button>
-        </Link>
-          
+  
+        <div className='align-self-center'>
+          <Link to={`/profile/${user.username}`} >
+            <Button variant='outline-light' >
+              Visit Profile
+            </Button>
+          </Link>
+          {/* <div className='d-flex justify-content-center mt-3'>
+            <FavoriteBorderIcon style={{color: '#fff'}}/>
+          </div> */}
+        </div>
+        
+
       </Card.ImgOverlay>
 
     </Card>

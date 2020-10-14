@@ -37,6 +37,7 @@ const UserList = ({ users }) => {
       responsive={responsive}
       swipeable={true}
       infinite={true}
+      keyBoardControl={true}
     >{console.log(users)}
       {users.map(user =>
         <div>
