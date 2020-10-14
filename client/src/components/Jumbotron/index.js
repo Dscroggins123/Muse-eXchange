@@ -10,7 +10,10 @@ const styles = {
   // backgroundColor: "transparent",
   height: "55vh",
   color: "white",
-  backgroundImage: `url('${musicExchangeWallpaper}')`
+  backgroundImage: `url('${musicExchangeWallpaper}')`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '100%'
+  // backgroundColor: 'transparent'
 }
 
 const JumbotronComponent = () => {

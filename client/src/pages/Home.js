@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserList from '../components/Users/UserList';
-import Container from '../components/Container';
+import { Container } from 'react-bootstrap';
 import Jumbotron from '../components/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import API from '../utils/API';

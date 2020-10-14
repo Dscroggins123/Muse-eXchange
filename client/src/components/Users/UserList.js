@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Card, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Card, Button, Image} from 'react-bootstrap';
-
+import UserCard from '../UserCard';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import defaultProfilePic from '../../assets/svg/profile.svg';
@@ -29,6 +29,8 @@ const responsive = {
   }
 };
 
+
+
 const UserList = ({ users }) => {
   return (
     <Carousel
@@ -39,44 +41,19 @@ const UserList = ({ users }) => {
       {users.map(user =>
         <div>
           <div style={{ width: '15rem' }}>
-          {user.profile.profilePic
-          ? (<Link to={`/profile/${user.username}`}>
-            <Card.Img variant='top' src={user.profile.profilePic} style={{border: '0px'}}/>
-          </Link>)
-          : (<Card.Img variant='top' src={defaultProfilePic}/>)}
-          {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            {user.profile.profilePic
+              ? (
+              // <Link to={`/profile/${user.username}`}>
+                <UserCard user={user} />
+                
+              // </Link>
+              )
+              : (<Card.Img variant='top' src={defaultProfilePic} />)}
+            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
           </div>
-          <div style={{fontSize: '18px'}}>{user.profile.firstName} {user.profile.lastName}</div>
+          <div style={{ fontSize: '18px' }}>{user.profile.firstName} {user.profile.lastName}</div>
           <div>{user.profile.profession}</div>
         </div>
-        // <Card style={{ width: '12rem',height:"100%", borderRadius: "0", border: "solid 1px", borderColor: "#dcdcdc"}} key={user._id}>
-        //   {user.profile.profilePic
-        //   ? (<CardMedia 
-        //     component="img"
-        //     image={user.profile.profilePic}
-        //     variant="top" 
-        //     style={{ borderRadius: "0", height: "200px", width: "200px"}} 
-        //      />)
-        //   : (<CardMedia 
-        //   variant="top" 
-        //   component="img"
-        //   style={{ borderRadius: "0", height: "200px", width: "200px"}} 
-        //   image='https://via.placeholder.com/200' />)}
-        //   <CardContent>
-        //   <Typography gutterBottom className="h4">{user.profile.firstName} {user.profile.lastName}</Typography>
-        //   <Typography variant="body2" color="textSecondary" component="p">{user.profile.profession}</Typography>
-        //     <Link to={`/profile/${user.username}`}>
-        //       <Button 
-        //       color="primary"
-        //       variant="contained"
-        //       style={{ borderRadius: "0px", backgroundColor: "#FF416C"}}
-        //       fullWidth
-        //       >
-        //         See Profile
-        //         </Button>
-        //     </Link>
-        //   </CardContent>
-        // </Card>
       )}
     </Carousel>)
 }

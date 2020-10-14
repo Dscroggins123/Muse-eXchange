@@ -91,7 +91,7 @@ class Home extends Component {
     return (
       !this.props.user && !this.props.pending ? <Redirect to="/signin" /> :
         <div style={styles.home}>
-          <Parallax image={require("../assets/images/recording.jpg")}>
+          <Parallax image={require("../assets/images/music-exchange-wallpaper.svg")}>
             <Jumbotron />
 
             {/* <Button>
