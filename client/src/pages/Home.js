@@ -80,21 +80,21 @@ class Home extends Component {
           </div>
           <Container style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif'}} className=' mt-0 p-4' >
             {this.state.users && (<>
-              <div className="mt-4  mb-4">
+              <div className="mt-2  mb-2">
                 <h2 className='mb-0 border-bottom' style={styles.heading}>Explore</h2>
               </div>
               {/** Show All User */}
               <UserList users={this.state.users} />
             </>)}
 
-            <div className="mt-4 mb-4">
+            <div className="mt-2 mb-2">
               <h2 className='mb-0 border-bottom' style={styles.heading}>Guitar</h2>
             </div>
             {/** Show All User */}
             <UserList users={this.state.guitars} />
 
             {this.state.hipHop && (<>
-              <div className="mt-4 mb-4">
+              <div className="mt-2 mb-2">
                 <h2 className='mb-0 border-bottom' style={styles.heading}>Hip Hop</h2>
               </div>
               {/** Show All User */}
@@ -102,7 +102,7 @@ class Home extends Component {
             </>)}
 
             {this.state.piano && (<>
-              <div className="mt-4 mb-4">
+              <div className="mt-2 mb-2">
                 <h2 className='mb-0 border-bottom' style={styles.heading}>Piano</h2>
               </div>
               {/** Show All User */}

@@ -6,6 +6,10 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import defaultProfilePic from '../../assets/svg/profile.svg';
 
+// Material-UI icons
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
 // import { Card, CardMedia, Button, CardContent, Typography } from "@material-ui/core"
 
 
@@ -17,7 +21,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 5,
+    items: 6,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -29,7 +33,35 @@ const responsive = {
   }
 };
 
+const styles  = {
+  customButtons: {
+    backgroundColor: 'transparent',
+    border: '0px', 
+    color: '#282828',
+  },
+  buttonIcon: {
+    fontSize: '15px'
+  }
+}
 
+const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+  const { carouselState: { currentSlide } } = rest;
+  return (
+    <div className="carousel-button-group d-flex justify-content-between">
+      <Button className={currentSlide === 0 ? 'disable' : ''} 
+        onClick={() => previous()} 
+        style={styles.customButtons}
+      >
+        <ArrowBackIosIcon style={styles.buttonIcon}/>
+      </Button>
+      <Button onClick={() => next()}
+        style={styles.customButtons}
+      > 
+        <ArrowForwardIosIcon  style={styles.buttonIcon}/>
+      </Button>
+    </div>
+  );
+};
 
 const UserList = ({ users }) => {
   return (
@@ -40,10 +72,13 @@ const UserList = ({ users }) => {
       infinite={true}
       keyBoardControl={true}
       removeArrowOnDeviceType={["tablet", "mobile"]}
-    >{console.log(users)}
+      arrows={false} 
+      renderButtonGroupOutside={true}
+      customButtonGroup={<ButtonGroup />}
+    >
       {users.map(user =>
         <div>
-          <div style={{ width: '12rem' }}>
+          <div style={{ width: '10rem' }}>
             {user.profile.profilePic
               ? (
               // <Link to={`/profile/${user.username}`}>
