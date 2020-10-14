@@ -9,6 +9,9 @@ import { Redirect, Link } from "react-router-dom";
 const styles = {
   home: {
     height: "100%"
+  },
+  heading: {
+    fontSize: '25px'
   }
 }
 const professions = ["Musician", "Guitar", "Hip-Hop", "Piano", "Beatmaking"];
@@ -78,24 +81,21 @@ class Home extends Component {
           <Container style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif'}} className=' mt-0 p-4' >
             {this.state.users && (<>
               <div className="mt-4  mb-4">
-                <h2>Explore</h2>
-                <hr className="my-4" />
+                <h2 className='mb-0 border-bottom' style={styles.heading}>Explore</h2>
               </div>
               {/** Show All User */}
               <UserList users={this.state.users} />
             </>)}
 
             <div className="mt-4 mb-4">
-              <h2>Guitar</h2>
-              <hr className="my-4" />
+              <h2 className='mb-0 border-bottom' style={styles.heading}>Guitar</h2>
             </div>
             {/** Show All User */}
             <UserList users={this.state.guitars} />
 
             {this.state.hipHop && (<>
               <div className="mt-4 mb-4">
-                <h2>Hip Hop</h2>
-                <hr className="my-4" />
+                <h2 className='mb-0 border-bottom' style={styles.heading}>Hip Hop</h2>
               </div>
               {/** Show All User */}
               <UserList users={this.state.hipHop} />
@@ -103,8 +103,7 @@ class Home extends Component {
 
             {this.state.piano && (<>
               <div className="mt-4 mb-4">
-                <h2>Piano</h2>
-                <hr className="my-4" />
+                <h2 className='mb-0 border-bottom' style={styles.heading}>Piano</h2>
               </div>
               {/** Show All User */}
               <UserList users={this.state.piano} />

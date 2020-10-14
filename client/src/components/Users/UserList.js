@@ -36,8 +36,10 @@ const UserList = ({ users }) => {
     <Carousel
       responsive={responsive}
       swipeable={true}
+      draggable={true}
       infinite={true}
       keyBoardControl={true}
+      removeArrowOnDeviceType={["tablet", "mobile"]}
     >{console.log(users)}
       {users.map(user =>
         <div>

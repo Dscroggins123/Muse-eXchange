@@ -36,8 +36,8 @@ const styles = {
     border: '0px',
     backgroundColor: 'transparent',
     height: '100%',
-    filter: 'blur(25px)',
-    WebkitFilter: 'blur(25px)'
+    filter: 'blur(8px)',
+    WebkitFilter: 'blur(8px)'
   }
 }
 
@@ -146,7 +146,7 @@ class Profile extends Component {
 
     if (!this.state.songs) return <h1>Loading...</h1>
     return (<>
-      <div style={{ overflow: 'hidden' }}>
+      <div style={{ overflow: 'hidden', background: '#000' }}>
         <Jumbotron fluid className='mb-0' style={{
           backgroundImage: `url(${this.state.profilePic})`,
           backgroundRepeat: 'no-repeat',
@@ -154,7 +154,7 @@ class Profile extends Component {
           height: '30vh',
           border: '0px',
           backgroundColor: 'transparent',
-          filter: 'blur(25px)',
+          filter: 'blur(18px)',
           backgroundPosition: 'center',
         }}>
         </Jumbotron>
