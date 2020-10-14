@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import UserList from '../components/Users/UserList';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup, Badge} from 'react-bootstrap';
 import Jumbotron from '../components/Jumbotron';
-import Button from 'react-bootstrap/Button';
 import API from '../utils/API';
 import { Redirect, Link } from "react-router-dom";
 
@@ -12,9 +11,15 @@ const styles = {
   },
   heading: {
     fontSize: '25px'
+  },
+  sideHeading: {
+    fontSize: '20px',
+  },
+  sideCol: {
+    background: '#F8F8F8'
   }
 }
-const professions = ["Musician", "Guitar", "Hip-Hop", "Piano", "Beatmaking"];
+const professions = ["Musician", "Guitar", "Hip-Hop", "Piano", "Beats"];
 
 class Home extends Component {
   state = {
@@ -78,36 +83,85 @@ class Home extends Component {
           <div>
             <Jumbotron />
           </div>
-          <Container style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif'}} className=' mt-0 p-4' >
-            {this.state.users && (<>
-              <div className="mt-2  mb-2">
-                <h2 className='mb-0 border-bottom' style={styles.heading}>Explore</h2>
-              </div>
-              {/** Show All User */}
-              <UserList users={this.state.users} />
-            </>)}
+          <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
+            <Row>
+              <Col xs={2} className='border' style={styles.sideCol}>
 
-            <div className="mt-2 mb-2">
-              <h2 className='mb-0 border-bottom' style={styles.heading}>Guitar</h2>
-            </div>
-            {/** Show All User */}
-            <UserList users={this.state.guitars} />
+                <div className='mt-2 mb-4'>
+                  <h3 style={styles.sideHeading}>Instruments</h3>
+                  <ListGroup defaultActiveKey="#link1">
+                    {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
+                      <span className='m-1'>Guitar</span>
+                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                      <span className="sr-only">unread messages</span>
+                    </ListGroup.Item>
+                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
+                      <span className='m-1'>Hip-Hop</span>
+                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                      <span className="sr-only">unread messages</span>
+                    </ListGroup.Item>
+                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
+                      <span className='m-1'>Piano</span>
+                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                      <span className="sr-only">unread messages</span>
+                    </ListGroup.Item>
+                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
+                      <span className='m-1'>Beats</span>
+                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                      <span className="sr-only">unread messages</span>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </div>
 
-            {this.state.hipHop && (<>
-              <div className="mt-2 mb-2">
-                <h2 className='mb-0 border-bottom' style={styles.heading}>Hip Hop</h2>
-              </div>
-              {/** Show All User */}
-              <UserList users={this.state.hipHop} />
-            </>)}
+                <div className='mt-2 mb-4'>
+                  <h3 style={styles.sideHeading}>New Songs</h3>
+                  <ListGroup defaultActiveKey="#link1">
+                    {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+                    <ListGroup.Item action>
+                      This one is a button
+                    </ListGroup.Item>
+                    <ListGroup.Item action>
+                      This one is a button
+                    </ListGroup.Item>
+                    <ListGroup.Item action>
+                      This one is a button
+                    </ListGroup.Item>
+                  </ListGroup>
+                </div>
+              </Col>
+              <Col xs={10} className='border border-left-0' style={{ background: '#fff' }}>
+                {this.state.users && (<>
+                  <div className="mt-2  mb-2">
+                    <h2 className='mb-0 border-bottom' style={styles.heading}>Explore</h2>
+                  </div>
+                  {/** Show All User */}
+                  <UserList users={this.state.users} />
+                </>)}
 
-            {this.state.piano && (<>
-              <div className="mt-2 mb-2">
-                <h2 className='mb-0 border-bottom' style={styles.heading}>Piano</h2>
-              </div>
-              {/** Show All User */}
-              <UserList users={this.state.piano} />
-            </>)}
+                <div className="mt-2 mb-2">
+                  <h2 className='mb-0 border-bottom' style={styles.heading}>Guitar</h2>
+                </div>
+                {/** Show All User */}
+                <UserList users={this.state.guitars} />
+
+                {this.state.hipHop && (<>
+                  <div className="mt-2 mb-2">
+                    <h2 className='mb-0 border-bottom' style={styles.heading}>Hip Hop</h2>
+                  </div>
+                  {/** Show All User */}
+                  <UserList users={this.state.hipHop} />
+                </>)}
+
+                {this.state.piano && (<>
+                  <div className="mt-2 mb-2">
+                    <h2 className='mb-0 border-bottom' style={styles.heading}>Piano</h2>
+                  </div>
+                  {/** Show All User */}
+                  <UserList users={this.state.piano} />
+                </>)}
+              </Col>
+            </Row>
           </Container>
         </>
     )

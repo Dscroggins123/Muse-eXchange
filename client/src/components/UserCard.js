@@ -34,13 +34,13 @@ const UserCard = ({ user }) => {
     cardStyle = {
       opacity: 1,
       background: 'rgba(0,0,0,0.8)',
-      transition: `${hover ? '0.5s' : '0.5s;'}`
+      transition: `${hover ? '0.2s' : '0.2s;'}`
     }
   } else {
     cardStyle = {
       opacity: 0,
       background: 'rgba(0,0,0,0)',
-      transition: `${hover ? '0.5s' : '0.5s;'}`,
+      transition: `${hover ? '0.2s' : '0.2s;'}`,
       alignItems: 'center',
     }
   }
