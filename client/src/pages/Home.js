@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import UserList from '../components/Users/UserList';
-import { Container, Row, Col, Button, ListGroup, Badge} from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup, Badge, Accordion, Card } from 'react-bootstrap';
 import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 import { Redirect, Link } from "react-router-dom";
+// Materialize-UI icon
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = {
   home: {
@@ -17,6 +19,12 @@ const styles = {
   },
   sideCol: {
     background: '#F8F8F8'
+  },
+  accordionButton: {
+    backgroundColor: 'transparent', border: '0px'
+  },
+  expandIcon: {
+    fontSize: '16px'
   }
 }
 const professions = ["Musician", "Guitar", "Hip-Hop", "Piano", "Beats"];
@@ -89,29 +97,124 @@ class Home extends Component {
 
                 <div className='mt-2 mb-4'>
                   <h3 style={styles.sideHeading}>Instruments</h3>
-                  <ListGroup defaultActiveKey="#link1">
-                    {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
-                      <span className='m-1'>Guitar</span>
-                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
-                      <span className="sr-only">unread messages</span>
-                    </ListGroup.Item>
-                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
-                      <span className='m-1'>Hip-Hop</span>
-                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
-                      <span className="sr-only">unread messages</span>
-                    </ListGroup.Item>
-                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
-                      <span className='m-1'>Piano</span>
-                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
-                      <span className="sr-only">unread messages</span>
-                    </ListGroup.Item>
-                    <ListGroup.Item action className='d-flex justify-content-between text-center p-1'>
-                      <span className='m-1'>Beats</span>
-                      <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
-                      <span className="sr-only">unread messages</span>
-                    </ListGroup.Item>
-                  </ListGroup>
+                  <Accordion>
+                    {/** Guitar */}
+                    <Card className='border-0'> 
+                      <Card.Header className='text-center p-1 d-flex justify-content-between'>
+                        <div>
+                          <span className='m-1'>Guitar</span>
+                          <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                          <span className="sr-only">unread messages</span>
+                        </div>
+                        <Accordion.Toggle as={Button} eventKey="0" className='p-0' style={styles.accordionButton}>
+                          <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body className='p-0'>
+                          <ListGroup defaultActiveKey="#link1">
+                            {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                          </ListGroup>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                    {/** Hip-Hop */}
+                    <Card className='border-0'> 
+                      <Card.Header className='text-center p-1 d-flex justify-content-between'>
+                        <div>
+                          <span className='m-1'>Hip-Hop</span>
+                          <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                          <span className="sr-only">unread messages</span>
+                        </div>
+                        <Accordion.Toggle as={Button} eventKey="1" className='p-0' style={styles.accordionButton}>
+                          <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="1">
+                        <Card.Body className='p-0'>
+                          <ListGroup defaultActiveKey="#link1">
+                            {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                          </ListGroup>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                    {/** Piano */}
+                    <Card className='border-0'> 
+                      <Card.Header className='text-center p-1 d-flex justify-content-between'>
+                        <div>
+                          <span className='m-1'>Piano</span>
+                          <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                          <span className="sr-only">unread messages</span>
+                        </div>
+                        <Accordion.Toggle as={Button} eventKey="2" className='p-0' style={styles.accordionButton}>
+                          <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="2">
+                        <Card.Body className='p-0'>
+                          <ListGroup defaultActiveKey="#link1">
+                            {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                          </ListGroup>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                    {/** Beats */}
+                    <Card className='border-0'> 
+                      <Card.Header className='text-center p-1 d-flex justify-content-between'>
+                        <div>
+                          <span className='m-1'>Beats</span>
+                          <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
+                          <span className="sr-only">unread messages</span>
+                        </div>
+                        <Accordion.Toggle as={Button} eventKey="3" className='p-0' style={styles.accordionButton}>
+                          <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="3">
+                        <Card.Body className='p-0'>
+                          <ListGroup defaultActiveKey="#link1">
+                            {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                            <ListGroup.Item action>
+                              This one is a button
+                            </ListGroup.Item>
+                          </ListGroup>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
                 </div>
 
                 <div className='mt-2 mb-4'>
