@@ -6,6 +6,8 @@ import API from '../utils/API';
 import { Redirect, Link } from "react-router-dom";
 // Materialize-UI icon
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// Components
+import SongCard from '../components/SongCard';
 
 const styles = {
   home: {
@@ -25,6 +27,9 @@ const styles = {
   },
   expandIcon: {
     fontSize: '16px'
+  },
+  userListItem: {
+    fontSize: '12px'
   }
 }
 const professions = ["Musician", "Guitar", "Hip-Hop", "Piano", "Beats"];
@@ -112,16 +117,16 @@ class Home extends Component {
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
                         <Card.Body className='p-0'>
-                          <ListGroup defaultActiveKey="#link1">
+                          <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
                             <ListGroup.Item action>
-                              This one is a button
+                              User 1
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 2
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 3
                             </ListGroup.Item>
                           </ListGroup>
                         </Card.Body>
@@ -141,16 +146,16 @@ class Home extends Component {
                       </Card.Header>
                       <Accordion.Collapse eventKey="1">
                         <Card.Body className='p-0'>
-                          <ListGroup defaultActiveKey="#link1">
+                          <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
                             <ListGroup.Item action>
-                              This one is a button
+                              User 1
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 2
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 3
                             </ListGroup.Item>
                           </ListGroup>
                         </Card.Body>
@@ -170,16 +175,16 @@ class Home extends Component {
                       </Card.Header>
                       <Accordion.Collapse eventKey="2">
                         <Card.Body className='p-0'>
-                          <ListGroup defaultActiveKey="#link1">
+                          <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
                             <ListGroup.Item action>
-                              This one is a button
+                              User 1
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 2
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 3
                             </ListGroup.Item>
                           </ListGroup>
                         </Card.Body>
@@ -199,16 +204,16 @@ class Home extends Component {
                       </Card.Header>
                       <Accordion.Collapse eventKey="3">
                         <Card.Body className='p-0'>
-                          <ListGroup defaultActiveKey="#link1">
+                          <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
                             <ListGroup.Item action>
-                              This one is a button
+                              User 1
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 2
                             </ListGroup.Item>
                             <ListGroup.Item action>
-                              This one is a button
+                              User 3
                             </ListGroup.Item>
                           </ListGroup>
                         </Card.Body>
@@ -221,14 +226,29 @@ class Home extends Component {
                   <h3 style={styles.sideHeading}>New Songs</h3>
                   <ListGroup defaultActiveKey="#link1">
                     {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                    <ListGroup.Item action>
-                      This one is a button
+                    <ListGroup.Item className='p-0 d-flex justify-content-between'>
+                      <div style={{ width: '4rem' }}>
+                        <SongCard />
+                      </div>
+                      <div className='w-100 ml-2 align-self-center' style={{fontSize: '12px'}}>
+                        <div>New Song 1</div>
+                      </div>
                     </ListGroup.Item>
-                    <ListGroup.Item action>
-                      This one is a button
+                    <ListGroup.Item className='p-0 d-flex justify-content-between'>
+                      <div style={{ width: '4rem' }}>
+                        <SongCard />
+                      </div>
+                      <div className='w-100 ml-2 align-self-center' style={{fontSize: '12px'}}>
+                        <div>New Song 2</div>
+                      </div>
                     </ListGroup.Item>
-                    <ListGroup.Item action>
-                      This one is a button
+                    <ListGroup.Item className='p-0 d-flex justify-content-between'>
+                      <div style={{ width: '4rem' }}>
+                        <SongCard />
+                      </div>
+                      <div className='w-100 ml-2 align-self-center' style={{fontSize: '12px'}}>
+                        <div>New Song 3</div>
+                      </div>
                     </ListGroup.Item>
                   </ListGroup>
                 </div>
