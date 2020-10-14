@@ -47,7 +47,7 @@ function App() {
     <Router>
       {!user ? <h1></h1> : <Navbar handleLogout={handleLogout} user={user._id}/>}
       {user && <Redirect to="/"/>}
-      <div className="wrapper" style={{background: '#282828', margin: '0px', height: '100%'}}>
+      <div className="wrapper bg-gray-300" style={{ margin: '0px', height: '100%'}}>
         <Switch>
           {/* <Route exact path="/" component={() => <LandingPage pending={pending} user={user}/>} /> */}
           <Route exact path="/" component={() => <Home pending={pending} user={user}/>} />

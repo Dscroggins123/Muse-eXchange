@@ -19,18 +19,18 @@ const styles = {
 
 const JumbotronComponent = () => {
   return (
-    <Jumbotron className='mb-0' style={styles} >
-      <div style={{ width: '30%' }}>
-        <h1>Share your creativity!</h1>
-        <p>
+    <Jumbotron fluid className='mb-0' style={styles} >
+      <div class="pl-5" style={{ width: '30%'}}>
+        <h1 style={{fontFamily: 'Kumbh Sans, sans-serif'}}>Share your creativity!</h1>
+        <p style={{fontFamily: 'Kumbh Sans, sans-serif'}}>
           Welcome to Music eXchange! Please explore the different user profiles to see what content each user has created!
         </p>
         <hr className="my-4" style={{ background: "white" }} />
-        <p>
+        <p style={{fontFamily: 'Kumbh Sans, sans-serif'}}>
           In each profile you can make a request to purchase a song, or to purchase a tutorial from the user!
         </p>
         <p>
-          <Button variant="outline-light">Learn more</Button>
+          <Button variant="outline-light" style={{fontFamily: 'Kumbh Sans, sans-serif'}}>Learn more</Button>
         </p>
       </div>
     </Jumbotron>
