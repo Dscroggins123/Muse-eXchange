@@ -11,7 +11,7 @@ const styles = {
     height: "100%"
   }
 }
-const professions = ["Musician", "Guitar", "Hip-Hop", "Beatmaking", "Piano"];
+const professions = ["Musician", "Guitar", "Hip-Hop", "Piano", "Beatmaking"];
 
 class Home extends Component {
   state = {
@@ -71,12 +71,11 @@ class Home extends Component {
   render() {
     return (
       !this.props.user && !this.props.pending ? <Redirect to="/signin" /> :
-        <div style={styles.home}>
-
+        <>
           <Jumbotron />
-          <Container fluid>
+          <Container style={{background: '#181818', height: '100%', width: '100%'}} className='text-light mt-0 p-4' >
             {this.state.users && (<>
-              <div className="mt-4">
+              <div className="mt-4 border-bottom border-secondary mb-4">
                 <h2>Explore</h2>
                 <hr className="my-4" />
               </div>
@@ -84,34 +83,29 @@ class Home extends Component {
               <UserList users={this.state.users} />
             </>)}
 
-
-            <div className="mt-4">
+            <div className="mt-4 border-bottom border-secondary mb-4">
               <h2>Guitar</h2>
-              <hr className="my-4" />
             </div>
             {/** Show All User */}
             <UserList users={this.state.guitars} />
 
-
             {this.state.hipHop && (<>
-              <div className="mt-4">
+              <div className="mt-4 border-bottom border-secondary mb-4">
                 <h2>Hip Hop</h2>
-                <hr className="my-4" />
               </div>
               {/** Show All User */}
               <UserList users={this.state.hipHop} />
             </>)}
 
             {this.state.piano && (<>
-              <div className="mt-4">
+              <div className="mt-4 border-bottom border-secondary mb-4">
                 <h2>Piano</h2>
-                <hr className="my-4" />
               </div>
               {/** Show All User */}
               <UserList users={this.state.piano} />
             </>)}
           </Container>
-        </div>
+        </>
     )
   }
 

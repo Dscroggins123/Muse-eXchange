@@ -17,7 +17,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4,
+    items: 5,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -41,7 +41,7 @@ const UserList = ({ users }) => {
     >{console.log(users)}
       {users.map(user =>
         <div>
-          <div style={{ width: '15rem' }}>
+          <div style={{ width: '12rem' }}>
             {user.profile.profilePic
               ? (
               // <Link to={`/profile/${user.username}`}>

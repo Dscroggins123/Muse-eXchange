@@ -1,7 +1,8 @@
 import React from 'react';
 // import Container from '../Container';
-import Container from 'react-bootstrap/Container';
+import { Container, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import navLogo from '../../assets/svg/nav-logo.svg';
 import "./style.css";
 
 const styles ={
@@ -14,10 +15,11 @@ const styles ={
 // Footer
 const Footer = () => {
   return (
-    <footer className="footer bg-dark text-light mt-4">
+    <footer className="footer text-light mt-4" style={{background: '#121212'}}>
       <Container fluid>
-        <div className="d-flex justify-content-between">
-          <div>© 2020 Music eXchange All Rights Reserved</div>
+        <div className="d-flex justify-content-center">
+          <Image src={navLogo} className="mr-2" style={{ width: '30px' }} />
+          <div className='mr-auto'>© 2020 Music eXchange All Rights Reserved</div>
           <Link to="/team" style={styles}>Meet the team</Link>
         </div>
       </Container>

@@ -46,7 +46,7 @@ const UserCard = ({ user }) => {
   }
 
   return <>
-    <Card>
+    <Card style={{backgroundColor: 'transparent'}}> 
       <Card.Img variant='top' src={user.profile.profilePic} style={{ border: '0px' }} />
       <Card.ImgOverlay className='image-overlay'
         style={cardStyle}
