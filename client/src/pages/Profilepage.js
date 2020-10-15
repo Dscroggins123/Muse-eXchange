@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
+import API from '../utils/API';
 // Bootstrap
-import { Container, Row, Col, Image, Jumbotron, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Image, Jumbotron, ListGroup, Badge } from 'react-bootstrap';
 // Components
 import ProfilePic from '../components/ProfilePic';
 import PurchaseBtn from "../components/PurchaseBtn";
 import ProfileSongList from '../components/ProfileSongList';
-import API from '../utils/API';
+import MusicPlayer from '../components/Music/MusicPlayer';
+import SmallPlayer from '../components/Music/SmallPlayer';
 
+// Material-UI Icons
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import Favorite from "@material-ui/icons/Favorite";
 import EventIcon from '@material-ui/icons/Event';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+
+// Material-UI 
 import { Button } from "@material-ui/core"
 import GridContainer from "../components/Profile/Grid/GridContainer";
 import GridItem from "../components/Profile/Grid/GridItem";
@@ -18,9 +28,9 @@ import NavPills from "../components/Profile/NavPills/NavPills";
 import { InlineWidget } from "react-calendly"
 // import Calendly from "../components/Calendly/Calendly"
 /** ===== Music Player ===== */
-import MusicPlayer from '../components/Music/MusicPlayer';
-import SmallPlayer from '../components/Music/SmallPlayer';
 
+
+// Images
 import musicIcon from '../assets/svg/music.png';
 import songIcon from '../assets/svg/song.png'
 import songSVG from '../assets/svg/song.svg';
@@ -29,16 +39,9 @@ import songSVG from '../assets/svg/song.svg';
 import profileWallpaper from '../assets/images/profile-wallpaper.svg';
 
 const styles = {
-  jumbotron: {
-    // backgroundImage: `url(${this.state.profilePic})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    height: '50vh',
-    border: '0px',
-    backgroundColor: 'transparent',
-    height: '100%',
-    filter: 'blur(8px)',
-    WebkitFilter: 'blur(8px)'
+  socialIcon: {
+    fontSize: '45px',
+    padding: '5px'
   }
 }
 
@@ -49,7 +52,9 @@ class Profile extends Component {
     email: "",
     firstName: "",
     lastName: "",
+    profession: "",
     profilePic: "",
+    about: "",
     songs: [],
     songInfo: [],
     tutorials: [],
@@ -89,7 +94,9 @@ class Profile extends Component {
           email: res.data.email,
           firstName: res.data.profile.firstName,
           lastName: res.data.profile.lastName,
+          profession: res.data.profile.profession,
           profilePic: res.data.profile.profilePic,
+          about: res.data.profile.about,
           username: res.data.username,
         })
       })
@@ -108,7 +115,9 @@ class Profile extends Component {
             email: res.data.email,
             firstName: res.data.profile.firstName,
             lastName: res.data.profile.lastName,
+            profession: res.data.profile.profession,
             profilePic: res.data.profile.profilePic,
+            about: res.data.profile.about,
             purchaseSongs: res.data.profile.purchaseSongs
           })
       }).then(() => {
@@ -179,7 +188,7 @@ class Profile extends Component {
                 backgroundColor: 'transparent',
                 boxShadow: '0px 0px'
               }}>
-              <Row style={{background: 'transparent'}}>
+              <Row style={{background: 'transparent'}} className='mb-5'>
                 {/** User Profile Pic */}
                 <Col xs={12} md={5} className='p-0'
                   style={{
@@ -192,6 +201,15 @@ class Profile extends Component {
                   </div>
                   <div>
                     <h3>{this.state.firstName} {this.state.lastName}</h3>
+                    {/* <p className='m-0'>{this.state.email}</p> */}
+                    <Badge pill className='text-light' style={{ fontSize: '16px',background: '#FE064C'}}>{this.state.profession}</Badge>
+                    <Row className='d-flex justify-content-start'>
+                      <Col xs={1}><FacebookIcon style={styles.socialIcon}/></Col>
+                      <Col xs={1}><LinkedInIcon style={styles.socialIcon}/></Col>
+                      <Col xs={1}><InstagramIcon style={styles.socialIcon}/></Col>
+                      <Col xs={1}><TwitterIcon style={styles.socialIcon}/></Col>
+                      <Col xs={1}><YouTubeIcon style={styles.socialIcon}/></Col>
+                    </Row>
                   </div>
                 </Col>
 
@@ -201,33 +219,28 @@ class Profile extends Component {
                     overflow:'hidden' ,
                     background: 'transparent',
                     boxShadow:'0 14px 28px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15)',
-                    height: '50vh'
+                    maxHeight: '60vh'
                   }}
                 >
                   {this.state.songs.length !== 0 ? (
                     <ProfileSongList songs={this.state.songs} email={this.state.email} userId={this.state.user._id} />
                   ) : (
-                    <div className='text-center h-100' style={{background: 'rgba(228, 228, 228, 0.9)'}}>
+                    <div className='text-center' style={{background: 'rgba(228, 228, 228, 0.9)', height: '50vh'}}>
                       <h2 className='pt-2'>No Songs Available</h2>
                     </div>
                   )}
                   
                 </Col>
               </Row>
+              <Row>
+                <Col xs={5} className='p-0'>
+                  <p>{this.state.about}</p>
+                </Col>
+              </Row>
+
+              
           
               <div className="text-center mt-3">
-                <h3 className="text-4xl font-semibold leading-normal text-gray-800">{this.state.email}'s Song List</h3>
-                <div className="text-sm leading-normal text-gray-500 font-bold uppercase">
-                  <h5>Contact: {this.state.email}</h5>
-                </div>
-                <div className="mt-4 text-gray-700">
-                  {this.state.songs
-                    ? <div>
-                    </div>
-                    : <div className="text-gray-700">
-                      <p>Here's a list</p>
-                    </div>}
-                </div>
                 <div className="mt-10 py-2 border-t border-gray-300 text-center"></div>
                 <div className="flex flex-wrap justify-center" style={{ marginBottom: "5%" }}>
                   <GridItem xs={12} sm={12} md={8}>
@@ -235,38 +248,38 @@ class Profile extends Component {
                       alignCenter
                       color="primary"
                       tabs={[
-                        {
-                          tabButton: "Songs",
-                          tabIcon: PlayCircleOutlineIcon,
-                          tabContent: (
-                            <GridContainer justify="center">
-                              <GridItem className="pt-0 pb-0">
-                                <ul class="list-group" style={{ borderRadius: "0px" }}>
-                                  {console.log(this.state.songs)}
-                                  {this.state.songs.map((song) =>
-                                    <li class="list-group-item d-flex justify-content-between">
-                                      <Row className='w-100'>
-                                        <Col xs={2} className="pb-0 pt-0">
-                                          <Image src={songSVG} fluid style={{ width: "100%" }} />
-                                        </Col>
-                                        <Col xs={7}>
-                                          <SmallPlayer song={song} />
-                                        </Col>
-                                        <Col className="p-0">
-                                          <div>
-                                            <div className="text-left">Song: {song.title}</div>
-                                            <div className="text-left">Artist: {song.author}</div>
-                                            <PurchaseBtn selleremail={this.state.email} title={song.title} price={song.price} id={song._id} currentuser={this.state.user._id} />
-                                          </div>
-                                        </Col>
-                                      </Row>
-                                    </li>
-                                  )}
-                                </ul>
-                              </GridItem>
-                            </GridContainer>
-                          )
-                        },
+                        // {
+                        //   tabButton: "Songs",
+                        //   tabIcon: PlayCircleOutlineIcon,
+                        //   tabContent: (
+                        //     <GridContainer justify="center">
+                        //       <GridItem className="pt-0 pb-0">
+                        //         <ul class="list-group" style={{ borderRadius: "0px" }}>
+                        //           {console.log(this.state.songs)}
+                        //           {this.state.songs.map((song) =>
+                        //             <li class="list-group-item d-flex justify-content-between">
+                        //               <Row className='w-100'>
+                        //                 <Col xs={2} className="pb-0 pt-0">
+                        //                   <Image src={songSVG} fluid style={{ width: "100%" }} />
+                        //                 </Col>
+                        //                 <Col xs={7}>
+                        //                   <SmallPlayer song={song} />
+                        //                 </Col>
+                        //                 <Col className="p-0">
+                        //                   <div>
+                        //                     <div className="text-left">Song: {song.title}</div>
+                        //                     <div className="text-left">Artist: {song.author}</div>
+                        //                     <PurchaseBtn selleremail={this.state.email} title={song.title} price={song.price} id={song._id} currentuser={this.state.user._id} />
+                        //                   </div>
+                        //                 </Col>
+                        //               </Row>
+                        //             </li>
+                        //           )}
+                        //         </ul>
+                        //       </GridItem>
+                        //     </GridContainer>
+                        //   )
+                        // },
                         {
                           tabButton: "Tutorials",
                           tabIcon: VideoLibraryIcon,
