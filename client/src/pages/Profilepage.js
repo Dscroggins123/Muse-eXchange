@@ -152,6 +152,7 @@ class Profile extends Component {
       this.setState({ ...this.state, purchaseSongs: this.state.purchaseSongsInfo })
     }).catch(err => console.log(err))
   }
+  /** ---- Tutorials ---- */
   getTutorialsByQuery = id => {
     API.getTutorialsByQuery(id)
       .then(res => {
@@ -179,7 +180,6 @@ class Profile extends Component {
       </div>
       <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#fff' }}>
         <main className="profile-page" >
-          <section className="relative py-10 pt-0">
             <div className="container mx-auto" 
               style={{ 
                 marginTop: "0px", 
@@ -201,7 +201,6 @@ class Profile extends Component {
                   </div>
                   <div>
                     <h3>{this.state.firstName} {this.state.lastName}</h3>
-                    {/* <p className='m-0'>{this.state.email}</p> */}
                     <Badge pill className='text-light' style={{ fontSize: '16px',background: '#FE064C'}}>{this.state.profession}</Badge>
                     <Row className='d-flex justify-content-start'>
                       <Col xs={1}><FacebookIcon style={styles.socialIcon}/></Col>
@@ -233,7 +232,7 @@ class Profile extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xs={5} className='p-0'>
+                <Col xs={5} className='pl-0 pr-4'>
                   <p>{this.state.about}</p>
                 </Col>
               </Row>
@@ -329,7 +328,6 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
-          </section>
         </main>
       </Container>
     </>)
