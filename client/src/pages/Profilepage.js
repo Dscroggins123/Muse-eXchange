@@ -56,7 +56,10 @@ class Profile extends Component {
     purchaseSongs: [],
     purchaseSongsInfo: [],
   }
+  
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const username = this.props.match.params.username;
     document.title = `Music eXchange | ${username}`;
     this.setState({ ...this.state, username: username, test: "test" });

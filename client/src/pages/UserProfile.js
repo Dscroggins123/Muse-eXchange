@@ -64,7 +64,10 @@ const AccountPage = () => {
 
   const userFields = ["firstName", "lastName", "profession", "about", "link1", "link2", "link3"];
 
+  
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     document.title = `Music eXchange | Account`;
     if (localStorage.getItem("currentUser")) {
       const userObj = JSON.parse(localStorage.getItem("currentUser"));

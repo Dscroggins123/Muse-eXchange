@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Button, Image } from 'react-bootstrap';
+import { Card, Button, Image , Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserCard from '../UserCard';
 import Carousel from "react-multi-carousel";
@@ -77,9 +77,8 @@ const UserList = ({ users }) => {
       customButtonGroup={<ButtonGroup />}
     >
       {users.map(user =>
-        <div>
-          <div style={{ width: '10rem' }}>
-            {user.profile.profilePic
+        <div style={{ width: '11rem' }}>
+          {user.profile.profilePic
               ? (
               // <Link to={`/profile/${user.username}`}>
                 <UserCard user={user} />
@@ -88,9 +87,10 @@ const UserList = ({ users }) => {
               )
               : (<Card.Img variant='top' src={defaultProfilePic} />)}
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+          <div>
+            <div style={{ fontSize: '18px' }}>{user.profile.firstName} {user.profile.lastName}</div>
+            <div>{user.profile.profession}</div>
           </div>
-          <div style={{ fontSize: '18px' }}>{user.profile.firstName} {user.profile.lastName}</div>
-          <div>{user.profile.profession}</div>
         </div>
       )}
     </Carousel>)

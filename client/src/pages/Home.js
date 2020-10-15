@@ -46,6 +46,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+    
     document.title = `Music eXchange | Home`;
     this.getUsers();
     this.getMusicians();
