@@ -72,8 +72,13 @@ Most recent deployment linK: (site still work in progress)
 [Visit our site](https://arcane-everglades-49918.herokuapp.com/)
 
 Screenshots below are the current changes yet to be deployed
+
+## Home page
 ![home](./client/src/assets/screenshots/home.png)
+## View other Music eXchange Members
 ![explore](./client/src/assets/screenshots/explore.png)
+## View member profiles and purchase thier music!
 ![profile-page](./client/src/assets/screenshots/profile-page.png)
+## Say hi to the team!
 ![team](./client/src/assets/screenshots/team.png)
 
