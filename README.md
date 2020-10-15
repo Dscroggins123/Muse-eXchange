@@ -61,7 +61,8 @@ Nick Guimarais, Edward Reyes
 
 ## Installation
 
-To install the necessary dependencies:
+To install the necessary dependencies, run the following command:
+
 ```
 npm i
 ```
