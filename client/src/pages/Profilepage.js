@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 // Bootstrap
-import { Jumbotron } from 'react-bootstrap';
-// Material
-import PurchaseBtn from "../components/PurchaseBtn"
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Image, Jumbotron, ListGroup } from 'react-bootstrap';
+// Components
 import ProfilePic from '../components/ProfilePic';
+import PurchaseBtn from "../components/PurchaseBtn";
+import ProfileSongList from '../components/ProfileSongList';
 import API from '../utils/API';
+
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import Favorite from "@material-ui/icons/Favorite";
@@ -19,7 +20,7 @@ import { InlineWidget } from "react-calendly"
 /** ===== Music Player ===== */
 import MusicPlayer from '../components/Music/MusicPlayer';
 import SmallPlayer from '../components/Music/SmallPlayer';
-import { Row, Col, Image } from 'react-bootstrap';
+
 import musicIcon from '../assets/svg/music.png';
 import songIcon from '../assets/svg/song.png'
 import songSVG from '../assets/svg/song.svg';
@@ -47,6 +48,7 @@ class Profile extends Component {
     username: "",
     email: "",
     firstName: "",
+    lastName: "",
     profilePic: "",
     songs: [],
     songInfo: [],
@@ -78,13 +80,15 @@ class Profile extends Component {
     const username = this.props.match.params.username
     if (prevState.username !== username) {
       return API.getUserByUsername(username).then(res => {
-        console.log(res.data.profile.profilePic)
+        console.log(res.data.profile)
         this.setState({
           ...this.state,
           id: res.data._id,
           songs: res.data.profile.songs,
           tutorials: res.data.profile.tutorials,
           email: res.data.email,
+          firstName: res.data.profile.firstName,
+          lastName: res.data.profile.lastName,
           profilePic: res.data.profile.profilePic,
           username: res.data.username,
         })
@@ -102,6 +106,8 @@ class Profile extends Component {
             songs: res.data.profile.songs,
             tutorials: res.data.profile.tutorials,
             email: res.data.email,
+            firstName: res.data.profile.firstName,
+            lastName: res.data.profile.lastName,
             profilePic: res.data.profile.profilePic,
             purchaseSongs: res.data.profile.purchaseSongs
           })
@@ -162,59 +168,59 @@ class Profile extends Component {
         }}>
         </Jumbotron>
       </div>
-      {/* <section className="relative block" style={{ height: "400px" }}>
-        <div
-          className="absolute top-0 w-full h-full bg-center bg-cover"
-          style={{ backgroundImage: `url(${profileWallpaper})` }}
-        >
-          <span
-              id="blackOverlay"
-              className="w-full h-full absolute"
-            >Hello</span>
-        </div>
-        <div
-          className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-          style={{ height: "70px", transform: "translateZ(0)" }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              className="text-gray-300 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
-      </section> */}
-      <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px' }}>
+      <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#fff' }}>
         <main className="profile-page" >
+          <section className="relative py-10 pt-0">
+            <div className="container mx-auto" 
+              style={{ 
+                marginTop: "0px", 
+                position: 'relative',
+                bottom: '120px',
+                backgroundColor: 'transparent',
+                boxShadow: '0px 0px'
+              }}>
+              <Row style={{background: 'transparent'}}>
+                {/** User Profile Pic */}
+                <Col xs={12} md={5} className='p-0'
+                  style={{
+                  background: 'transparent',
+                  height: '50vh'}}>
+                  <div style={{width: '20rem'}}>
+                    <ProfilePic
+                      profilePic={this.state.profilePic}
+                    />
+                  </div>
+                  <div>
+                    <h3>{this.state.firstName} {this.state.lastName}</h3>
+                  </div>
+                </Col>
 
-          <section className="relative py-10 bg-gray-300 pt-0">
-            <div className="container mx-auto text-light" style={{ marginTop: "0px" }}>
-              <div className="flex flex-wrap justify-center">
-                <ProfilePic
-                  profilePic={this.state.profilePic}
-                />
-              </div>
+                {/** User Songs List */}
+                <Col xs={12} md={7} className="p-0 border" 
+                  style={{ 
+                    overflow:'hidden' ,
+                    background: 'transparent',
+                    boxShadow:'0 14px 28px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15)',
+                    height: '50vh'
+                  }}
+                >
+                  {this.state.songs.length !== 0 ? (
+                    <ProfileSongList songs={this.state.songs} email={this.state.email} userId={this.state.user._id} />
+                  ) : (
+                    <div className='text-center h-100' style={{background: 'rgba(228, 228, 228, 0.9)'}}>
+                      <h2 className='pt-2'>No Songs Available</h2>
+                    </div>
+                  )}
+                  
+                </Col>
+              </Row>
+          
               <div className="text-center mt-3">
                 <h3 className="text-4xl font-semibold leading-normal text-gray-800">{this.state.email}'s Song List</h3>
                 <div className="text-sm leading-normal text-gray-500 font-bold uppercase">
                   <h5>Contact: {this.state.email}</h5>
                 </div>
                 <div className="mt-4 text-gray-700">
-                  {/* <p>No songs</p> */}
-                  {/* <Button 
-                color="primary"
-                variant="contained"
-                onClick={handleShow}
-                >
-                + Add Song</Button> */}
                   {this.state.songs
                     ? <div>
                     </div>
