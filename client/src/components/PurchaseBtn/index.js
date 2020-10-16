@@ -9,14 +9,13 @@ console.log(props.currentuser)
 
   return (
     <div className="Paypal">
-      <Button
+      <Button 
         onClick={() =>
           history.push(`/pages/Payment/${props.title}/${props.price}/${props.id}/${props.currentuser}/${props.selleremail}`)
         }
-        style={{width: "100%", backgroundColor: "rgb(78 78 78)"}}
+        style={{backgroundColor: "#FE064C", border: '0px'}}
       >
-        {" "}
-        Make Purchase{" "}
+        Buy
       </Button>
     </div>
   );

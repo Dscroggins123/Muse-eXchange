@@ -213,10 +213,10 @@ class Profile extends Component {
                 </Col>
 
                 {/** User Songs List */}
-                <Col xs={12} md={7} className="p-0 border" 
+                <Col xs={12} md={7} className="p-0" 
                   style={{ 
                     overflow:'hidden' ,
-                    background: 'transparent',
+                    background: 'rgba(40, 40, 40, 0.9)',
                     boxShadow:'0 14px 28px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15)',
                     maxHeight: '60vh'
                   }}
@@ -224,7 +224,7 @@ class Profile extends Component {
                   {this.state.songs.length !== 0 ? (
                     <ProfileSongList songs={this.state.songs} email={this.state.email} userId={this.state.user._id} />
                   ) : (
-                    <div className='text-center' style={{background: 'rgba(228, 228, 228, 0.9)', height: '50vh'}}>
+                    <div className='text-center' style={{background: 'rgba(248, 248, 248, 0.8)', height: '50vh'}}>
                       <h2 className='pt-2'>No Songs Available</h2>
                     </div>
                   )}
@@ -232,7 +232,7 @@ class Profile extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xs={5} className='pl-0 pr-4'>
+                <Col xs={5} className='pl-0 pr-4' style={{height: '45vh'}}>
                   <p>{this.state.about}</p>
                 </Col>
               </Row>
