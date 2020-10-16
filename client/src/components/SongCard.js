@@ -51,7 +51,7 @@ const UserCard = ({ user }) => {
 
   return <>
     <Card style={{backgroundColor: 'transparent'}}> 
-      <Card.Img variant='top' src={songSVG} style={{ border: '0px' }} />
+      <Card.Img src={songSVG} style={{ border: '0px' }} />
       <Card.ImgOverlay className='image-overlay'
         style={cardStyle}
         onMouseEnter={hoverTrue} onMouseLeave={hoverFalse}

@@ -37,7 +37,7 @@ const styles  = {
   customButtons: {
     backgroundColor: 'transparent',
     border: '0px', 
-    color: '#282828',
+    color: '#747474',
   },
   buttonIcon: {
     fontSize: '15px'

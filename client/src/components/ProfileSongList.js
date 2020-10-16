@@ -13,23 +13,23 @@ const ProfileSongList = ({ songs, email, userId }) => {
       {songs.map((song) =>
         <ListGroup.Item class="d-flex justify-content-between"
           style={{
-            background: 'rgba(248, 248, 248, 0.8)',
+            background: 'transparent',
             padding: 'inherit'
           }}>
           {/* <div className='text-left ml-2 m-0' style={{fontSize: '14px', fontWeight: 700}}>{song.title}</div> */}
           <Row className='w-100'>
             <Col xs={2} className="pt-0 pr-0 pb-0">
-              <Image src={songSVG} fluid style={{ width: "90%"}} />
+              <Image src={songSVG} fluid style={{ width: "92%"}} />
             </Col>
             <Col xs={7} className='p-0'>
               <SmallPlayer song={song} />
             </Col>
-            <Col className="">
+            <Col xs={3} className="pr-0">
               <div className='d-flex justify-content-center'>
-                  <p className='text-center m-0' style={{fontSize: '14px', fontWeight: 700}}>{song.title}</p>
+                  <p className='text-left w-100 m-0 mb-1 mt-1' style={{fontSize: '12.5px', fontWeight: 700}}>{song.title}</p>
               </div>
               <div className='d-flex justify-content-center'>
-                <PurchaseBtn selleremail={email} title={song.title} price={song.price} id={song._id} currentuser={userId} />
+                <PurchaseBtn selleremail={email} title={song.title} price={song.price} id={song._id} currentuser={userId}/>
               </div>
             </Col>
           </Row>

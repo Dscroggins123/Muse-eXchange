@@ -14,13 +14,16 @@ const styles = {
     height: "100%"
   },
   heading: {
-    fontSize: '25px'
+    fontSize: '25px',
+    borderBottom: '1px solid #282828'
   },
   sideHeading: {
     fontSize: '20px',
   },
   sideCol: {
-    background: '#F8F8F8'
+    // background: '#F8F8F8'
+    background: '#121212',
+    color: '#fff'
   },
   accordionButton: {
     backgroundColor: 'transparent', border: '0px'
@@ -100,13 +103,13 @@ class Home extends Component {
           </div>
           <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
             <Row>
-              <Col xs={2} className='border' style={styles.sideCol}>
+              <Col xs={2} style={styles.sideCol}>
 
                 <div className='mt-2 mb-4'>
                   <h3 style={styles.sideHeading}>Instruments</h3>
                   <Accordion>
                     {/** Guitar */}
-                    <Card className='border-0'> 
+                    <Card className='border-0' style={{background: '#181818', color: '#fff'}}> 
                       <Card.Header className='text-center p-1 d-flex justify-content-between'>
                         <div>
                           <span className='m-1'>Guitar</span>
@@ -121,13 +124,13 @@ class Home extends Component {
                         <Card.Body className='p-0'>
                           <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 1
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 2
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 3
                             </ListGroup.Item>
                           </ListGroup>
@@ -135,7 +138,7 @@ class Home extends Component {
                       </Accordion.Collapse>
                     </Card>
                     {/** Hip-Hop */}
-                    <Card className='border-0'> 
+                    <Card className='border-0' style={{background: '#181818', color: '#fff'}}> 
                       <Card.Header className='text-center p-1 d-flex justify-content-between'>
                         <div>
                           <span className='m-1'>Hip-Hop</span>
@@ -150,13 +153,13 @@ class Home extends Component {
                         <Card.Body className='p-0'>
                           <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 1
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 2
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 3
                             </ListGroup.Item>
                           </ListGroup>
@@ -164,7 +167,7 @@ class Home extends Component {
                       </Accordion.Collapse>
                     </Card>
                     {/** Piano */}
-                    <Card className='border-0'> 
+                    <Card className='border-0' style={{background: '#181818', color: '#fff'}}> 
                       <Card.Header className='text-center p-1 d-flex justify-content-between'>
                         <div>
                           <span className='m-1'>Piano</span>
@@ -179,13 +182,13 @@ class Home extends Component {
                         <Card.Body className='p-0'>
                           <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 1
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 2
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 3
                             </ListGroup.Item>
                           </ListGroup>
@@ -193,7 +196,7 @@ class Home extends Component {
                       </Accordion.Collapse>
                     </Card>
                     {/** Beats */}
-                    <Card className='border-0'> 
+                    <Card className='border-0' style={{background: '#181818', color: '#fff'}}> 
                       <Card.Header className='text-center p-1 d-flex justify-content-between'>
                         <div>
                           <span className='m-1'>Beats</span>
@@ -208,13 +211,13 @@ class Home extends Component {
                         <Card.Body className='p-0'>
                           <ListGroup defaultActiveKey="#link1" variant="flush" style={styles.userListItem}>
                             {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 1
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 2
                             </ListGroup.Item>
-                            <ListGroup.Item action>
+                            <ListGroup.Item action style={{background: '#181818', color: '#fff'}}>
                               User 3
                             </ListGroup.Item>
                           </ListGroup>
@@ -228,7 +231,7 @@ class Home extends Component {
                   <h3 style={styles.sideHeading}>New Songs</h3>
                   <ListGroup defaultActiveKey="#link1">
                     {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
-                    <ListGroup.Item className='p-0 d-flex justify-content-between'>
+                    <ListGroup.Item className='p-0 d-flex justify-content-between' style={{background: '#181818', color: '#fff'}}>
                       <div style={{ width: '4rem' }}>
                         <SongCard />
                       </div>
@@ -236,7 +239,7 @@ class Home extends Component {
                         <div>New Song 1</div>
                       </div>
                     </ListGroup.Item>
-                    <ListGroup.Item className='p-0 d-flex justify-content-between'>
+                    <ListGroup.Item className='p-0 d-flex justify-content-between' style={{background: '#181818', color: '#fff'}}>
                       <div style={{ width: '4rem' }}>
                         <SongCard />
                       </div>
@@ -244,7 +247,7 @@ class Home extends Component {
                         <div>New Song 2</div>
                       </div>
                     </ListGroup.Item>
-                    <ListGroup.Item className='p-0 d-flex justify-content-between'>
+                    <ListGroup.Item className='p-0 d-flex justify-content-between' style={{background: '#181818', color: '#fff'}}>
                       <div style={{ width: '4rem' }}>
                         <SongCard />
                       </div>
@@ -255,24 +258,24 @@ class Home extends Component {
                   </ListGroup>
                 </div>
               </Col>
-              <Col xs={10} className='border border-left-0' style={{ background: '#fff' }}>
+              <Col xs={10} className='border border-secondary border-top-0 border-left-0' style={{ background: '#181818', color: '#fff' }}>
                 {this.state.users && (<>
                   <div className="mt-2  mb-2">
-                    <h2 className='mb-0 border-bottom' style={styles.heading}>Explore</h2>
+                    <h2 className='mb-0' style={styles.heading}>Explore</h2>
                   </div>
                   {/** Show All User */}
                   <UserList users={this.state.users} />
                 </>)}
 
                 <div className="mt-2 mb-2">
-                  <h2 className='mb-0 border-bottom' style={styles.heading}>Guitar</h2>
+                  <h2 className='mb-0' style={styles.heading}>Guitar</h2>
                 </div>
                 {/** Show All User */}
                 <UserList users={this.state.guitars} />
 
                 {this.state.hipHop && (<>
                   <div className="mt-2 mb-2">
-                    <h2 className='mb-0 border-bottom' style={styles.heading}>Hip Hop</h2>
+                    <h2 className='mb-0' style={styles.heading}>Hip Hop</h2>
                   </div>
                   {/** Show All User */}
                   <UserList users={this.state.hipHop} />
@@ -280,7 +283,7 @@ class Home extends Component {
 
                 {this.state.piano && (<>
                   <div className="mt-2 mb-2">
-                    <h2 className='mb-0 border-bottom' style={styles.heading}>Piano</h2>
+                    <h2 className='mb-0' style={styles.heading}>Piano</h2>
                   </div>
                   {/** Show All User */}
                   <UserList users={this.state.piano} />

@@ -178,7 +178,7 @@ class Profile extends Component {
         }}>
         </Jumbotron>
       </div>
-      <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#fff' }}>
+      <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff' }}>
         <main className="profile-page" >
             <div className="container mx-auto" 
               style={{ 
@@ -216,15 +216,16 @@ class Profile extends Component {
                 <Col xs={12} md={7} className="p-0" 
                   style={{ 
                     overflow:'hidden' ,
-                    background: 'rgba(40, 40, 40, 0.9)',
+                    background: 'rgba(248, 248, 248, 0.5)',
                     boxShadow:'0 14px 28px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15)',
-                    maxHeight: '60vh'
+                    maxHeight: '55vh',
+                    color: '#000'
                   }}
                 >
                   {this.state.songs.length !== 0 ? (
                     <ProfileSongList songs={this.state.songs} email={this.state.email} userId={this.state.user._id} />
                   ) : (
-                    <div className='text-center' style={{background: 'rgba(248, 248, 248, 0.8)', height: '50vh'}}>
+                    <div className='text-center' style={{height: '50vh'}}>
                       <h2 className='pt-2'>No Songs Available</h2>
                     </div>
                   )}
@@ -232,14 +233,22 @@ class Profile extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xs={5} className='pl-0 pr-4' style={{height: '45vh'}}>
+                <Col xs={12} md={5} className='pl-0 pr-4' style={{height: '45vh'}}>
                   <p>{this.state.about}</p>
+                </Col>
+                <Col xs={12} md={7}>
+                  <InlineWidget
+                    // color="#00a2ff"
+                    // text="Request a Tutorial Session"
+                    // textColor="#ffffff"
+                    url="https://calendly.com/museexchange"
+                  />
                 </Col>
               </Row>
 
               
           
-              <div className="text-center mt-3">
+              {/* <div className="text-center mt-3">
                 <div className="mt-10 py-2 border-t border-gray-300 text-center"></div>
                 <div className="flex flex-wrap justify-center" style={{ marginBottom: "5%" }}>
                   <GridItem xs={12} sm={12} md={8}>
@@ -247,38 +256,6 @@ class Profile extends Component {
                       alignCenter
                       color="primary"
                       tabs={[
-                        // {
-                        //   tabButton: "Songs",
-                        //   tabIcon: PlayCircleOutlineIcon,
-                        //   tabContent: (
-                        //     <GridContainer justify="center">
-                        //       <GridItem className="pt-0 pb-0">
-                        //         <ul class="list-group" style={{ borderRadius: "0px" }}>
-                        //           {console.log(this.state.songs)}
-                        //           {this.state.songs.map((song) =>
-                        //             <li class="list-group-item d-flex justify-content-between">
-                        //               <Row className='w-100'>
-                        //                 <Col xs={2} className="pb-0 pt-0">
-                        //                   <Image src={songSVG} fluid style={{ width: "100%" }} />
-                        //                 </Col>
-                        //                 <Col xs={7}>
-                        //                   <SmallPlayer song={song} />
-                        //                 </Col>
-                        //                 <Col className="p-0">
-                        //                   <div>
-                        //                     <div className="text-left">Song: {song.title}</div>
-                        //                     <div className="text-left">Artist: {song.author}</div>
-                        //                     <PurchaseBtn selleremail={this.state.email} title={song.title} price={song.price} id={song._id} currentuser={this.state.user._id} />
-                        //                   </div>
-                        //                 </Col>
-                        //               </Row>
-                        //             </li>
-                        //           )}
-                        //         </ul>
-                        //       </GridItem>
-                        //     </GridContainer>
-                        //   )
-                        // },
                         {
                           tabButton: "Tutorials",
                           tabIcon: VideoLibraryIcon,
@@ -326,7 +303,8 @@ class Profile extends Component {
                     />
                   </GridItem>
                 </div>
-              </div>
+              </div> */}
+
             </div>
         </main>
       </Container>
