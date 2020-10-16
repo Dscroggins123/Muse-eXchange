@@ -8,8 +8,8 @@ import SmallPlayer from './Music/SmallPlayer';
 import songSVG from '../assets/svg/song.svg';
 
 const ProfileSongList = ({ songs, email, userId }) => {
-  return <>
-    <ListGroup style={{ height: '100%', overflow: "auto" }} variant='flush'>
+  return <div style={{ height: '100%', overflow: "auto" }}>
+    <ListGroup  variant='flush'>
       {songs.map((song) =>
         <ListGroup.Item class="d-flex justify-content-between"
           style={{
@@ -36,7 +36,7 @@ const ProfileSongList = ({ songs, email, userId }) => {
         </ListGroup.Item>
       )}
     </ListGroup>
-  </>
+  </div>
 }
 
 export default ProfileSongList;

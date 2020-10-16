@@ -36,11 +36,12 @@ const responsive = {
 const styles  = {
   customButtons: {
     backgroundColor: 'transparent',
+    outline: '0px',
     border: '0px', 
     color: '#747474',
   },
   buttonIcon: {
-    fontSize: '15px'
+    fontSize: '15px',
   }
 }
 
@@ -48,17 +49,17 @@ const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
   const { carouselState: { currentSlide } } = rest;
   return (
     <div className="carousel-button-group d-flex justify-content-between">
-      <Button className={currentSlide === 0 ? 'disable' : ''} 
+      <div className={currentSlide === 0 ? 'disable' : ''} 
         onClick={() => previous()} 
         style={styles.customButtons}
       >
         <ArrowBackIosIcon style={styles.buttonIcon}/>
-      </Button>
-      <Button onClick={() => next()}
+      </div>
+      <div onClick={() => next()}
         style={styles.customButtons}
       > 
         <ArrowForwardIosIcon  style={styles.buttonIcon}/>
-      </Button>
+      </div>
     </div>
   );
 };

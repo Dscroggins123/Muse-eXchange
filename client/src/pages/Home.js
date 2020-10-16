@@ -14,7 +14,7 @@ const styles = {
     height: "100%"
   },
   heading: {
-    fontSize: '25px',
+    fontSize: '20px',
     borderBottom: '1px solid #282828'
   },
   sideHeading: {
@@ -23,10 +23,13 @@ const styles = {
   sideCol: {
     // background: '#F8F8F8'
     background: '#121212',
-    color: '#fff'
+    color: '#fff',
   },
   accordionButton: {
-    backgroundColor: 'transparent', border: '0px'
+    backgroundColor: 'transparent', 
+    border: '0px',
+    outline: 'none',
+    // textDecoration: 'none'
   },
   expandIcon: {
     fontSize: '16px'
@@ -103,7 +106,7 @@ class Home extends Component {
           </div>
           <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
             <Row>
-              <Col xs={2} style={styles.sideCol}>
+              <Col xs={12} md={2} style={styles.sideCol}>
 
                 <div className='mt-2 mb-4'>
                   <h3 style={styles.sideHeading}>Instruments</h3>
@@ -116,7 +119,7 @@ class Home extends Component {
                           <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
                           <span className="sr-only">unread messages</span>
                         </div>
-                        <Accordion.Toggle as={Button} eventKey="0" className='p-0' style={styles.accordionButton}>
+                        <Accordion.Toggle eventKey="0" className='p-0' style={styles.accordionButton}>
                           <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -145,7 +148,7 @@ class Home extends Component {
                           <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
                           <span className="sr-only">unread messages</span>
                         </div>
-                        <Accordion.Toggle as={Button} eventKey="1" className='p-0' style={styles.accordionButton}>
+                        <Accordion.Toggle eventKey="1" className='p-0' style={styles.accordionButton}>
                           <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -174,7 +177,7 @@ class Home extends Component {
                           <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
                           <span className="sr-only">unread messages</span>
                         </div>
-                        <Accordion.Toggle as={Button} eventKey="2" className='p-0' style={styles.accordionButton}>
+                        <Accordion.Toggle eventKey="2" className='p-0' style={styles.accordionButton}>
                           <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -203,7 +206,7 @@ class Home extends Component {
                           <Badge variant="secondary" className='m-1 align-self-center'>9</Badge>
                           <span className="sr-only">unread messages</span>
                         </div>
-                        <Accordion.Toggle as={Button} eventKey="3" className='p-0' style={styles.accordionButton}>
+                        <Accordion.Toggle eventKey="3" className='p-0' style={styles.accordionButton}>
                           <ExpandMoreIcon className='text-secondary' style={styles.expandIcon}/>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -258,7 +261,7 @@ class Home extends Component {
                   </ListGroup>
                 </div>
               </Col>
-              <Col xs={10} className='border border-secondary border-top-0 border-left-0' style={{ background: '#181818', color: '#fff' }}>
+              <Col xs={12} md={10} className='border border-secondary border-top-0 border-left-0' style={{ background: '#181818', color: '#fff' }}>
                 {this.state.users && (<>
                   <div className="mt-2  mb-2">
                     <h2 className='mb-0' style={styles.heading}>Explore</h2>

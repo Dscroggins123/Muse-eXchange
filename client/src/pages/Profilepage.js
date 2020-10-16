@@ -42,6 +42,13 @@ const styles = {
   socialIcon: {
     fontSize: '45px',
     padding: '5px'
+  },
+  heading: {
+    fontSize: '20px',
+    borderBottom: '1px solid #282828'
+  },
+  mainFont: {
+    fontFamily: 'Kumbh Sans, sans-serif'
   }
 }
 
@@ -178,22 +185,22 @@ class Profile extends Component {
         }}>
         </Jumbotron>
       </div>
-      <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff' }}>
+      <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff', fontFamily: 'Kumbh Sans, sans-serif' }}>
         <main className="profile-page" >
             <div className="container mx-auto" 
               style={{ 
                 marginTop: "0px", 
-                position: 'relative',
+                // position: 'relative',
                 bottom: '120px',
                 backgroundColor: 'transparent',
                 boxShadow: '0px 0px'
               }}>
               <Row style={{background: 'transparent'}} className='mb-5'>
                 {/** User Profile Pic */}
-                <Col xs={12} md={5} className='p-0'
+                <Col xs={12} md={5} className='mb-1'
                   style={{
                   background: 'transparent',
-                  height: '50vh'}}>
+                  height: '65vh'}}>
                   <div style={{width: '20rem'}}>
                     <ProfilePic
                       profilePic={this.state.profilePic}
@@ -213,7 +220,7 @@ class Profile extends Component {
                 </Col>
 
                 {/** User Songs List */}
-                <Col xs={12} md={7} className="p-0" 
+                <Col xs={12} md={7} className="mb-1 p-0" 
                   style={{ 
                     overflow:'hidden' ,
                     background: 'rgba(248, 248, 248, 0.5)',
@@ -233,10 +240,12 @@ class Profile extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xs={12} md={5} className='pl-0 pr-4' style={{height: '45vh'}}>
-                  <p>{this.state.about}</p>
+                <Col xs={12} md={5} className='mb-1' style={{height: '50vh', overflow: 'hidden'}}>
+                  <h2 style={styles.heading}>About</h2>
+                  <p style={{height: '100%', overflow: 'auto'}}>{this.state.about}</p>
                 </Col>
-                <Col xs={12} md={7}>
+                <Col xs={12} md={7} className='mb-1' style={{height: '70vh'}}>
+                  <h2 style={styles.heading}>Schedule a meeting</h2>
                   <InlineWidget
                     // color="#00a2ff"
                     // text="Request a Tutorial Session"
