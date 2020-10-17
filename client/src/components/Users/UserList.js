@@ -79,15 +79,7 @@ const UserList = ({ users }) => {
     >
       {users.map(user =>
         <div style={{ width: '11rem' }}>
-          {user.profile.profilePic
-              ? (
-              // <Link to={`/profile/${user.username}`}>
-                <UserCard user={user} />
-                
-              // </Link>
-              )
-              : (<Card.Img variant='top' src={defaultProfilePic} />)}
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+          <UserCard user={user} />
           <div>
             <div style={{ fontSize: '18px' }}>{user.profile.firstName} {user.profile.lastName}</div>
             <div>{user.profile.profession}</div>
