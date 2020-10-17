@@ -19,7 +19,7 @@ const SideBar = ({ profilePic, firstName, lastName }) => {
   return <>
     <Container fluid style={{ fontFamily: 'Kumbh Sans, sans-serif' }}>
       <div className='d-flex justify-content-center p-2 mt-4'>
-      <Image className='border border-light' src={currentPic} style={{ width: "65%" }} />
+      <Image className='border border-light' src={currentPic} style={{ width: "75%" }} />
       </div>
       <div className='text-center'>
         <h3 style={{ fontSize: '20px' }}>Account</h3>

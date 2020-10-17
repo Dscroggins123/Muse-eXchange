@@ -85,7 +85,6 @@ const AccountPage = () => {
 
   // Upload Profile Information
   const handleSubmit = async () => {
-    handleClose(); // closes the modal
     if (infoInput.firstNameInput) await API.updateProfile(userId, "firstName", infoInput.firstNameInput);
     if (infoInput.lastNameInput) await API.updateProfile(userId, "lastName", infoInput.lastNameInput);
     if (infoInput.professionInput) await API.updateProfile(userId, "profession", infoInput.professionInput);
@@ -96,31 +95,18 @@ const AccountPage = () => {
     if (infoInput.link4Input) await API.updateProfile(userId, "link4", infoInput.link4Input);
   }
 
-  /** ===== Bootstrap modal ===== */
-  // State and Functions for Bootstrap modal
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  // const uploadFileState = e => {
-  //   const files = e.target.files;
-  //   console.log('from profile', files)
-  //   setUploadFiles(files);
-  // }
-
   return (<>
-    <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
+    <Container fluid style={{ height: '100vh', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
       <Row style={{height: '100%'}}>
-        <Col xs={12} md={2} className='p-0 bg-info' style={{ background: '#F8F8F8' }}>
+        <Col xs={12} md={2} className='p-0' style={{ background: '#F8F8F8' }}>
           <Sidebar 
             profilePic={profilePic} 
             firstName={firstName}
             lastName={lastName}
           />
         </Col>
-
         <Col xs={12} md={10}>
-          <h1 className='mt-5' style={{fontSize: '30px', fontWeight: 700}}>Profile Customization</h1>
+          <h1 className='mt-2' style={{fontSize: '30px', fontWeight: 700}}>Profile Customization</h1>
           <Tabs defaultActiveKey="branding" id="uncontrolled-tab-example">
             <Tab eventKey="branding" title="Branding">
               <Branding 

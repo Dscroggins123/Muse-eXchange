@@ -19,13 +19,13 @@ import API from './utils/API';
 function App() {
   const [user, setUser] = useState();
   const [pending, setPending] = useState(true)
-  useEffect(()=> {
-    if(localStorage.getItem("currentUser")){
+  useEffect(() => {
+    if (localStorage.getItem("currentUser")) {
       setUser(JSON.parse(localStorage.getItem("currentUser")));
-      
+
     }
     setPending(false)
-  },[])
+  }, [])
 
   const handleSetCurrentUser = user => {
     console.log(user)
@@ -38,35 +38,33 @@ function App() {
   }
 
   // console.log(user)
- 
+
   // AddPurchasedSongs = (songid, songid) => {
   //   API.AddPurchasedSongs
   // }
 
   return (
     <Router>
-      {!user ? <h1></h1> : <Navbar handleLogout={handleLogout} user={user._id}/>}
-      {user && <Redirect to="/"/>}
-      <div className="wrapper h-100" style={{ margin: '0px'}}>
-        <Switch>
-          {/* <Route exact path="/" component={() => <LandingPage pending={pending} user={user}/>} /> */}
-          <Route exact path="/" component={() => <Home pending={pending} user={user}/>} />
-          {/* <Route exact path="/">
+      {!user ? <h1></h1> : <Navbar handleLogout={handleLogout} user={user._id} />}
+      {user && <Redirect to="/" />}
+      <Switch>
+        {/* <Route exact path="/" component={() => <LandingPage pending={pending} user={user}/>} /> */}
+        <Route exact path="/" component={() => <Home pending={pending} user={user} />} />
+        {/* <Route exact path="/">
             {!user ? <h1>Is Loading...</h1> : <Home />}
           </Route> */}
-          {/* <Route path="/profile/:username" render={(props) => <Profile {...props} />}/> */}
-          <Route path="/profile/:username" render={(props) => <Profilepage {...props}/>}/>
-          <Route path="/account" component={() => <AccountPage />} />
-          {/* <Route path="/account" component={() => <UserProfile />} /> */}
-          <Route path="/auth" component={() => <Login handleSetCurrentUser={handleSetCurrentUser}/>} />
-          <Route path="/pages/Payment/:title/:price/:id" component={Payment}/>  
-          <Route path="/team">
-            <Team user={user}/>
-          </Route>   
-          <Route path="/addsong" component={AddSong}/>     
-          <Route component={() => <Login handleSetCurrentUser={handleSetCurrentUser}/>} />
-        </Switch>
-      </div>
+        {/* <Route path="/profile/:username" render={(props) => <Profile {...props} />}/> */}
+        <Route path="/profile/:username" render={(props) => <Profilepage {...props} />} />
+        <Route path="/account" component={() => <AccountPage />} />
+        {/* <Route path="/account" component={() => <UserProfile />} /> */}
+        <Route path="/auth" component={() => <Login handleSetCurrentUser={handleSetCurrentUser} />} />
+        <Route path="/pages/Payment/:title/:price/:id" component={Payment} />
+        <Route path="/team">
+          <Team user={user} />
+        </Route>
+        <Route path="/addsong" component={AddSong} />
+        <Route component={() => <Login handleSetCurrentUser={handleSetCurrentUser} />} />
+      </Switch>
       <Footer />
     </Router>
   );

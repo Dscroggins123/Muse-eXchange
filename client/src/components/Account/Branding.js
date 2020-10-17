@@ -16,7 +16,7 @@ const styles = {
 
 const Branding = ({userId, profilePic, submit, setSubmit}) => {
   return <>
-    <div className='profile-picture mt-4'>
+    <div className='profile-picture mt-2'>
       <h2 style={styles.h2}>Profile picture</h2>
       {profilePic ? (<Image src={profilePic} style={{width: '200px'}}/>)
         : (<Image src={defaultProfilePic} style={{width: '200px'}}/>)

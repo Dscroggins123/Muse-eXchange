@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { set } from 'mongoose';
+import React, { useState, useEffect, useReducer } from 'react';
 // Bootstrap
 import { Container, Row, Col, Image, Button, Form } from 'react-bootstrap';
+// Icons
+import EditIcon from '@material-ui/icons/Edit';
 // API
 import API from '../../utils/API';
 
@@ -11,98 +14,103 @@ const styles = {
   }
 }
 
-const BasicInfo = ({userId, submit, setSubmit, currentFirstName, currentLastName}) => {
+const BasicInfo = ({ userId, submit, setSubmit, currentFirstName, currentLastName }) => {
 
-  const [defaultFirstName, setDefaultFirstName] = useState('');
-  const [defaultLastName, setDefaultLastName] = useState('');
+  const [userInput, setUserInput] = useReducer(
+    (state, newState) => ({...state, ...newState}),
+    {
+      firstName: '',
+      lastName: '',
+    }
+  );
+
+  const [editName, setEditName] = useState(false);
+
   // To handle profile info input 
-  const [infoInput, setInfoInput] = useState('');
+  // useEffect(() => {
+  
+  // }, [])
 
-  useEffect(() => {
-    setDefaultFirstName(currentFirstName);
-    setDefaultLastName(currentLastName)
-  })
+  const handleChange = e => {
+    console.log(e.target)
+    const name = e.target.name;
+    const newValue = e.target.value;
+    console.log(newValue.length)
+    setUserInput({[name]: newValue});
+  }
 
-  const inputChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name);
-    setInfoInput({ ...value, [name]: value })
-
-    console.log(infoInput)
+  const toggleNameEdit = () => {
+    console.log('Hello');
+    setEditName(!editName);
   }
 
   const [validated, setValidated] = useState(false);
-
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
-    console.log(form)
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      console.log('attempt to change name')
-      console.log(infoInput.firstName);
-      console.log(infoInput.lastName);
-      if (infoInput.firstName) await API.updateProfile(userId, "firstName", infoInput.firstName);
-      if (infoInput.lastName) await API.updateProfile(userId, "lastName", infoInput.lastName);
-      // trigger useEffect()
-      setSubmit((submit+1));
     }
-    // setValidated(true);
-    // console.log('attempt to change name')
-    //   console.log(infoInput.firstName);
-    //   console.log(infoInput.lastName);
-    //   console.log(validated)
-    // if(validated) {
-    //   console.log('attempt to change name')
-    //   console.log(infoInput.firstName);
-    //   console.log(infoInput.lastName);
-    //   if (infoInput.firstName) await API.updateProfile(userId, "firstName", infoInput.firstName);
-    //   if (infoInput.lastName) await API.updateProfile(userId, "lastName", infoInput.lastName);
-    //   // trigger useEffect()
-    //   setSubmit((submit+1));
-    // }
+    else {
+      
+      if(userInput.firstName.length !== 0 && userInput.lastName.length !== 0) {
+        await API.updateProfile(userId, "firstName", userInput.firstName);
+        await API.updateProfile(userId, "lastName", userInput.lastName);
+      }
+      // trigger useEffect()
+      setSubmit((submit + 1));
+    }
+    setValidated(true);
   };
 
   return <>
-    <h2 className='mt-4' style={styles.h2}>Channel name and description</h2>
+    <h2 className='mt-2' style={styles.h2}>Channel name and description</h2>
     <p>Choose a channel name that represents you and your content.</p>
     <div className='user-name'>
-      <Form noValidate validated={validated} >
-        <Row>
-          <Col>
+      {!editName ? (
+        <div>
+          <h3>{`${currentFirstName} ${currentLastName}`} <EditIcon style={{display: 'inline-block', cursor: 'pointer'}} onClick={toggleNameEdit}/></h3>
+        </div>
+      ) : (
+        <Form noValidate validated={validated} >
+        <Form.Row>
+          <Form.Group as={Col}>
             <Form.Label>First name (required)</Form.Label>
-            <Form.Control 
+            <Form.Control
               required
-              placeholder="Enter first name" 
-              defaultValue={defaultFirstName}
+              placeholder="Enter first name (required)"
+              // defaultValue={currentFirstName}
               type='text'
               name='firstName'
-              onChange={inputChange}
+              onChange={handleChange}
             />
             <Form.Control.Feedback type="invalid">
               Please choose a username.
             </Form.Control.Feedback>
-          </Col>
+          </Form.Group>
           <Col>
             <Form.Label>Last name (required)</Form.Label>
-            <Form.Control 
+            <Form.Control
               required
-              placeholder="Enter last name"  
-              defaultValue={defaultLastName}
+              placeholder="Enter last name (required)"
+              // defaultValue={currentLastName}
               type='text'
               name="lastName"
-              onChange={inputChange}
+              onChange={handleChange}
             />
             <Form.Control.Feedback type="invalid">
               Please choose a username.
             </Form.Control.Feedback>
           </Col>
-        </Row>
+        </Form.Row>
         <Button variant="primary" onClick={handleSubmit}>
-            Submit
+          Save Changes
+        </Button>
+        <Button variant='dark' className='ml-3' onClick={toggleNameEdit}>
+          Cancel
         </Button>
       </Form>
+      )}
     </div>
   </>
 }
