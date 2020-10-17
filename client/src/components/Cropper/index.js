@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap'
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import profileSVG from '../../assets/svg/profile.svg';
-import previewSVG from '../../assets/svg/preview.svg';
+
 
 const Cropper = ({uploadFileState}) => {
   const [src, selectFile] = useState(null);
@@ -62,13 +62,13 @@ const Cropper = ({uploadFileState}) => {
     }
   }
   return (
-    <Container fluid>
+    <>
         <Row>
           <input type='file' accept='image/' onChange={handleFileChange} />
         </Row>
         {src ? (<>
           <Row style={{width: '100%'}}>
-            <ReactCrop src={src} onImageLoaded={setImage} crop={crop} onChange={setCrop} />
+            <ReactCrop src={src} onImageLoaded={setImage} crop={crop} onChange={setCrop}/>
           </Row>
           <Row className="mt-3">
             <Button className='btn-danger' onClick={getCroppedImg}>Crop Image</Button>
@@ -78,9 +78,9 @@ const Cropper = ({uploadFileState}) => {
             {isCropped && (<div className="text-success">Image has been cropped</div>)}
           </Row>
           </>) : (<div>
-          <Image fluid src={profileSVG} alt='Cropped Image' style={{ width: "70%" }} />
+          <Image fluid className='m-2' src={profileSVG} alt='Cropped Image' style={{ width: "70%" }} />
         </div>)}
-    </Container>
+    </>
   )
 }
 

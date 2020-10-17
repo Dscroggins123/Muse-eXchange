@@ -5,7 +5,7 @@ import Cropper from '../Cropper';
 // API
 import API from '../../utils/API';
 
-const ProfilePicModal = ({userId}) => {
+const ProfilePicModal = ({userId, submit, setSubmit}) => {
   
   // Profile Pic 
   const [uploadFiles, setUploadFiles] = useState('');
@@ -38,7 +38,7 @@ const ProfilePicModal = ({userId}) => {
     // setProfilePic(file.secure_url);
     setLoading(false);
 
-    // setSubmit((submit + 1));
+    setSubmit((submit + 1));
   }
 
   // Upload Profile Information
@@ -57,46 +57,39 @@ const ProfilePicModal = ({userId}) => {
 
   return <>
     {console.log(userId)}
-    <Button
-      style={{ backgroundColor: "#FF416C", marginTop: "20px", color: '#fff', border: '0px' }}
+    <div
+      style={{ color: '#165BD4', cursor: 'pointer'}}
       onClick={handleShow}>
       Change
-    </Button>
+    </div>
 
     {/** Display Modal */}
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit Profile</Modal.Title>
+        <Modal.Title>Customize profile picture</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group>
-
             <ListGroup>
               <ListGroup.Item>
                 <Cropper uploadFileState={uploadFileState} />
               </ListGroup.Item>
             </ListGroup>
-
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         {/** Buttons */}
-        <Button
-          color="primary"
-          variant="text"
-          fullWidth
+        <div
+          style={{ color: '#165BD4', cursor: 'pointer', fontWeight: 700}}
           onClick={handleClose}>
           Close
-          </Button>
+          </div>
         <Button
-          color="primary"
-          variant="contained"
-          style={{ borderRadius: "0px", backgroundColor: "#FF416C" }}
-          fullWidth
+          style={{ backgroundColor: "#FE064C", color: '#fff', border: '0px' }}
           onClick={handleSubmit}
-          fullWidth>
+        >
           Save Changes
           </Button>
 

@@ -27,20 +27,17 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 require('dotenv').config();
 
 const AccountPage = () => {
-  // console.log(user)
+ 
   /** ===== User Profile Info ====== */
-
   const [userId, setUserId] = useState();
-
-  const [submit, setSubmit] = useState(1);
-  // console.log(submit)
-  // User 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-
+  const [submit, setSubmit] = useState(1);
+ 
   // Profile 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [profilePic, setProfilePic] = useState('');
   const [profession, setProfession] = useState('');
   const [about, setAbout] = useState('');
   const [link1, setLink1] = useState('');
@@ -59,14 +56,6 @@ const AccountPage = () => {
     console.log(infoInput)
   }
 
-  // Profile Pic 
-  const [uploadFiles, setUploadFiles] = useState('');
-  const [profilePic, setProfilePic] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const userFields = ["firstName", "lastName", "profession", "about", "link1", "link2", "link3"];
-
-
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -75,12 +64,9 @@ const AccountPage = () => {
       const userObj = JSON.parse(localStorage.getItem("currentUser"));
       setUserId(JSON.parse(localStorage.getItem("currentUser")))
       setUserId(userObj._id)
-      // setUser(JSON.parse(localStorage.getItem("currentUser")));
     }
     // For demonstration purposes, we mock an API call.
     API.getSavedUsersById(userId).then((res) => {
-
-      // console.log(res.data)
       if (res.data) {
         setUsername(res.data.username);
         setEmail(res.data.email);
@@ -97,29 +83,6 @@ const AccountPage = () => {
     });
   }, [submit, userId]);
 
-  /** ===== Upload Profile info ===== */
-  // Function to upload and image to Cloudinary
-  const uploadImage = async () => {
-    const data = new FormData();
-    // data.append('file', uploadFiles[0]);
-    data.append('file', uploadFiles);
-    data.append('upload_preset', 'MusiceXchange'); // must be same name as upload
-    setLoading(true)
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`, // API base url
-      {
-        method: 'POST',
-        body: data
-      }
-    )
-    const file = await res.json() // get json response
-    await API.updateProfile(userId, "profilePic", file.secure_url);
-    // setProfilePic(file.secure_url);
-    setLoading(false);
-
-    setSubmit((submit + 1));
-  }
-
   // Upload Profile Information
   const handleSubmit = async () => {
     handleClose(); // closes the modal
@@ -131,10 +94,6 @@ const AccountPage = () => {
     if (infoInput.link2Input) await API.updateProfile(userId, "link2", infoInput.link2Input);
     if (infoInput.link3Input) await API.updateProfile(userId, "link3", infoInput.link3Input);
     if (infoInput.link4Input) await API.updateProfile(userId, "link4", infoInput.link4Input);
-
-    if (uploadFiles) {
-      uploadImage();
-    }
   }
 
   /** ===== Bootstrap modal ===== */
@@ -149,12 +108,6 @@ const AccountPage = () => {
   //   setUploadFiles(files);
   // }
 
-  /** Cropper version */
-  const uploadFileState = file => {
-    console.log('from Cropper', file)
-    setUploadFiles(file);
-  }
-
   return (<>
     <Container fluid style={{ background: '#fff' }}>
       <Row>
@@ -163,7 +116,6 @@ const AccountPage = () => {
             profilePic={profilePic} 
             firstName={firstName}
             lastName={lastName}
-            loading={loading}
           />
         </Col>
 
@@ -174,6 +126,8 @@ const AccountPage = () => {
               <Branding 
                 userId={userId}
                 profilePic={profilePic}
+                submit={submit}
+                setSubmit={setSubmit}
               />
             </Tab>
             <Tab eventKey="basic info" title="Basic info">
@@ -199,13 +153,9 @@ const AccountPage = () => {
               flexDirection="column"
             >
 
-              {profilePic ? (
-                loading ?
-                  (<h3>Loading...</h3>)
-                  : (<Image src={profilePic} style={{ width: "250px", height: "250px", marginBottom: "20px" }} roundedCircle />)
-              ) : (
-                  <Image src="https://via.placeholder.com/250" roundedCircle />
-                )}
+              {/* {profilePic ? (<Image src={profilePic} style={{ width: "250px", height: "250px", marginBottom: "20px" }} roundedCircle />)
+                : (<Image src="https://via.placeholder.com/250" roundedCircle />)
+              } */}
 
               <Typography
                 color="primary"
@@ -355,26 +305,7 @@ const AccountPage = () => {
                         name="link4Input"
                         onChange={inputChange}
                       />
-                      {/** Upload Pick */}
-                      {/* <ListGroup>
-                <ListGroup.Item>
-                  <Form.File
-                    id="uploadImageControl"
-                    label="Upload Profile Picture:"
-                    name="file"
-                    onChange={uploadFileState}
-                  // onChange={uploadImage}
-                  />
-                </ListGroup.Item>
-              </ListGroup> */}
-
-                      {/** Cropped Pic */}
-                      {/* <ListGroup>
-                        <ListGroup.Item>
-                          <Cropper uploadFileState={uploadFileState} />
-                        </ListGroup.Item>
-                      </ListGroup> */}
-
+  
                     </Form.Group>
                   </Form>
                 </Modal.Body>

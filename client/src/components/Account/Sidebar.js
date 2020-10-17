@@ -4,7 +4,7 @@ import { Container, Image } from 'react-bootstrap';
 // SVGs
 import defaultProfilePic from '../../assets/svg/profile.svg';
 
-const SideBar = ({ profilePic, firstName, lastName, loading }) => {
+const SideBar = ({ profilePic, firstName, lastName }) => {
 
   const [currentPic, setCurrentPic] = useState();
 
