@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Container, Modal, Form, Image, ListGroup, Row, Col, Tabs, Tab } from 'react-bootstrap';
 
 // Components
-import Cropper from '../components/Cropper';
-import Branding from '../components/Account/Branding';
 import Sidebar from '../components/Account/Sidebar';
-
+import Branding from '../components/Account/Branding';
+import BasicInfo from '../components/Account/BasicInfo';
+// API
 import API from '../utils/API';
 
 import {
@@ -109,9 +109,9 @@ const AccountPage = () => {
   // }
 
   return (<>
-    <Container fluid style={{ background: '#fff' }}>
-      <Row>
-        <Col xs={12} md={2} className='p-0' style={{ background: '#F8F8F8' }}>
+    <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
+      <Row style={{height: '100%'}}>
+        <Col xs={12} md={2} className='p-0 bg-info' style={{ background: '#F8F8F8' }}>
           <Sidebar 
             profilePic={profilePic} 
             firstName={firstName}
@@ -131,212 +131,22 @@ const AccountPage = () => {
               />
             </Tab>
             <Tab eventKey="basic info" title="Basic info">
-              <div>Basic Info</div>
+              <Row>
+                <Col xs={12} md={9}>
+                  <BasicInfo 
+                    userId={userId} 
+                    submit={submit}
+                    setSubmit={setSubmit}
+                    currentFirstName={firstName} 
+                    currentLastName={lastName}
+                  />
+                </Col>
+                <Col xs={12} md={3}>
+
+                </Col>
+              </Row>
             </Tab>
           </Tabs>
-
-
-          <CardContent
-            alignItems="center"
-            display="flex"
-            flexDirection="column"
-          >
-            <CardHeader
-              subheader={`${firstName} ${lastName}`}
-              title="Account"
-            />
-            <Divider style={{ marginBottom: "30px" }} />
-
-            <Box
-              alignItems="center"
-              display="flex"
-              flexDirection="column"
-            >
-
-              {/* {profilePic ? (<Image src={profilePic} style={{ width: "250px", height: "250px", marginBottom: "20px" }} roundedCircle />)
-                : (<Image src="https://via.placeholder.com/250" roundedCircle />)
-              } */}
-
-              <Typography
-                color="primary"
-                gutterBottom
-                variant="h4"
-              >
-                {firstName}
-              </Typography>
-
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                {email}
-              </Typography>
-
-            </Box>
-
-            <Divider style={{ marginTop: "20px", marginBottom: "20px" }} />
-
-            <Box
-              alignItems="center"
-              display="flex"
-              flexDirection="column"
-            >
-
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                First name: {firstName}
-              </Typography>
-
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Last name: {lastName}
-              </Typography>
-
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Profession: {profession}
-              </Typography>
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Bio: {about}
-              </Typography>
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                <InstagramIcon />
-            Instagram: {link1}
-              </Typography>
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                <FacebookIcon />
-            Facebook: {link2}
-              </Typography>
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                <GitHubIcon />
-            Github: {link3}
-              </Typography>
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                <LinkedInIcon />
-            LinkedIn: {link4}
-              </Typography>
-
-              <Button
-                color="primary"
-                variant="contained"
-                style={{ borderRadius: "0px", backgroundColor: "#FF416C", marginTop: "20px" }}
-                onClick={handleShow}>
-                Edit User Profile
-          </Button>
-
-              {/** Display Modal */}
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Edit Profile</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Form>
-                    <Form.Group>
-                      {/** Profile Info */}
-
-                      <Form.Label>First name:</Form.Label>
-                      <Form.Control type="text" placeholder="first name"
-                        name="firstNameInput"
-                        onChange={inputChange}
-                      />
-
-                      <Form.Label>Last name:</Form.Label>
-                      <Form.Control type="text" placeholder="last name"
-                        name="lastNameInput"
-                        onChange={inputChange}
-                      />
-
-                      <Form.Label>Profession:</Form.Label>
-                      <Form.Control type="text" placeholder="profession"
-                        name="professionInput"
-                        onChange={inputChange}
-                      />
-
-                      <Form.Label>Bio:</Form.Label>
-                      <Form.Control type="text" placeholder="bio"
-                        name="aboutInput"
-                        onChange={inputChange}
-                      />
-
-                      <Form.Label>Website links</Form.Label>
-                      <Form.Control type="text" placeholder="Instagram"
-                        name="link1Input"
-                        onChange={inputChange}
-                      />
-                      <Form.Control type="text" placeholder="Facebook"
-                        name="link2Input"
-                        onChange={inputChange}
-                      />
-                      <Form.Control type="text" placeholder="GitHub"
-                        name="link3Input"
-                        onChange={inputChange}
-                      />
-                      <Form.Control type="text" placeholder="LinkedIn"
-                        name="link4Input"
-                        onChange={inputChange}
-                      />
-  
-                    </Form.Group>
-                  </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                  {/** Buttons */}
-                  <Button
-                    color="primary"
-                    variant="text"
-                    fullWidth
-                    onClick={handleClose}>
-                    Close
-          </Button>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    style={{ borderRadius: "0px", backgroundColor: "#FF416C" }}
-                    fullWidth
-                    onClick={handleSubmit}
-                    fullWidth>
-                    Save Changes
-          </Button>
-
-                </Modal.Footer>
-              </Modal>
-
-
-
-            </Box>
-
-          </CardContent>
-
         </Col>
       </Row>
     </Container>

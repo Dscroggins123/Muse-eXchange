@@ -58,7 +58,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
   return <>
     {console.log(userId)}
     <div
-      style={{ color: '#165BD4', cursor: 'pointer'}}
+      style={{ color: '#1877FF', cursor: 'pointer'}}
       onClick={handleShow}>
       Change
     </div>
@@ -82,7 +82,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
       <Modal.Footer>
         {/** Buttons */}
         <div
-          style={{ color: '#165BD4', cursor: 'pointer', fontWeight: 700}}
+          style={{ color: '#1877FF', cursor: 'pointer', fontWeight: 700}}
           onClick={handleClose}>
           Close
           </div>
