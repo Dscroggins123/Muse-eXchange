@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Modal, Form, Image, ListGroup, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { Container, Modal, Form, Image, ListGroup, Row, Col, Tabs, Tab, Jumbotron } from 'react-bootstrap';
 
 // Components
 import Sidebar from '../components/Account/Sidebar';
@@ -26,14 +26,26 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 require('dotenv').config();
 
+
+const styles = {
+  h2: {
+    fontSize: '20px',
+    fontWeight: 700
+  },
+  h3: {
+    fontSize: '16px',
+    fontWeight: 600
+  }
+}
+
 const AccountPage = () => {
- 
+
   /** ===== User Profile Info ====== */
   const [userId, setUserId] = useState();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [submit, setSubmit] = useState(1);
- 
+
   // Profile 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -96,43 +108,37 @@ const AccountPage = () => {
   }
 
   return (<>
-    <Container fluid style={{ height: '100vh', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
-      <Row style={{height: '100%'}}>
-        <Col xs={12} md={2} className='p-0' style={{ background: '#F8F8F8' }}>
-          <Sidebar 
-            profilePic={profilePic} 
+    <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
+      <Row>
+        <Col xs={12} md={2} className='p-0 border-right' style={{ background: '#F8F8F8' }}>
+          <Sidebar
+            profilePic={profilePic}
             firstName={firstName}
             lastName={lastName}
           />
         </Col>
-        <Col xs={12} md={10}>
-          <h1 className='mt-2' style={{fontSize: '30px', fontWeight: 700}}>Profile Customization</h1>
-          <Tabs defaultActiveKey="branding" id="uncontrolled-tab-example">
-            <Tab eventKey="branding" title="Branding">
-              <Branding 
+        <Col xs={12} md={10} className='p-0'>
+          <Jumbotron fluid className='p-2 border-bottom' style={{background: '#fff'}}>
+            <Container fluid>
+              <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Profile Customization</h1>
+              <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2>
+            </Container>
+          </Jumbotron>
+          <Row>
+            <Col xs={12} md={9}>
+              <BasicInfo
                 userId={userId}
-                profilePic={profilePic}
                 submit={submit}
                 setSubmit={setSubmit}
+                currentFirstName={firstName}
+                currentLastName={lastName}
+                profilePic={profilePic}
               />
-            </Tab>
-            <Tab eventKey="basic info" title="Basic info">
-              <Row>
-                <Col xs={12} md={9}>
-                  <BasicInfo 
-                    userId={userId} 
-                    submit={submit}
-                    setSubmit={setSubmit}
-                    currentFirstName={firstName} 
-                    currentLastName={lastName}
-                  />
-                </Col>
-                <Col xs={12} md={3}>
+            </Col>
+            <Col xs={12} md={3}>
 
-                </Col>
-              </Row>
-            </Tab>
-          </Tabs>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>
