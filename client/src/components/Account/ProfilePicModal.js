@@ -11,6 +11,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
   const [uploadFiles, setUploadFiles] = useState('');
   const [profilePic, setProfilePic] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isCropped, setIsCropped] = useState(false);
 
   /** ===== Bootstrap modal ===== */
   // State and Functions for Bootstrap modal
@@ -37,7 +38,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
     await API.updateProfile(userId, "profilePic", file.secure_url);
     // setProfilePic(file.secure_url);
     setLoading(false);
-
+    setIsCropped(false);
     setSubmit((submit + 1));
   }
 
@@ -53,6 +54,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
   const uploadFileState = file => {
     console.log('from Cropper', file)
     setUploadFiles(file);
+    setIsCropped(true);
   }
 
   return <>
@@ -86,12 +88,14 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
           onClick={handleClose}>
           Close
           </div>
-        <Button
-          style={{ backgroundColor: "#FE064C", color: '#fff', border: '0px' }}
-          onClick={handleSubmit}
-        >
-          Save Changes
+        {isCropped && <> 
+          <Button
+            style={{ backgroundColor: "#FE064C", color: '#fff', border: '0px' }}
+            onClick={handleSubmit}
+          >
+            Save Changes
           </Button>
+        </>}
 
       </Modal.Footer>
     </Modal>
