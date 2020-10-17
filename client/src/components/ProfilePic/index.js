@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { Image } from 'react-bootstrap';
 import "./style.css";
 import defaultProfilePic from '../../assets/svg/profile.svg';
@@ -9,9 +9,19 @@ const styles ={
   }
 }
 const ProfilePic = ({profilePic}) => {
+
+  const [currentPic, setCurrentPic] = useState();
+
+  useEffect(() => {
+    if (profilePic) {
+      setCurrentPic(profilePic);
+    } else {
+      setCurrentPic(defaultProfilePic)
+    }
+  })
   return (<>
     <Image fluid className='mb-4 border border-light' style={styles.profilePic}
-      src={profilePic || "defaultProfilePic"}
+      src={currentPic}
     />
   </>)
 }

@@ -6,6 +6,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 // SVGs
 import defaultProfilePic from '../assets/svg/profile.svg';
+
 const UserCard = ({ user }) => {
   const [profilePic, setProfilePic] = useState();
   const [hover, setHover] = useState(false);

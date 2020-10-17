@@ -172,6 +172,7 @@ const AccountPage = () => {
           <Tabs defaultActiveKey="branding" id="uncontrolled-tab-example">
             <Tab eventKey="branding" title="Branding">
               <Branding 
+                userId={userId}
                 profilePic={profilePic}
               />
             </Tab>
@@ -368,11 +369,11 @@ const AccountPage = () => {
               </ListGroup> */}
 
                       {/** Cropped Pic */}
-                      <ListGroup>
+                      {/* <ListGroup>
                         <ListGroup.Item>
                           <Cropper uploadFileState={uploadFileState} />
                         </ListGroup.Item>
-                      </ListGroup>
+                      </ListGroup> */}
 
                     </Form.Group>
                   </Form>
