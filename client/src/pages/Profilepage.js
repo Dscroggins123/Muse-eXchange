@@ -30,6 +30,9 @@ const styles = {
   }
 }
 
+const colors = ['#FE064C', '#E11462', '#C52279', '#A8308F', '#8B3FA6', '#6E4DBC', '#525BD2', '#3569E9', '#1877FF'];
+const instruments = ["Guitar", "Drums", "Bass", "Keyboard", "Beats", "Trumpet", "Saxophone", "Violin", "Cello"]
+
 class Profile extends Component {
   state = {
     id: "",
@@ -193,13 +196,22 @@ class Profile extends Component {
                 </div>
                 <div>
                   <h3>{this.state.firstName} {this.state.lastName}</h3>
-                  <Badge pill className='text-light' style={{ fontSize: '16px', background: '#FE064C' }}>{this.state.profession}</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>fdfad</Badge>
+                  {console.log(this.state.instruments)}
+                  {instruments.map( (instrument, index) => <>
+                    {this.state.instruments[`${instrument.toLowerCase()}`] && <>
+                    <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: `${colors[index]}` }}>{instrument}</Badge>
+                    </>}
+                  </>)}
+                  {/* <Badge pill className='text-light' style={{ fontSize: '16px', background: '#FE064C' }}>{this.state.profession}</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>Guitar</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#E11462' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#C52279' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#A8308F' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#8B3FA6' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#6E4DBC' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#525BD2' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#3569E9' }}>fdfad</Badge>
+                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#1877FF' }}>fdfad</Badge> */}
                   <Row className='d-flex justify-content-start'>
                     {this.state.links.linkedin && <>
                       <Col xs={1}>
