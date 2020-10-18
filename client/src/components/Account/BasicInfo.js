@@ -225,7 +225,7 @@ const BasicInfo = (
             label="Saxophone" type='checkbox' id={`inline-checkbox-7`} name="saxophone" onClick={handleCheckBoxChange} />
           <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.violin}
             label="Violin" type='checkbox' id={`inline-checkbox-8`} name="violin" onClick={handleCheckBoxChange} />
-          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.trumpet}
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.cello}
             label="Cello" type='checkbox' id={`inline-checkbox-9`} name="cello" onClick={handleCheckBoxChange} />
           {/* <Form.Check inline label="Other" type='checkbox' id={`inline-checkbox-10`} /> */}
         </div>
