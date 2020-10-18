@@ -29,7 +29,7 @@ const BasicInfo = (
     currentFirstName, 
     currentLastName, 
     profilePic ,
-    about,
+    currentAbout,
   }
 ) => {
 
@@ -155,7 +155,7 @@ const BasicInfo = (
         <Form.Label className='text-center' style={styles.h3}>About:</Form.Label>
         <Form.Control 
           as="textarea" 
-          defaultValue={about} 
+          defaultValue={currentAbout} 
           rows="8" 
           type="text"
           name="about"
