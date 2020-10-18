@@ -111,9 +111,27 @@ module.exports = {
     .catch(err => res.status(422).json(err))
   },
 
+  // Update instruments
+  updateInstrument: function(req, res) {
+    const path = `profile.instruments.${req.params.field}`
+    db.User.findOneAndUpdate(
+      {_id: req.params.userid},
+      {$set: { [path]: req.body.value }}
+    )
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.status(422).json(err));
+  },
 
-
-
+  // Update links
+  updateLinks: function(req, res) {
+    const path = `profile.links.${req.params.field}`
+    db.User.findOneAndUpdate(
+      {_id: req.params.userid},
+      {$set: { [path]: req.body.link }}
+    )
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.status(422).json(err));
+  }
 
 // getPurchasedSongs: function(req, res) {
 //   const purchases = `profile.purchaseSongs.${req.params.purchases}`

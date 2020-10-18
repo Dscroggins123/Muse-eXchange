@@ -22,6 +22,13 @@ router.route('/profile/:userid/:field')
   .get(userController.getProfile)
   .put(userController.updateProfile)
 
+/** ---- Profile Instruments ---- */
+router.route('/profile/instruments/:userid/:field')
+  .put(userController.updateInstrument)
+
+/** ---- Profile Links ---- */
+router.route('/profile/links/:userid/:field')
+  .put(userController.updateLinks)
   
 // router.route('/profile/firstName/:userid')
 //   .put(userController.updateFirstName);
