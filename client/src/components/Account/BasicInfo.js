@@ -49,7 +49,12 @@ const BasicInfo = (
       trumpet: '',
       saxophone: '',
       violin: '',
-      cello: ''
+      cello: '',
+      linkedin: '',
+      facebook: '',
+      instagram: '',
+      twitter: '',
+      youtube: ''
     }
   );
 
@@ -106,12 +111,9 @@ const BasicInfo = (
     }
     setValidated(true);
 
-    // Update basic info
-    // console.log(userInput.about)
+    // Update about
     if (userInput.about) await API.updateProfile(userId, "about", userInput.about);
     // Update instruments
-    console.log('handleSubmit')
-    console.log(userInput.trumpet)
     if (userInput.guitar === true || userInput.guitar === false) await API.updateInstruments(userId, "guitar", userInput.guitar);
     if (userInput.drums === true || userInput.drums === false) await API.updateInstruments(userId, "drums", userInput.drums);
     if (userInput.bass === true || userInput.bass === false) await API.updateInstruments(userId, "bass", userInput.bass);
@@ -121,6 +123,12 @@ const BasicInfo = (
     if (userInput.saxophone === true || userInput.saxophone === false) await API.updateInstruments(userId, "saxophone", userInput.saxophone);
     if (userInput.violin === true || userInput.violin === false) await API.updateInstruments(userId, "violin", userInput.violin);
     if (userInput.cello === true || userInput.cello === false) await API.updateInstruments(userId, "cello", userInput.cello);
+    // Update Links
+    if (userInput.linkedin) await API.updateLinks(userId, "linkedin", userInput.linkedin);
+    if (userInput.facebook) await API.updateLinks(userId, "facebook", userInput.facebook);
+    if (userInput.instagram) await API.updateLinks(userId, "instagram", userInput.instagram);
+    if (userInput.twitter) await API.updateLinks(userId, "twitter", userInput.twitter);
+    if (userInput.youtube) await API.updateLinks(userId, "youtube", userInput.youtube);
   };
 
   return <Container fluid>
@@ -229,7 +237,9 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.linkedin} type="text" classNam='text-left' placeholder="LinkedIn url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.linkedin} type="text" placeholder="LinkedIn url" 
+              name='linkedin' onChange={handleChange}
+            />
           </Col>
         </Form.Group>
 
@@ -240,7 +250,9 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.facebook} type="text" placeholder="Facebook url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.facebook} type="text" placeholder="Facebook url" 
+              name='facebook' onChange={handleChange}
+            />
           </Col>
         </Form.Group>
 
@@ -251,7 +263,9 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.instagram} type="text" placeholder="Instagram url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.instagram} type="text" placeholder="Instagram url" 
+              name='instagram' onChange={handleChange}
+            />
           </Col>
         </Form.Group>
 
@@ -262,7 +276,9 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.twitter} type="text" placeholder="Twitter url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.twitter} type="text" placeholder="Twitter url" 
+              name='twitter' onChange={handleChange}
+            />
           </Col>
         </Form.Group>
 
@@ -273,7 +289,9 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.youtube} type="text" placeholder="YouTube url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.youtube} type="text" placeholder="YouTube url" 
+              name='youtube' onChange={handleChange}
+            />
           </Col>
         </Form.Group>
 
