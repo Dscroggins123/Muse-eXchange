@@ -133,6 +133,7 @@ const AccountPage = () => {
                 currentFirstName={firstName}
                 currentLastName={lastName}
                 profilePic={profilePic}
+                currentAbout={about}
               />
             </Col>
             <Col xs={12} md={3}>

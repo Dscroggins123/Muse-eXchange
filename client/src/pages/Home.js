@@ -101,9 +101,9 @@ class Home extends Component {
     return (
       !this.props.user && !this.props.pending ? <Redirect to="/signin" /> :
         <>
-          {/* <div>
+          <div>
             <Jumbotron />
-          </div> */}
+          </div>
           <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
             <Row>
               <Col xs={12} md={2} style={styles.sideCol}>

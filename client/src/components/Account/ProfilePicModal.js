@@ -58,7 +58,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
   }
 
   return <>
-    {console.log(userId)}
+    {/* {console.log(userId)} */}
     <div
       style={{ color: '#1877FF', cursor: 'pointer'}}
       onClick={handleShow}>
