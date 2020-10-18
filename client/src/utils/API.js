@@ -66,5 +66,17 @@ export default {
     return axios.post("/api/users/register", data)
   },
 
+  // Update user instrument list
+  updateInstruments: function(userid, field, data) {
+    return axios.put(`/api/users/profile/instruments/${userid}/${field}`, {value: data});
+  },
+
+  // Update user instrument list
+  updateLinks: function(userid, field, data) {
+    return axios.put(`/api/users/profile/links/${userid}/${field}`, {link: data});
+  }
+
+
+
   
 }

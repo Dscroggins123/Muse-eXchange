@@ -50,8 +50,12 @@ const AccountPage = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [profilePic, setProfilePic] = useState('');
-  const [profession, setProfession] = useState('');
   const [about, setAbout] = useState('');
+  const [instruments, setInstruments] = useState('');
+  const [links, setLinks] = useState('');
+
+
+  const [profession, setProfession] = useState('');
   const [link1, setLink1] = useState('');
   const [link2, setLink2] = useState('');
   const [link3, setLink3] = useState('');
@@ -79,6 +83,7 @@ const AccountPage = () => {
     }
     // For demonstration purposes, we mock an API call.
     API.getSavedUsersById(userId).then((res) => {
+      console.log(res.data.profile)
       if (res.data) {
         setUsername(res.data.username);
         setEmail(res.data.email);
@@ -91,6 +96,8 @@ const AccountPage = () => {
         setLink3(res.data.profile.link3);
         setLink4(res.data.profile.link4);
         setProfilePic(res.data.profile.profilePic);
+        setInstruments(res.data.profile.instruments);
+        setLinks(res.data.profile.links);
       }
     });
   }, [submit, userId]);
@@ -134,6 +141,8 @@ const AccountPage = () => {
                 currentLastName={lastName}
                 profilePic={profilePic}
                 currentAbout={about}
+                currentInstruments={instruments}
+                currentLinks={links}
               />
             </Col>
             <Col xs={12} md={3}>

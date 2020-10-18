@@ -67,23 +67,28 @@ const userSchema = mongoose.Schema({
     links: {
       linkedin: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
       },
       facebook: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
       },
       instagram: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
       },
       twitter: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
       },
       youtube: {
         type: String,
-        trim: true
+        trim: true,
+        default: ''
       }
     },
     instruments: {
@@ -127,7 +132,7 @@ const userSchema = mongoose.Schema({
         default: false,
         trim: true
       },
-      trumpet: {
+      cello: {
         type: Boolean,
         default: false,
         trim: true

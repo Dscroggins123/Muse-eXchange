@@ -30,6 +30,8 @@ const BasicInfo = (
     currentLastName, 
     profilePic ,
     currentAbout,
+    currentInstruments,
+    currentLinks
   }
 ) => {
 
@@ -39,26 +41,47 @@ const BasicInfo = (
       firstName: '',
       lastName: '',
       about: '',
+      guitar: '',
+      drums: '', 
+      bass: '',
+      keyboard: '',
+      beats: '',
+      trumpet: '',
+      saxophone: '',
+      violin: '',
+      cello: ''
     }
   );
 
   const [editName, setEditName] = useState(false);
 
-  // To handle profile info input 
+  // //To handle profile info input 
   // useEffect(() => {
-  // }, [userInput.firstName, userInput.lastName])
+  //   userInput.guitar = currentInstruments.guitar;
+  //   userInput.drums = currentInstruments.drums;
+  //   userInput.guitar = currentInstruments.guitar;
+  //   userInput.guitar = currentInstruments.guitar;
+  //   userInput.guitar = currentInstruments.guitar;
+  //   userInput.guitar = currentInstruments.guitar;
+  // }, [])
 
   const handleChange = e => {
-    console.log(e.target)
     const name = e.target.name;
     const newValue = e.target.value;
-    console.log(newValue.length)
-    console.log(newValue)
     setUserInput({ [name]: newValue });
   }
 
+  const handleCheckBoxChange = e => {
+    console.log(e.target)
+    const name = e.target.name;
+    const newValue = e.target.checked;
+    console.log('handleCheckedChange')
+    console.log(name)
+    console.log(newValue)
+    setUserInput({ [name]: newValue})
+  }
+
   const toggleNameEdit = () => {
-    console.log('Hello');
     setEditName(!editName);
   }
 
@@ -84,13 +107,26 @@ const BasicInfo = (
     setValidated(true);
 
     // Update basic info
-    console.log(userInput.about)
-    await API.updateProfile(userId, "about", userInput.about);
+    // console.log(userInput.about)
+    if (userInput.about) await API.updateProfile(userId, "about", userInput.about);
+    // Update instruments
+    console.log('handleSubmit')
+    console.log(userInput.trumpet)
+    if (userInput.guitar === true || userInput.guitar === false) await API.updateInstruments(userId, "guitar", userInput.guitar);
+    if (userInput.drums === true || userInput.drums === false) await API.updateInstruments(userId, "drums", userInput.drums);
+    if (userInput.bass === true || userInput.bass === false) await API.updateInstruments(userId, "bass", userInput.bass);
+    if (userInput.keyboard === true || userInput.keyboard === false) await API.updateInstruments(userId, "keyboard", userInput.keyboard);
+    if (userInput.beats === true || userInput.beats === false) await API.updateInstruments(userId, "beats", userInput.beats);
+    if (userInput.trumpet === true || userInput.trumpet === false) await API.updateInstruments(userId, "trumpet", userInput.trumpet);
+    if (userInput.saxophone === true || userInput.saxophone === false) await API.updateInstruments(userId, "saxophone", userInput.saxophone);
+    if (userInput.violin === true || userInput.violin === false) await API.updateInstruments(userId, "violin", userInput.violin);
+    if (userInput.cello === true || userInput.cello === false) await API.updateInstruments(userId, "cello", userInput.cello);
   };
 
   return <Container fluid>
     {/* <p>Choose a channel name that represents you and your content.</p> */}
-
+    {/* {console.log(currentInstruments)}
+    {console.log(currentLinks)} */}
     <div className='edit-profile-name'>
       <h3 style={styles.h3}>Profile name:</h3>
       {!editName ? (
@@ -165,15 +201,24 @@ const BasicInfo = (
         {/** Instruments */}
         <Form.Label style={styles.h3}>Instruments:</Form.Label>
         <div key='inline-checkbox' className="mb-3">
-          <Form.Check style={{textAlign: 'left'}} custom inline label="Guitar" type='checkbox' id={`inline-checkbox-1`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Drums" type='checkbox' id={`inline-checkbox-2`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Bass" type='checkbox' id={`inline-checkbox-3`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Keyboard" type='checkbox' id={`inline-checkbox-4`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Beats" type='checkbox' id={`inline-checkbox-5`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Trumpet" type='checkbox' id={`inline-checkbox-6`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Saxophone" type='checkbox' id={`inline-checkbox-7`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Violin" type='checkbox' id={`inline-checkbox-8`} />
-          <Form.Check style={{textAlign: 'left'}} inline label="Cello" type='checkbox' id={`inline-checkbox-9`} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.guitar} 
+            label="Guitar"  type='checkbox' id={`inline-checkbox-1`} name="guitar" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.drums}
+            label="Drums" type='checkbox' id={`inline-checkbox-2`} name="drums" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.bass}
+            label="Bass" type='checkbox' id={`inline-checkbox-3`} name="bass" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.keyboard}
+            label="Keyboard" type='checkbox' id={`inline-checkbox-4`} name="keyboard" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.beats}
+            label="Beats" type='checkbox' id={`inline-checkbox-5`} name="beats" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.trumpet}
+            label="Trumpet" type='checkbox' id={`inline-checkbox-6`} name="trumpet" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.saxophone}
+            label="Saxophone" type='checkbox' id={`inline-checkbox-7`} name="saxophone" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.violin}
+            label="Violin" type='checkbox' id={`inline-checkbox-8`} name="violin" onClick={handleCheckBoxChange} />
+          <Form.Check style={{textAlign: 'left'}} inline defaultChecked={currentInstruments.trumpet}
+            label="Cello" type='checkbox' id={`inline-checkbox-9`} name="cello" onClick={handleCheckBoxChange} />
           {/* <Form.Check inline label="Other" type='checkbox' id={`inline-checkbox-10`} /> */}
         </div>
         <h3 style={styles.h3}>Links:</h3>
@@ -184,7 +229,7 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} type="text" classNam='text-left' placeholder="LinkedIn url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.linkedin} type="text" classNam='text-left' placeholder="LinkedIn url" />
           </Col>
         </Form.Group>
 
@@ -195,7 +240,7 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} type="text" placeholder="Facebook url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.facebook} type="text" placeholder="Facebook url" />
           </Col>
         </Form.Group>
 
@@ -206,7 +251,7 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} type="text" placeholder="Instagram url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.instagram} type="text" placeholder="Instagram url" />
           </Col>
         </Form.Group>
 
@@ -217,7 +262,7 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} type="text" placeholder="Twitter url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.twitter} type="text" placeholder="Twitter url" />
           </Col>
         </Form.Group>
 
@@ -228,7 +273,7 @@ const BasicInfo = (
               </div>
           </Form.Label>
           <Col sm={6}>
-            <Form.Control style={{textAlign: 'left'}} type="text" placeholder="YouTube url" />
+            <Form.Control style={{textAlign: 'left'}} defaultValue={currentLinks.youtube} type="text" placeholder="YouTube url" />
           </Col>
         </Form.Group>
 
