@@ -64,6 +64,75 @@ const userSchema = mongoose.Schema({
       type: String,
       trim: true
     },
+    links: {
+      linkedin: {
+        type: String,
+        trim: true
+      },
+      facebook: {
+        type: String,
+        trim: true
+      },
+      instagram: {
+        type: String,
+        trim: true
+      },
+      twitter: {
+        type: String,
+        trim: true
+      },
+      youtube: {
+        type: String,
+        trim: true
+      }
+    },
+    instruments: {
+      guitar: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      drums: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      bass: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      keyboard: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      beats: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      trumpet: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      saxophone: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      violin: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+      trumpet: {
+        type: Boolean,
+        default: false,
+        trim: true
+      },
+    },
     songs: [
       {
         type: Schema.Types.ObjectId,
