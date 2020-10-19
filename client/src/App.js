@@ -45,7 +45,7 @@ function App() {
 
   return (
     <Router>
-      {!user ? <h1></h1> : <Navbar handleLogout={handleLogout} user={user._id} />}
+      {/* {!user ? <h1></h1> : <Navbar handleLogout={handleLogout} user={user._id} />} */}
       {user && <Redirect to="/" />}
       <Switch>
         {/* <Route exact path="/" component={() => <LandingPage pending={pending} user={user}/>} /> */}
@@ -65,7 +65,7 @@ function App() {
         <Route path="/addsong" component={AddSong} />
         <Route component={() => <Login handleSetCurrentUser={handleSetCurrentUser} />} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

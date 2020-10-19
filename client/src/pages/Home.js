@@ -101,11 +101,8 @@ class Home extends Component {
     return (
       !this.props.user && !this.props.pending ? <Redirect to="/signin" /> :
         <>
-          <div>
-            <Jumbotron />
-          </div>
           <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
-            <Row>
+            <Row style={{height: '100%'}}>
               <Col xs={12} md={2} style={styles.sideCol}>
                 <div className='mt-2 mb-4'>
                   <h3 style={styles.sideHeading}>Instruments</h3>
@@ -260,7 +257,8 @@ class Home extends Component {
                   </ListGroup>
                 </div>
               </Col>
-              <Col xs={12} md={10} className='border border-secondary border-top-0 border-left-0' style={{ background: '#181818', color: '#fff' }}>
+              <Col xs={12} md={10} className='border border-secondary border-top-0 border-left-0' style={{ background: '#181818', color: '#fff', height: '100%', overflow: 'auto' }}>
+                <Jumbotron />
                 {this.state.users && (<>
                   <div className="mt-2  mb-2">
                     <h2 className='mb-0' style={styles.heading}>Explore</h2>
@@ -290,6 +288,7 @@ class Home extends Component {
                   {/** Show All User */}
                   <UserList users={this.state.piano} />
                 </>)}
+                <Jumbotron />
               </Col>
             </Row>
           </Container>
