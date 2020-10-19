@@ -35,6 +35,7 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
       }
     )
     const file = await res.json() // get json response
+    console.log(file.public_id)
     await API.updateProfile(userId, "profilePic", file.secure_url);
     // setProfilePic(file.secure_url);
     setLoading(false);

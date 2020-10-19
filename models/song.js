@@ -8,7 +8,13 @@ const songSchema = new Schema({
   genre: String,
   file: String,
   price: Number,
-  
+  createdAt: Number,
+  updatedAt: Number,
+  public_id: String
+}, { 
+  timestamps: { 
+    createdAt: 'created_at' 
+  } 
 });
 
 const Song = mongoose.model("Song", songSchema);

@@ -48,7 +48,8 @@ function ProductModal({ state, open, close }) {
           title: value.title,
           genre: value.select,
           file: file.secure_url,
-          price: value.price
+          price: value.price,
+          public_id: file.public_id
         });
         setLoading(false);
         setUploaded(true);

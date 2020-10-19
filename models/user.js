@@ -52,6 +52,16 @@ const userSchema = mongoose.Schema({
       type: String,
       trim: true,
     },
+    // profilePic: {
+    //   file: {
+    //     type: String,
+    //     trim: true
+    //   },
+    //   public_id: {
+    //     type: String,
+    //     trim: true
+    //   }
+    // },
     link1: {
       type: String,
       trim: true
