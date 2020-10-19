@@ -115,23 +115,23 @@ const AccountPage = () => {
   }
 
   return (<>
-    <Container fluid style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} className=' mt-0' >
-      <Row>
-        <Col xs={12} md={2} className='p-0 border-right' style={{ background: '#F8F8F8' }}>
+    
+      <Row style={{height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif'}}>
+        <Col xs={12} md={2} className='d-none d-xs-block d-sm-block d-md-block p-0 border-right' style={{ background: '#F8F8F8' }} >
           <Sidebar
             profilePic={profilePic}
             firstName={firstName}
             lastName={lastName}
           />
         </Col>
-        <Col xs={12} md={10} className='p-0'>
-          <Jumbotron fluid className='p-2 border-bottom' style={{background: '#fff'}}>
+        <Col xs={12} md={10} className='p-0' style={{height: '100%'}}>
+          <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{background: '#fff'}}>
             <Container fluid>
               <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Profile Customization</h1>
               <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2>
             </Container>
           </Jumbotron>
-          <Row>
+          <Row style={{height: '100%', overflow: 'auto'}}>
             <Col xs={12} md={9}>
               <BasicInfo
                 userId={userId}
@@ -143,15 +143,17 @@ const AccountPage = () => {
                 currentAbout={about}
                 currentInstruments={instruments}
                 currentLinks={links}
+                style={{height: '100%', overflow: 'auto'}}
               />
+              <div style={{height: '25vh'}}></div>
+              <div className='d-block d-sm-none' style={{height: '50vh'}}></div>
             </Col>
             <Col xs={12} md={3}>
 
             </Col>
           </Row>
         </Col>
-      </Row>
-    </Container>
+      </Row>  
   </>)
 }
 

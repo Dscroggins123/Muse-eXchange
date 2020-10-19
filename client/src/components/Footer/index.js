@@ -15,7 +15,7 @@ const styles ={
 // Footer
 const Footer = () => {
   return (
-    <footer className="footer text-light mt-4" style={{background: '#121212'}}>
+    <footer className="footer text-light mt-4" style={{background: '#121212', height: '25vh'}}>
       <Container fluid>
         <div className="d-flex justify-content-center">
           <Image src={navLogo} className="mr-2" style={{ width: '30px' }} />
@@ -23,6 +23,7 @@ const Footer = () => {
           <Link to="/team" style={styles}>Meet the team</Link>
         </div>
       </Container>
+      {/* <div className='d-block d-sm-none' style={{height: '50vh'}}></div> */}
     </footer>
   )
 }
