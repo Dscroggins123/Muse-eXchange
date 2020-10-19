@@ -19,7 +19,7 @@ const styles = {
 
 const JumbotronComponent = () => {
   return (
-    <Jumbotron fluid className='mb-0' style={styles} >
+    <Jumbotron fluid className='mb-0 pt-5 pb-2' style={styles} >
       <div class="pl-5" style={{ width: '30%'}}>
         <h1 style={{fontFamily: 'Kumbh Sans, sans-serif'}}>Share your creativity!</h1>
         <p style={{fontFamily: 'Kumbh Sans, sans-serif'}}>
