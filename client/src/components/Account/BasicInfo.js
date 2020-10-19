@@ -131,7 +131,7 @@ const BasicInfo = (
     if (userInput.youtube) await API.updateLinks(userId, "youtube", userInput.youtube);
   };
 
-  return <Container fluid>
+  return <Container fluid className='pb-5'>
     {/* <p>Choose a channel name that represents you and your content.</p> */}
     {/* {console.log(currentInstruments)}
     {console.log(currentLinks)} */}
