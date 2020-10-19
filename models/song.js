@@ -7,7 +7,8 @@ const songSchema = new Schema({
   title: String,
   genre: String,
   file: String,
-  price: Number
+  price: Number,
+  
 });
 
 const Song = mongoose.model("Song", songSchema);

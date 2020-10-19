@@ -3,8 +3,8 @@ import { Container, Modal, Form, Image, ListGroup, Row, Col, Tabs, Tab, Jumbotro
 
 // Components
 import Sidebar from '../components/Account/Sidebar';
-import Branding from '../components/Account/Branding';
 import BasicInfo from '../components/Account/BasicInfo';
+import Songs from '../components/Account/Songs';
 // API
 import API from '../utils/API';
 
@@ -53,6 +53,7 @@ const AccountPage = () => {
   const [about, setAbout] = useState('');
   const [instruments, setInstruments] = useState('');
   const [links, setLinks] = useState('');
+  const [songs, setSongs] = useState('');
 
 
   const [profession, setProfession] = useState('');
@@ -83,7 +84,7 @@ const AccountPage = () => {
     }
     // For demonstration purposes, we mock an API call.
     API.getSavedUsersById(userId).then((res) => {
-      console.log(res.data.profile)
+      console.log(res.data.profile.songs)
       if (res.data) {
         setUsername(res.data.username);
         setEmail(res.data.email);
@@ -98,6 +99,7 @@ const AccountPage = () => {
         setProfilePic(res.data.profile.profilePic);
         setInstruments(res.data.profile.instruments);
         setLinks(res.data.profile.links);
+        setSongs(res.data.profile.songs);
       }
     });
   }, [submit, userId]);
@@ -115,8 +117,8 @@ const AccountPage = () => {
   }
 
   return (<>
-    
-      <Row style={{height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif'}}>
+    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      <Row style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }}>
         <Col xs={12} md={2} className='d-none d-xs-block d-sm-block d-md-block p-0 border-right' style={{ background: '#F8F8F8' }} >
           <Sidebar
             profilePic={profilePic}
@@ -124,36 +126,60 @@ const AccountPage = () => {
             lastName={lastName}
           />
         </Col>
-        <Col xs={12} md={10} className='p-0' style={{height: '100%'}}>
-          <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{background: '#fff'}}>
-            <Container fluid>
-              <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Profile Customization</h1>
-              <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2>
-            </Container>
-          </Jumbotron>
-          <Row style={{height: '100%', overflow: 'auto'}}>
-            <Col xs={12} md={9}>
-              <BasicInfo
-                userId={userId}
-                submit={submit}
-                setSubmit={setSubmit}
-                currentFirstName={firstName}
-                currentLastName={lastName}
-                profilePic={profilePic}
-                currentAbout={about}
-                currentInstruments={instruments}
-                currentLinks={links}
-                style={{height: '100%', overflow: 'auto'}}
-              />
-              <div style={{height: '25vh'}}></div>
-              <div className='d-block d-sm-none' style={{height: '50vh'}}></div>
-            </Col>
-            <Col xs={12} md={3}>
+        <Col xs={12} md={10} className='p-0' style={{ height: '100%' }}>
+          <Tab.Content style={{ height: '100%' }}>
+            <Tab.Pane eventKey="first" style={{ height: '100%' }}>
 
-            </Col>
-          </Row>
+              <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
+                <Container fluid>
+                  <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Profile Customization</h1>
+                  {/* <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2> */}
+                </Container>
+              </Jumbotron>
+
+              <Row style={{ height: '100%', overflow: 'auto' }}>
+                <Col xs={12} md={9}>
+                  <BasicInfo
+                    userId={userId}
+                    submit={submit}
+                    setSubmit={setSubmit}
+                    currentFirstName={firstName}
+                    currentLastName={lastName}
+                    profilePic={profilePic}
+                    currentAbout={about}
+                    currentInstruments={instruments}
+                    currentLinks={links}
+                    style={{ height: '100%', overflow: 'auto' }}
+                  />
+                  <div style={{ height: '25vh' }}></div>
+                  <div className='d-block d-sm-none' style={{ height: '50vh' }}></div>
+                </Col>
+                <Col xs={12} md={3}></Col>
+              </Row>
+
+            </Tab.Pane>
+            <Tab.Pane eventKey="second" style={{ height: '100%' }}>
+
+              <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
+                <Container fluid>
+                  <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Songs</h1>
+                  {/* <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2> */}
+                </Container>
+              </Jumbotron>
+                {console.log(songs)}
+                <Songs 
+                  userId={userId}
+                  profilePic={profilePic}
+                  songIds={songs}
+                  submit={submit}
+                  setSubmit={setSubmit}
+                />
+
+            </Tab.Pane>
+          </Tab.Content>
         </Col>
-      </Row>  
+      </Row>
+    </Tab.Container>
   </>)
 }
 
