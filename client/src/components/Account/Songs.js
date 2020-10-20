@@ -20,12 +20,19 @@ const Songs = ({userId, profilePic, songIds, submit, setSubmit}) => {
   const [songsList, setSongsList] = useState([]);
 
   useEffect(() => {
+    setSongsList([]);
     console.log(songIds)
     if (songIds) {
       songIds.map(songid => {
         API.getSongsByQuery(songid)
           .then(res => {
             setSongsList(songsList => [...songsList, res.data[0]])
+          }).then(() => {
+            // Sort songs list by date created
+            setSongsList(songsList => {
+              songsList = songsList.sort((a, b) => (a.created_at > b.created_at) ? 1 : -1)
+              return songsList;
+            })
           }).catch(err => console.log(err));
       })
     }

@@ -38,6 +38,7 @@ const SongsTable = ({ songsList, submit, setSubmit }) => {
     alert('song will be deleted')
   }
   return <>
+    {console.log(songsList)}
     <Table responsive bordered size="sm" className='mb-1'>
       <thead>
         <tr>
