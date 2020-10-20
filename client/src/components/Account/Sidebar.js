@@ -28,10 +28,13 @@ const SideBar = ({ profilePic, firstName, lastName }) => {
       <Container fluid>
         <Nav variant="pills" className="flex-column">
           <Nav.Item>
-            <Nav.Link eventKey="first">Profile</Nav.Link>
+            <Nav.Link eventKey="profile">Profile</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="second">Songs</Nav.Link>
+            <Nav.Link eventKey="songs">Songs</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="tutorials">Tutorials</Nav.Link>
           </Nav.Item>
         </Nav>
       </Container>

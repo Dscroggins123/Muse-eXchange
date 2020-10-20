@@ -7,7 +7,7 @@ import API from '../../utils/API';
 import { Close } from '@material-ui/icons';
 require('dotenv').config();
 
-function ProductModal({ state, field, close }) {
+function ProductModal({ state, field, close, submit, setSubmit }) {
   // console.log('close: ', close);
 
   const [user, setUser] = useState();
@@ -53,7 +53,8 @@ function ProductModal({ state, field, close }) {
         });
         setLoading(false);
         setUploaded(true);
-        setValue({})
+        setValue({});
+        setSubmit(submit + 1);
       }
     }
     else if (value.selectField === 'tutorial') {

@@ -22,15 +22,16 @@ const months = {
   11: 'Dec'
 }
 
-const SongsTable = ({ songsList }) => {
+const SongsTable = ({ songsList, submit, setSubmit }) => {
 
   // Product Modal
   const [show, setShow] = useState(false);
+  const [songs, setSongs] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-
+    setSongs(songsList);
   }, [songsList])
 
   const deleteSong = () => {
@@ -49,7 +50,7 @@ const SongsTable = ({ songsList }) => {
         </tr>
       </thead>
       <tbody>
-        {songsList.map((song, index) => <>
+        {songs.map((song, index) => <>
           <tr>
             <td>{(index + 1)}</td>
             <td>{song.author}</td>
@@ -73,7 +74,7 @@ const SongsTable = ({ songsList }) => {
     <a href="#" onClick={handleShow} style={{ color: '#1877FF', cursor: 'pointer', textDecoration: 'none' }}>
       <AddIcon /> Add Song
     </a>
-    <ProductModal field={'tutorial'} state={show} open={handleShow} close={handleClose} />
+    <ProductModal field={'song'} state={show} open={handleShow} close={handleClose} submit={submit} setSubmit={setSubmit} />
   </>
 }
 

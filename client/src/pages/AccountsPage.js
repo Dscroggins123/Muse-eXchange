@@ -117,7 +117,7 @@ const AccountPage = () => {
   }
 
   return (<>
-    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+    <Tab.Container id="left-tabs-example" defaultActiveKey="profile">
       <Row style={{ height: '100%', width: '100%', fontFamily: 'Kumbh Sans, sans-serif' }}>
         <Col xs={12} md={2} className='d-none d-xs-block d-sm-block d-md-block p-0 border-right' style={{ background: '#F8F8F8' }} >
           <Sidebar
@@ -128,7 +128,7 @@ const AccountPage = () => {
         </Col>
         <Col xs={12} md={10} className='p-0' style={{ height: '100%' }}>
           <Tab.Content style={{ height: '100%' }}>
-            <Tab.Pane eventKey="first" style={{ height: '100%' }}>
+            <Tab.Pane eventKey="profile" style={{ height: '100%' }}>
 
               <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
                 <Container fluid>
@@ -158,7 +158,7 @@ const AccountPage = () => {
               </Row>
 
             </Tab.Pane>
-            <Tab.Pane eventKey="second" style={{ height: '100%' }}>
+            <Tab.Pane eventKey="songs" style={{ height: '100%' }}>
 
               <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
                 <Container fluid>
@@ -175,6 +175,9 @@ const AccountPage = () => {
                   setSubmit={setSubmit}
                 />
 
+            </Tab.Pane>
+            <Tab.Pane eventKey="tutorials" style={{ height: '100%' }}>
+              <div>Tutorials</div>
             </Tab.Pane>
           </Tab.Content>
         </Col>
