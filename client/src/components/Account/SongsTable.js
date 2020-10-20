@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // Bootstrap
 import { Table } from 'react-bootstrap';
 // Icons
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+// Components
+import ProductModal from './ProductModal';
 
 const months = {
   0: 'Jan',
@@ -21,11 +24,20 @@ const months = {
 
 const SongsTable = ({ songsList }) => {
 
+  // Product Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  useEffect(() => {
+
+  }, [songsList])
+
   const deleteSong = () => {
     alert('song will be deleted')
   }
   return <>
-    <Table responsive bordered hover size="sm">
+    <Table responsive bordered size="sm" className='mb-1'>
       <thead>
         <tr>
           <th>#</th>
@@ -53,11 +65,15 @@ const SongsTable = ({ songsList }) => {
             </td>
             {console.log(new Date(song.created_at))}
             {}
-            <td style={{border: '0px', color: '#747474'}}><DeleteIcon onClick={deleteSong}/></td>
+            <td style={{ border: '0px', color: '#747474' }}><DeleteIcon style={{ cursor: 'pointer' }} onClick={deleteSong} /></td>
           </tr>
         </>)}
       </tbody>
     </Table>
+    <a href="#" onClick={handleShow} style={{ color: '#1877FF', cursor: 'pointer', textDecoration: 'none' }}>
+      <AddIcon /> Add Song
+    </a>
+    <ProductModal field={'tutorial'} state={show} open={handleShow} close={handleClose} />
   </>
 }
 
