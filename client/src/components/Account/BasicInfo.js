@@ -190,7 +190,7 @@ const BasicInfo = (
       {profilePic ? (<Image src={profilePic} style={{ width: '200px' }} />)
         : (<Image src={defaultProfilePic} style={{ width: '200px' }} />)
       }
-      <ProfilePicModal userId={userId} submit={submit} setSubmit={setSubmit} />
+      <ProfilePicModal userId={userId} profilePic={profilePic} submit={submit} setSubmit={setSubmit} />
     </div>
 
     <Form className='mb-3'>

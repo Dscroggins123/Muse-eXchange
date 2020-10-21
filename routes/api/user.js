@@ -4,7 +4,6 @@ const user = require('../../models/user');
 const cloudinary = require('../../utils/cloudinary');
 const upload = require('../../utils/multer');
 
-
 router.route('/')
   .get(userController.findAll)
   .post(userController.addNewUser);
@@ -68,7 +67,5 @@ router.delete('/image/cloudinary', async(req, res) => {
     console.log(err);
   }
 })
-
-
 
 module.exports = router;

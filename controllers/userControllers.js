@@ -1,4 +1,5 @@
 const db = require("../models");
+const cloudinary = require('../utils/cloudinary');
 
 module.exports = {
   addNewUser: function(req, res) {
@@ -131,7 +132,7 @@ module.exports = {
     )
     .then(dbUser => res.json(dbUser))
     .catch(err => res.status(422).json(err));
-  }
+  },
 
 // getPurchasedSongs: function(req, res) {
 //   const purchases = `profile.purchaseSongs.${req.params.purchases}`

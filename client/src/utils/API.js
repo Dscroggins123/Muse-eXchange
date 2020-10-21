@@ -78,6 +78,11 @@ export default {
 
   removeSong: function(userid, songid) {
     return axios.delete(`/api/songs/audio/${userid}/${songid}`);
+  },
+
+  removeCloudinaryPic: function(id) {
+    console.log('api', id);
+    return axios.delete('/api/users/image/cloudinary', { publicid: id })
   }
   
 }

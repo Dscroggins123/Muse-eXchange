@@ -5,11 +5,11 @@ import Cropper from '../Cropper';
 // API
 import API from '../../utils/API';
 
-const ProfilePicModal = ({userId, submit, setSubmit}) => {
+const ProfilePicModal = ({userId, profilePic, submit, setSubmit}) => {
   
   // Profile Pic 
   const [uploadFiles, setUploadFiles] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  // const [profilePic, setProfilePic] = useState('');
   const [loading, setLoading] = useState(false);
   const [isCropped, setIsCropped] = useState(false);
 
@@ -22,6 +22,13 @@ const ProfilePicModal = ({userId, submit, setSubmit}) => {
    /** ===== Upload Profile info ===== */
   // Function to upload and image to Cloudinary
   const uploadImage = async () => {
+    // if (profilePic) {
+    //   let result = profilePic.match(/MusiceXchange(.*)/g);
+    //   console.log('previous id', result[0]);
+    //   let publicId = result[0].replace(/\.[^/.]+$/, "");
+    //   console.log('previous id', publicId);
+    //   await API.removeCloudinaryPic(publicId);
+    // }
     const data = new FormData();
     // data.append('file', uploadFiles[0]);
     data.append('file', uploadFiles);
