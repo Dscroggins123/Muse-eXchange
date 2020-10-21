@@ -33,6 +33,8 @@ function ProductModal({ state, field, close, submit, setSubmit }) {
         setLoading(true);
         const data = new FormData();
         data.append('file', value.files[0]);
+
+        
         data.append('upload_preset', 'MusiceXchange'); // must be same name as upload
 
         const res = await fetch(

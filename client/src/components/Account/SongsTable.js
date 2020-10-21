@@ -34,11 +34,12 @@ const SongsTable = ({ songsList, submit, setSubmit }) => {
     setSongs(songsList);
   }, [songsList])
 
-  const deleteSong = () => {
-    alert('song will be deleted')
+  const deleteSong = e => {
+    console.log(e.currentTarget.dataset.id);
+    // alert('song will be deleted')
   }
   return <>
-    {console.log(songsList)}
+    {/* {console.log(songsList)} */}
     <Table responsive bordered size="sm" className='mb-1'>
       <thead>
         <tr>
@@ -65,9 +66,13 @@ const SongsTable = ({ songsList, submit, setSubmit }) => {
                 ${(new Date(song.created_at)).getFullYear()}
               `}
             </td>
-            {console.log(new Date(song.created_at))}
+            {/* {console.log(new Date(song.created_at))} */}
             {}
-            <td style={{ border: '0px', color: '#747474' }}><DeleteIcon style={{ cursor: 'pointer' }} onClick={deleteSong} /></td>
+            <td style={{ border: '0px', color: '#747474' }}>
+              <a href="#" data-id={song._id} onClick={deleteSong}>
+                <DeleteIcon style={{ cursor: 'pointer' }}/>
+              </a>
+            </td>
           </tr>
         </>)}
       </tbody>

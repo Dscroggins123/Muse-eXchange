@@ -1,6 +1,6 @@
 const db = require("../models");
-const cloudinary = require('../../utils/cloudinary');
-const upload = require('../../utils/multer');
+// const cloudinary = require('../../utils/cloudinary');
+// const upload = require('../../utils/multer');
 
 module.exports = {
       AddUserSongs: function(req, res) {
