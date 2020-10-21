@@ -74,9 +74,10 @@ export default {
   // Update user instrument list
   updateLinks: function(userid, field, data) {
     return axios.put(`/api/users/profile/links/${userid}/${field}`, {link: data});
+  },
+
+  removeSong: function(userid, songid) {
+    return axios.delete(`/api/songs/audio/${userid}/${songid}`);
   }
-
-
-
   
 }

@@ -61,15 +61,15 @@ router.route('/audio/:userid/:songid')
   .delete(songController.removeSongById)
 
 
-router.delete('/audio/cloudinary/delete', async(req, res) => {
-  try {
-    console.log(req.body.publicid)
-    await cloudinary.uploader.destroy(req.body.publicid, {resource_type: 'raw'});
-    res.json({hello: 'world'})
-  } catch (err) {
-    console.log(err);
-  }
-})
+// router.delete('/audio/cloudinary/delete', async(req, res) => {
+//   try {
+//     console.log(req.body.publicid)
+//     await cloudinary.uploader.destroy(req.body.publicid, {resource_type: 'raw'});
+//     res.json({hello: 'world'})
+//   } catch (err) {
+//     console.log(err);
+//   }
+// })
 
 // router.delete('/image/cloudinary/delete', async(req, res) => {
 //   try {

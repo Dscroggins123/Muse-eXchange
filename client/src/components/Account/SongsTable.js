@@ -6,7 +6,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 // Components
 import ProductModal from './ProductModal';
-
+// API
+import API from '../../utils/API';
 const months = {
   0: 'Jan',
   1: 'Feb',
@@ -22,7 +23,7 @@ const months = {
   11: 'Dec'
 }
 
-const SongsTable = ({ songsList, submit, setSubmit }) => {
+const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
 
   // Product Modal
   const [show, setShow] = useState(false);
@@ -35,9 +36,12 @@ const SongsTable = ({ songsList, submit, setSubmit }) => {
   }, [songsList])
 
   const deleteSong = e => {
-    console.log(e.currentTarget.dataset.id);
+    let songId = e.currentTarget.dataset.id;
     // alert('song will be deleted')
+    API.removeSong(userId, songId);
+    setSubmit(submit + 1);
   }
+
   return <>
     {/* {console.log(songsList)} */}
     <Table responsive bordered size="sm" className='mb-1'>

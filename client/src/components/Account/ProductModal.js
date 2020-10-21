@@ -80,7 +80,6 @@ function ProductModal({ state, field, close, submit, setSubmit }) {
 
   return (
     <>
-      {console.log('from product modal',value.selectField)}
       <Modal
         show={state}
         onHide={modalClose}

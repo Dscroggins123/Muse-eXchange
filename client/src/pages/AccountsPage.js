@@ -166,7 +166,6 @@ const AccountPage = () => {
                   {/* <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2> */}
                 </Container>
               </Jumbotron>
-                {console.log(songs)}
                 <Songs 
                   userId={userId}
                   profilePic={profilePic}

@@ -98,7 +98,6 @@ module.exports = {
         await db.Song.findById({_id: req.params.songid})
         .then( async dbSong => {
           try {
-            console.log(dbSong)
             let public_id = dbSong.public_id;
             await cloudinary.uploader.destroy(public_id, {resource_type: 'raw'});
           } catch(err) {
