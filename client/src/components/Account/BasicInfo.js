@@ -28,7 +28,7 @@ const BasicInfo = (
     setSubmit, 
     currentFirstName, 
     currentLastName, 
-    profilePic ,
+    profilePic,
     currentAbout,
     currentInstruments,
     currentLinks

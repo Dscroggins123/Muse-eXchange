@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const userController = require('../../controllers/userControllers');
 const user = require('../../models/user');
+const cloudinary = require('../../utils/cloudinary');
+const upload = require('../../utils/multer');
+
 
 router.route('/')
   .get(userController.findAll)
@@ -55,6 +58,16 @@ router.route(`/purchasedtutorial/:tutorialid/:userid`)
 
 // router.route('/profile/lastName/:userid')
 //   .put(userController.updateLastName);
+
+router.delete('/image/cloudinary', async(req, res) => {
+  try {
+    console.log(req.body.publicid)
+    await cloudinary.uploader.destroy(req.body.publicid);
+    res.json({hello: 'world'})
+  } catch (err) {
+    console.log(err);
+  }
+})
 
 
 
