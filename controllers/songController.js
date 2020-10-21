@@ -1,6 +1,6 @@
 const db = require("../models");
-// const cloudinary = require('../../utils/cloudinary');
-// const upload = require('../../utils/multer');
+const cloudinary = require("../utils/cloudinary");
+// const cloudinary = require('../utils/cloudinary');
 
 module.exports = {
       AddUserSongs: function(req, res) {
@@ -30,20 +30,6 @@ module.exports = {
         .then(dbUserSongs => res.json(dbUserSongs))
         .catch(err => res.status(422).json(err));
       },
-
-
-
-      // AddPurchasedSongs: function(req, res) {
-      //   db.Song.create(req.body)
-      //   .then(({_id}) => db.User.findOneAndUpdate({_id: req.params.userid}, {$push: {"profile.purchaseSongs": _id}}, { new: true }))
-      //   .catch(err => res.status(422).json(err))
-      // },
-    
-      // AddPurchasedSongs2: function(req, res) {
-      //   db.Song.findById({_id: req.params.songid})
-      //   .then(({_id}) => db.User.findOneAndUpdate({_id: req.params.userid}, {$push: {"profile.purchaseSongs": _id}}, { new: true }))
-      //   .catch(err => res.status(422).json(err))
-      // },
 
       findSongsGenre: function(req, res) {
         db.Song.find({genre: req.params.genre})
@@ -98,12 +84,33 @@ module.exports = {
 
       // // Find song by id
       findSongById: function(res, req) {
-        db.Song.findById(req.params.songid)
+        db.Song.findById(req.params.id)
           .then(dbSong => res.json(dbSong))
           .catch(err => res.status(422).json(err))
       },
 
-}
+      removeSongById: async function(req, res) {
+        await db.User.update(
+          {_id: req.params.userid },
+          { $pull: { 'profile.songs': req.params.songid  } }
+        )
+        
+        await db.Song.findById({_id: req.params.songid})
+        .then( async dbSong => {
+          try {
+            console.log(dbSong)
+            let public_id = dbSong.public_id;
+            await cloudinary.uploader.destroy(public_id, {resource_type: 'raw'});
+          } catch(err) {
+            console.log(err);
+          }
+        })
+        .then(dbSong => dbSong.remove())
+        .then(dbSong => res.json(dbSong))
+        .catch(err => res.status(422).json(err))
+      },
+
+};
 
 
         // "profile.about": req.body.about,

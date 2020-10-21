@@ -57,6 +57,10 @@ router.route('/ide/:songid')
 //   }
 // })
 
+router.route('/audio/:userid/:songid')
+  .delete(songController.removeSongById)
+
+
 router.delete('/audio/cloudinary/delete', async(req, res) => {
   try {
     console.log(req.body.publicid)
@@ -67,15 +71,15 @@ router.delete('/audio/cloudinary/delete', async(req, res) => {
   }
 })
 
-router.delete('/image/cloudinary/delete', async(req, res) => {
-  try {
-    console.log(req.body.publicid)
-    await cloudinary.uploader.destroy(req.body.publicid);
-    res.json({hello: 'world'})
-  } catch (err) {
-    console.log(err);
-  }
-})
+// router.delete('/image/cloudinary/delete', async(req, res) => {
+//   try {
+//     console.log(req.body.publicid)
+//     await cloudinary.uploader.destroy(req.body.publicid);
+//     res.json({hello: 'world'})
+//   } catch (err) {
+//     console.log(err);
+//   }
+// })
 
 
 
