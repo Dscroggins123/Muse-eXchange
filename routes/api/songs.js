@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const songController = require("../../controllers/songController");
+const cloudinary = require('../../utils/cloudinary');
+const upload = require('../../utils/multer');
 
 // router
 //   .route("/")
@@ -37,7 +39,14 @@ router.route('/genre/:genre')
 router.route('/ide/:songid')
   .get(songController.findSongById)
 
-
+router.post('/audio/cloudinary', upload.single('raw'), async(req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {resource_type: 'raw'});
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+  }
+})
 
 
 

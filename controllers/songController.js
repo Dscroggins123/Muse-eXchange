@@ -1,4 +1,6 @@
 const db = require("../models");
+const cloudinary = require('../../utils/cloudinary');
+const upload = require('../../utils/multer');
 
 module.exports = {
       AddUserSongs: function(req, res) {
@@ -42,9 +44,6 @@ module.exports = {
       //   .then(({_id}) => db.User.findOneAndUpdate({_id: req.params.userid}, {$push: {"profile.purchaseSongs": _id}}, { new: true }))
       //   .catch(err => res.status(422).json(err))
       // },
-
-
-
 
       findSongsGenre: function(req, res) {
         db.Song.find({genre: req.params.genre})
