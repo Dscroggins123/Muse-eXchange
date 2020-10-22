@@ -100,11 +100,11 @@ module.exports = {
           try {
             let public_id = dbSong.public_id;
             await cloudinary.uploader.destroy(public_id, {resource_type: 'raw'});
+            dbSong.remove();
           } catch(err) {
             console.log(err);
           }
         })
-        .then(dbSong => dbSong.remove())
         .then(dbSong => res.json(dbSong))
         .catch(err => res.status(422).json(err))
       },
