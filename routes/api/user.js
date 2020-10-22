@@ -60,13 +60,13 @@ router.route(`/purchasedtutorial/:tutorialid/:userid`)
 
 router.route('/image/cloudinary')
   .post(function(req, res) {
-    console.log('router', req.body)
-    console.log('router', req.params)
-    try {
-      cloudinary.uploader.destroy(req.body.publicid);
-      res.json({hello: 'world'})
-    } catch (err) {
-      console.log(err);
+    if (req.body.publicid) {
+      try {
+        cloudinary.uploader.destroy(req.body.publicid);
+        res.json({hello: 'world'})
+      } catch (err) {
+        console.log(err);
+      }
     }
 })
 
