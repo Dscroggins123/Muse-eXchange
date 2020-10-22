@@ -22,7 +22,7 @@ export default {
   // Get tutorials of out user 
   getTutorialsByQuery: function(query) {
     console.log(query)
-    return axios.get(`/api/tutorials/${query}`)
+    return axios.get(`api/tutorials/${query}`)
   },
 
   //get purchased songs for user 

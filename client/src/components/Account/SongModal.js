@@ -70,7 +70,6 @@ function SongModal({ state, field, close, submit, setSubmit }) {
 
   return (
     <>
-      {console.log(value.selectField)}
       <Modal
         show={state}
         onHide={modalClose}

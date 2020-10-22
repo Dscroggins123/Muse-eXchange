@@ -75,7 +75,7 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
             {}
             <td style={{ border: '0px', color: '#747474' }}>
               <a href="#" data-id={song._id} onClick={deleteSong}>
-                <DeleteIcon style={{ cursor: 'pointer' }}/>
+                <DeleteIcon style={{ cursor: 'pointer' ,  color: '#747474'}}/>
               </a>
             </td>
           </tr>

@@ -55,6 +55,7 @@ const AccountPage = () => {
   const [instruments, setInstruments] = useState('');
   const [links, setLinks] = useState('');
   const [songs, setSongs] = useState('');
+  const [tutorials, setTutorials] = useState('');
 
 
   const [profession, setProfession] = useState('');
@@ -101,6 +102,7 @@ const AccountPage = () => {
         setInstruments(res.data.profile.instruments);
         setLinks(res.data.profile.links);
         setSongs(res.data.profile.songs);
+        setTutorials(res.data.profile.tutorials)
       }
     });
   }, [submit, userId]);
@@ -185,6 +187,7 @@ const AccountPage = () => {
               <Tutorials 
                 userId={userId}
                 submit={submit}
+                tutorialIds={tutorials}
                 setSubmit={setSubmit}
               />
             </Tab.Pane>
