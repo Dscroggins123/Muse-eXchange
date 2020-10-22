@@ -26,7 +26,9 @@ const styles = {
   },
   fontMain: {
     fontFamily: 'Kumbh Sans, sans-serif',
-    fontWeight: 700
+    fontWeight: 700,
+    paddingTop: '10px',
+    marginLeft: '7px'
   }
 }
 
@@ -71,13 +73,14 @@ const NavbarComponent = ({ handleLogout }) => {
   }
 
   return (
-    <Navbar variant="dark" expand="lg" style={{ background: '#181818' }}>
-      <Link to='/'>
+    <Navbar variant="dark" expand="lg" style={{ background: '#121212' }}>
+      {/* <Link to='/'>
         <Navbar.Brand>
           <Image src={navLogo} style={{ width: '40px' }} />
         </Navbar.Brand>
-      </Link>
-      <Link to="/">
+      </Link> */}
+      <Link to="/" className='d-flex justify-content-center' style={{textDecoration: 'none'}}>
+        <Image src={navLogo} style={{ width: '40px' }} />
         <Navbar.Brand style={styles.fontMain}>Music e<span style={styles.X} >X</span>change</Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

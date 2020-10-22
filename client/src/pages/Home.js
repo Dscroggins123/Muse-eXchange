@@ -148,10 +148,10 @@ class Home extends Component {
                     </Container>
                   </Tab.Pane>
                   <Tab.Pane eventKey="purchasedSongs">
-                    <h2 className='m-0' style={{background: '#121212'}}>Purchased Songs</h2>
+                    <h2 className='m-0'>Purchased Songs</h2>
                   </Tab.Pane>
                   <Tab.Pane eventKey="purchasedTutorials">
-                    <h2 className='m-0' style={{background: '#121212'}}>Purchased Tutorials</h2>
+                    <h2 className='m-0'>Purchased Tutorials</h2>
                   </Tab.Pane>
                 </Tab.Content>
 

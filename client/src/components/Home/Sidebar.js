@@ -118,7 +118,6 @@ const Sidebar = () => {
   return <>
     <Container fluid>
       <Nav className="flex-column">
-        {/* <h3 style={styles.h3}>Home</h3> */}
         <Nav.Item>
           <Nav.Link eventKey="musicians" className='d-flex justify-content-left' data-event='musicians' onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={musicianStyle}>
             <HomeIcon />
@@ -139,17 +138,9 @@ const Sidebar = () => {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      {/* <ListGroup>
-        <ListGroup.Item action href="first">
-          Link 1
-        </ListGroup.Item>
-        <ListGroup.Item action href="second">
-          Link 2
-        </ListGroup.Item>
-      </ListGroup> */}
-
-      {/* <div className='mt-2 mb-4'>
-        <h3 style={styles.sideHeading}>New Songs</h3>
+      
+      <div className='mt-2 mb-4'>
+        <h3 style={styles.h3}>New Songs</h3>
         <ListGroup defaultActiveKey="#link1">
           
           <ListGroup.Item className='p-0 d-flex justify-content-between' style={{ background: '#181818', color: '#fff' }}>
@@ -177,7 +168,7 @@ const Sidebar = () => {
             </div>
           </ListGroup.Item>
         </ListGroup>
-      </div> */}
+      </div>
     </Container>
   </>
 }
