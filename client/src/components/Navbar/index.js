@@ -24,7 +24,7 @@ const styles = {
   X: {
     color: "#FE064C",
   },
-  fontMain:  {
+  fontMain: {
     fontFamily: 'Kumbh Sans, sans-serif',
     fontWeight: 700
   }
@@ -71,7 +71,7 @@ const NavbarComponent = ({ handleLogout }) => {
   }
 
   return (
-    <Navbar variant="dark" expand="lg" style={{ background: '#121212' }}>
+    <Navbar variant="dark" expand="lg" style={{ background: '#181818' }}>
       <Link to='/'>
         <Navbar.Brand>
           <Image src={navLogo} style={{ width: '40px' }} />
@@ -82,13 +82,13 @@ const NavbarComponent = ({ handleLogout }) => {
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto" style={{fontFamily: 'Kumbh Sans, sans-serif'}}>
+        {/* <Nav className="mr-auto" style={{fontFamily: 'Kumbh Sans, sans-serif'}}>
           <Nav.Link href="/" style={styles.fontMain}>
             <Link to="/" style={styles.link}>Home</Link>
           </Nav.Link>
-          {/* <Nav.Link onClick={handleShow} style={styles.link}>
+          <Nav.Link onClick={handleShow} style={styles.link}>
             <span style={styles.fontMain}>Sell</span>
-          </Nav.Link> */}
+          </Nav.Link>
         </Nav>
         <Form inline>
           <Form.Control type="text" placeholder="Search" className="mr-sm-2" list="data" onChange={handleInputChange} ref={inputRef} style={{ height: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} />
@@ -100,25 +100,27 @@ const NavbarComponent = ({ handleLogout }) => {
           </datalist>
 
           <Button variant="none" style={{ background: "#FE064C", color: "#fff", fontFamily: 'Kumbh Sans, sans-serif' }} onClick={handleFormSubmit}>Search</Button>
-          {/* <Link to={`/profile/${this.state.results.username}`}>
-            <Button variant="outline-success" onClick={this.handleFormSubmit}>Search</Button>
-              </Link> */}
+    
+        </Form> */}
 
-          {/* <div>
-          {this.renderRedirect()}
-          <button onClick={this.setRedirect}>Redirect</button>
-         </div> */}
-        </Form>
+        <Nav className="ml-auto">
+          <Nav.Link href="/" style={styles.fontMain}>
+            <Link to="/account" style={styles.link}>Account</Link>
+          </Nav.Link>
+          <Nav.Link href="/" style={styles.fontMain}>
+            <Link to="/" onClick={handleLogout} style={styles.link}>Log Out</Link>
+          </Nav.Link>
+        </Nav>
       </Navbar.Collapse>
-      <Nav className="mr-auto">
+      {/* <Nav className="mr-auto">
         <Nav.Link href="/" style={styles.fontMain}>
           <Link to="/account" style={styles.link}>Account</Link>
         </Nav.Link>
         <Nav.Link href="/" style={styles.fontMain}>
           <Link to="/" onClick={handleLogout} style={styles.link}>Log Out</Link>
         </Nav.Link>
-      </Nav>
-      <ProductModal state={show} open={handleShow} close={handleClose} />
+      </Nav> */}
+      {/* <ProductModal state={show} open={handleShow} close={handleClose} /> */}
     </Navbar>
   )
 }

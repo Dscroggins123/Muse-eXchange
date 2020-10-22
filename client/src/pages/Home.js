@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Sidebar from '../components/Home/Sidebar';
 import Footer from '../components/Footer';
 import SongCard from '../components/SongCard';
+import SearchButton from '../components/Home/SearchButton';
 
 const styles = {
   home: {
@@ -115,8 +116,9 @@ class Home extends Component {
                     <Jumbotron />
                     <Container fluid>
                       {this.state.users && (<>
-                        <div className="mt-2  mb-2">
-                          <h2 className='mb-0' style={styles.heading}>Explore</h2>
+                        <div className="mt-2 mb-2 d-flex justify-content-between" style={{ borderBottom: '1px solid #282828' }}>
+                          <h2 className='mb-0 align-self-end' style={{fontSize: '20px'}}>Explore</h2>
+                          <SearchButton />
                         </div>
                         {/** Show All User */}
                         <UserList users={this.state.users} />
