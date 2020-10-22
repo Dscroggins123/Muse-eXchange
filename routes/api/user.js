@@ -58,14 +58,16 @@ router.route(`/purchasedtutorial/:tutorialid/:userid`)
 // router.route('/profile/lastName/:userid')
 //   .put(userController.updateLastName);
 
-router.delete('/image/cloudinary', async(req, res) => {
-  try {
-    console.log(req.body.publicid)
-    await cloudinary.uploader.destroy(req.body.publicid);
-    res.json({hello: 'world'})
-  } catch (err) {
-    console.log(err);
-  }
+router.route('/image/cloudinary')
+  .post(function(req, res) {
+    console.log('router', req.body)
+    console.log('router', req.params)
+    try {
+      cloudinary.uploader.destroy(req.body.publicid);
+      res.json({hello: 'world'})
+    } catch (err) {
+      console.log(err);
+    }
 })
 
 module.exports = router;

@@ -22,13 +22,13 @@ const ProfilePicModal = ({userId, profilePic, submit, setSubmit}) => {
    /** ===== Upload Profile info ===== */
   // Function to upload and image to Cloudinary
   const uploadImage = async () => {
-    // if (profilePic) {
-    //   let result = profilePic.match(/MusiceXchange(.*)/g);
-    //   console.log('previous id', result[0]);
-    //   let publicId = result[0].replace(/\.[^/.]+$/, "");
-    //   console.log('previous id', publicId);
-    //   await API.removeCloudinaryPic(publicId);
-    // }
+    if (profilePic) {
+      let result = profilePic.match(/MusiceXchange(.*)/g);
+      console.log('previous id', result[0]);
+      let publicId = result[0].replace(/\.[^/.]+$/, "");
+      console.log('previous id', publicId);
+      await API.removeCloudinaryPic(publicId);
+    }
     const data = new FormData();
     // data.append('file', uploadFiles[0]);
     data.append('file', uploadFiles);
