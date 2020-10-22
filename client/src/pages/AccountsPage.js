@@ -5,6 +5,7 @@ import { Container, Modal, Form, Image, ListGroup, Row, Col, Tabs, Tab, Jumbotro
 import Sidebar from '../components/Account/Sidebar';
 import BasicInfo from '../components/Account/BasicInfo';
 import Songs from '../components/Account/Songs';
+import Tutorials from '../components/Account/Tutorials';
 // API
 import API from '../utils/API';
 
@@ -166,17 +167,26 @@ const AccountPage = () => {
                   {/* <h2 className='mt-2' style={styles.h2}>Channel name, branding, and description</h2> */}
                 </Container>
               </Jumbotron>
-                <Songs 
-                  userId={userId}
-                  profilePic={profilePic}
-                  songIds={songs}
-                  submit={submit}
-                  setSubmit={setSubmit}
-                />
+              <Songs
+                userId={userId}
+                profilePic={profilePic}
+                songIds={songs}
+                submit={submit}
+                setSubmit={setSubmit}
+              />
 
             </Tab.Pane>
             <Tab.Pane eventKey="tutorials" style={{ height: '100%' }}>
-              <div>Tutorials</div>
+              <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
+                <Container fluid>
+                  <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Tutorials</h1>
+                </Container>
+              </Jumbotron>
+              <Tutorials 
+                userId={userId}
+                submit={submit}
+                setSubmit={setSubmit}
+              />
             </Tab.Pane>
           </Tab.Content>
         </Col>

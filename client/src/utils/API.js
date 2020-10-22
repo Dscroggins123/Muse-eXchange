@@ -17,7 +17,7 @@ export default {
   },
 //  Add tutorials for user to sell
   AddTutorials: function(userid,data){
-    return axios.post(`/api/tutorials/${userid}`,data)
+    return axios.post(`/api/tutorials/${userid}`, data)
   },
   // Get tutorials of out user 
   getTutorialsByQuery: function(query) {

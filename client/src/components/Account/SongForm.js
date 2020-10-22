@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup';
 
-function ModalForm({ getValue, values }) {
+function SongForm({ getValue, values }) {
 
   const [product, setProduct] = useState('');
 
@@ -34,7 +34,7 @@ function ModalForm({ getValue, values }) {
   return (
 
     <Form>
-      {product === "song" ? (<div>
+      <div>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Artist:</Form.Label>
           <Form.Control type="text" placeholder="Enter artist" name="artist" onChange={inputChange} style={{textAlign: 'left'}}/>
@@ -72,38 +72,7 @@ function ModalForm({ getValue, values }) {
             </Form.Group>
           </ListGroup.Item>
         </ListGroup>
-
-      </div>) :
-        (<div>
-          <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Tutorial Type:</Form.Label>
-            <Form.Control as="select" name="tutorialtype" onChange={inputChange} style={{textAlign: 'left'}}>
-              <option value='Guitar'>Guitar</option>
-              <option value='Drums'>Drums</option>
-              <option value='Bass'>Jazz</option>
-              <option value='Keyboard'>Keyboard</option>
-              <option value='Beats'>Beats</option>
-              <option value='Trumpet'>Trumpet</option>
-              <option value='Saxophone'>Saxophone</option>
-              <option value='Violin'>Violin</option>
-              <option value='Cello'>Cello</option>
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Title:</Form.Label>
-            <Form.Control type="text" placeholder="Enter title" name="tutorialtitle" onChange={inputChange} style={{textAlign: 'left'}}/>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Link:</Form.Label>
-            <Form.Control type="text" placeholder="Enter video link" name="tutoriallink" onChange={inputChange} style={{textAlign: 'left'}}/>
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Price:</Form.Label>
-            <Form.Control placeholder="Enter amount" type='number' name="tutorialprice" onChange={inputChange} style={{textAlign: 'left'}}/>
-          </Form.Group>
-
-        </div>)
-      }
+      </div>
     </Form>
 
 
@@ -114,4 +83,4 @@ function ModalForm({ getValue, values }) {
 
 }
 
-export default ModalForm
+export default SongForm;

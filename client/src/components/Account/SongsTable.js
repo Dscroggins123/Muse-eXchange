@@ -6,6 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 // Components
 import ProductModal from './ProductModal';
+import SongModal from './SongModal';
 // API
 import API from '../../utils/API';
 const months = {
@@ -82,9 +83,9 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
       </tbody>
     </Table>
     <a href="#" onClick={handleShow} style={{ color: '#1877FF', cursor: 'pointer', textDecoration: 'none' }}>
-      <AddIcon /> Add Song
+      <AddIcon /> Add song
     </a>
-    <ProductModal field={'song'} state={show} open={handleShow} close={handleClose} submit={submit} setSubmit={setSubmit} />
+    <SongModal field={'song'} state={show} open={handleShow} close={handleClose} submit={submit} setSubmit={setSubmit} />
   </>
 }
 

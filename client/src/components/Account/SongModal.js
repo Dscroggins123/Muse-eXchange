@@ -3,11 +3,12 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner';
 import ModalForm from './ModalForm';
+import SongForm from './SongForm';
 import API from '../../utils/API';
 import { Close } from '@material-ui/icons';
 require('dotenv').config();
 
-function ProductModal({ state, field, close, submit, setSubmit }) {
+function SongModal({ state, field, close, submit, setSubmit }) {
   // console.log('close: ', close);
 
   const [user, setUser] = useState();
@@ -19,74 +20,44 @@ function ProductModal({ state, field, close, submit, setSubmit }) {
     if (localStorage.getItem("currentUser")) {
       setUser(JSON.parse(localStorage.getItem("currentUser")));
     }
-    console.log('use effect',field)
+    console.log('use effect', field)
     setValue({ selectField: field })
   }, [field])
 
   const handleSubmit = async () => {
-    console.log('from handle submit', value.tutorialtype)
-    console.log(value)
-    if (value.selectField === "song") {
-      if (value.files) {
-        setLoading(true);
-        const data = new FormData();
-        data.append('file', value.files[0]);
-
-
-        data.append('upload_preset', 'MusiceXchange'); // must be same name as upload
-
-        const res = await fetch(
-          `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/raw/upload/`, // API base url
-          {
-            method: 'POST',
-            body: data
-          }
-        )
-        const file = await res.json() // get json response
-        let dataSongs = {
-          author: value.artist,
-          title: value.title,
-          file: file.secure_url,
-          price: value.price,
-          public_id: file.public_id
-        }
-        if (typeof value.genre === 'undefined') {
-          console.log('condition is true')
-          dataSongs.genre = 'Hip-Hop'
-        } else {
-          dataSongs.genre = value.genre
-        }
-
-        await API.AddSongs(user._id, dataSongs);
-        setLoading(false);
-        setUploaded(true);
-        setValue({});
-        setSubmit(submit + 1);
-      }
-    }
-    else if (value.selectField === 'tutorial') {
+    if (value.files) {
       setLoading(true);
-      console.log('in product modal handlesubmit', value.tutorialtype)
-
-      let dataTutorials = {
-        link: value.tutoriallink,
-        title: value.tutorialtitle,
-        price: value.tutorialprice
+      const data = new FormData();
+      data.append('file', value.files[0]);
+      data.append('upload_preset', 'MusiceXchange'); // must be same name as upload
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/raw/upload/`, // API base url
+        {
+          method: 'POST',
+          body: data
+        }
+      )
+      const file = await res.json() // get json response
+      let dataSongs = {
+        author: value.artist,
+        title: value.title,
+        file: file.secure_url,
+        price: value.price,
+        public_id: file.public_id
       }
-      if (typeof value.tutorialtype === 'undefined') {
+      if (typeof value.genre === 'undefined') {
         console.log('condition is true')
-        dataTutorials.type = 'Guitar'
+        dataSongs.genre = 'Hip-Hop'
       } else {
-        dataTutorials.type = value.tutorialtype
+        dataSongs.genre = value.genre
       }
 
-      API.AddTutorials(user._id, dataTutorials)
+      await API.AddSongs(user._id, dataSongs);
       setLoading(false);
       setUploaded(true);
       setValue({});
       setSubmit(submit + 1);
     }
-    console.log(value.selectField)
     value.selectField = '';
   }
 
@@ -108,10 +79,10 @@ function ProductModal({ state, field, close, submit, setSubmit }) {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add New Product</Modal.Title>
+          <Modal.Title>Add new song</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ModalForm getValue={setValue} values={value} /> {/** setValue = getValue */}
+          <SongForm getValue={setValue} values={value} /> {/** setValue = getValue */}
         </Modal.Body>
         <Modal.Footer>
           {loading && (<Spinner animation="border" role="status">
@@ -131,4 +102,4 @@ function ProductModal({ state, field, close, submit, setSubmit }) {
     </>
   )
 }
-export default ProductModal
+export default SongModal;
