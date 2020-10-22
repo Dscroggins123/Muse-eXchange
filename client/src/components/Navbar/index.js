@@ -42,7 +42,6 @@ const NavbarComponent = ({ handleLogout }) => {
 
   useEffect(() => {
     runSearch()
-    console.log("what component am i in??" + result)
   }, []);
 
   const runSearch = () => {
@@ -87,9 +86,9 @@ const NavbarComponent = ({ handleLogout }) => {
           <Nav.Link href="/" style={styles.fontMain}>
             <Link to="/" style={styles.link}>Home</Link>
           </Nav.Link>
-          <Nav.Link onClick={handleShow} style={styles.link}>
+          {/* <Nav.Link onClick={handleShow} style={styles.link}>
             <span style={styles.fontMain}>Sell</span>
-          </Nav.Link>
+          </Nav.Link> */}
         </Nav>
         <Form inline>
           <Form.Control type="text" placeholder="Search" className="mr-sm-2" list="data" onChange={handleInputChange} ref={inputRef} style={{ height: '100%', fontFamily: 'Kumbh Sans, sans-serif' }} />

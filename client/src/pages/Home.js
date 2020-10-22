@@ -112,7 +112,6 @@ class Home extends Component {
 
                 <Tab.Content>
                   <Tab.Pane eventKey="musicians">
-                    <h2 className='m-0' style={{background: '#121212'}}>Musicians</h2>
                     <Jumbotron />
                     <Container fluid>
                       {this.state.users && (<>
@@ -146,8 +145,11 @@ class Home extends Component {
                       </>)}
                     </Container>
                   </Tab.Pane>
-                  <Tab.Pane eventKey="songs">
-                    <h2 className='m-0' style={{background: '#121212'}}>Songs</h2>
+                  <Tab.Pane eventKey="purchasedSongs">
+                    <h2 className='m-0' style={{background: '#121212'}}>Purchased Songs</h2>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="purchasedTutorials">
+                    <h2 className='m-0' style={{background: '#121212'}}>Purchased Tutorials</h2>
                   </Tab.Pane>
                 </Tab.Content>
 
