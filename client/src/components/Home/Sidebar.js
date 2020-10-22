@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Card, Accordion, Row, Col, Button, ListGroup, Nav } from 'react-bootstrap';
 import SongCard from '../SongCard';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';;
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import HomeIcon from '@material-ui/icons/Home';
+import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 
 const styles = {
   home: {
@@ -69,36 +72,14 @@ const Sidebar = () => {
   let musicianStyle;
   if (musiciansHover) {
     musicianStyle = {
+      fontWeight: 700,
       color: '#fff',
-      background: '#282828'
+      // background: '#282828'
     }
   } else {
     musicianStyle = {
       color: '#fff'
-    }
-  }
 
-  let songsStyle;
-  if (songsHover) {
-    songsStyle = {
-      color: '#fff',
-      background: '#282828'
-    }
-  } else {
-    songsStyle = {
-      color: '#fff'
-    }
-  }
-
-  let tutorialStyle;
-  if (tutorialHover) {
-    tutorialStyle = {
-      color: '#fff',
-      background: '#282828'
-    }
-  } else {
-    tutorialStyle = {
-      color: '#fff'
     }
   }
 
@@ -106,7 +87,7 @@ const Sidebar = () => {
   if (purchasedSongHover) {
     purchaseSongStyle = {
       color: '#fff',
-      background: '#282828'
+      fontWeight: 700,
     }
   } else {
     purchaseSongStyle = {
@@ -118,7 +99,7 @@ const Sidebar = () => {
   if (purchasedTutorialHover) {
     purchaseTutorialStyle = {
       color: '#fff',
-      background: '#282828'
+      fontWeight: 700,
     }
   } else {
     purchaseTutorialStyle = {
@@ -137,22 +118,25 @@ const Sidebar = () => {
   return <>
     <Container fluid>
       <Nav className="flex-column">
-        <h3 style={styles.h3}>Library</h3>
+        {/* <h3 style={styles.h3}>Home</h3> */}
         <Nav.Item>
-          <Nav.Link eventKey="musicians" data-event='musicians' onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={musicianStyle}>Musicians</Nav.Link>
+          <Nav.Link eventKey="musicians" className='d-flex justify-content-left' data-event='musicians' onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={musicianStyle}>
+            <HomeIcon />
+            <div className='ml-2' style={{paddingTop: '2px'}}>Home</div>
+          </Nav.Link>
+        </Nav.Item>
+        <h3 className='m-0' style={styles.h3}>Purchases</h3>
+        <Nav.Item >
+          <Nav.Link eventKey="purchasedSongs" className='d-flex justify-content-left' onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={purchaseSongStyle}>
+            <LibraryMusicIcon />
+            <div className='ml-2' style={{paddingTop: '2px'}}>Songs</div>
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item >
-          <Nav.Link eventKey="songs" onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={songsStyle}>Songs</Nav.Link>
-        </Nav.Item>
-        <Nav.Item >
-          <Nav.Link eventKey="tutorials" onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={tutorialStyle}>Tutorials</Nav.Link>
-        </Nav.Item>
-        <h3 style={styles.h3}>Purchases</h3>
-        <Nav.Item >
-          <Nav.Link eventKey="purchasedSongs" onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={purchaseSongStyle}>Songs</Nav.Link>
-        </Nav.Item>
-        <Nav.Item >
-          <Nav.Link eventKey="purchasedTutorials" onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={purchaseTutorialStyle}>Tutorials</Nav.Link>
+          <Nav.Link eventKey="purchasedTutorials" className='d-flex justify-content-left' onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={purchaseTutorialStyle}>
+            <VideoLibraryIcon />
+            <div className='ml-2' style={{paddingTop: '2px'}}>Tutorials</div>
+          </Nav.Link>
         </Nav.Item>
       </Nav>
       {/* <ListGroup>
@@ -164,10 +148,10 @@ const Sidebar = () => {
         </ListGroup.Item>
       </ListGroup> */}
 
-      <div className='mt-2 mb-4'>
+      {/* <div className='mt-2 mb-4'>
         <h3 style={styles.sideHeading}>New Songs</h3>
         <ListGroup defaultActiveKey="#link1">
-          {/* <ListGroup.Item action onClick={alertClicked}></ListGroup.Item> */}
+          
           <ListGroup.Item className='p-0 d-flex justify-content-between' style={{ background: '#181818', color: '#fff' }}>
             <div style={{ width: '4rem' }}>
               <SongCard />
@@ -193,7 +177,7 @@ const Sidebar = () => {
             </div>
           </ListGroup.Item>
         </ListGroup>
-      </div>
+      </div> */}
     </Container>
   </>
 }

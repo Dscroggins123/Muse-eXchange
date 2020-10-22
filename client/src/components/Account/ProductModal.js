@@ -85,6 +85,7 @@ function ProductModal({ state, field, close, submit, setSubmit }) {
         onHide={modalClose}
         backdrop="static"
         keyboard={false}
+        animation={false}
       >
         <Modal.Header closeButton>
           <Modal.Title>Add New Product</Modal.Title>
