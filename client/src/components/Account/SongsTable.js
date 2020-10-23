@@ -45,6 +45,11 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
 
   return <>
     {/* {console.log(songsList)} */}
+    <div className='m-2 p-2'>
+      <a href="#" onClick={handleShow} style={{ color: '#1877FF', cursor: 'pointer', textDecoration: 'none' }}>
+        <AddIcon /> Add song
+      </a>
+    </div>
     <Table responsive bordered size="sm" className='mb-1'>
       <thead>
         <tr>
@@ -58,7 +63,7 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
       </thead>
       <tbody>
         {songs.map((song, index) => <>
-          <tr>
+          <tr style={{background: '#F8F8F8'}}>
             <td>{(index + 1)}</td>
             <td>{song.author}</td>
             <td>{song.title}</td>
@@ -73,18 +78,15 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
             </td>
             {/* {console.log(new Date(song.created_at))} */}
             {}
-            <td style={{ border: '0px', color: '#747474' }}>
+            <td style={{ border: '0px', color: '#747474', background: '#fff' }}>
               <a href="#" data-id={song._id} onClick={deleteSong}>
-                <DeleteIcon style={{ cursor: 'pointer' ,  color: '#747474'}}/>
+                <DeleteIcon style={{ cursor: 'pointer', color: '#747474' }} />
               </a>
             </td>
           </tr>
         </>)}
       </tbody>
     </Table>
-    <a href="#" onClick={handleShow} style={{ color: '#1877FF', cursor: 'pointer', textDecoration: 'none' }}>
-      <AddIcon /> Add song
-    </a>
     <SongModal field={'song'} state={show} open={handleShow} close={handleClose} submit={submit} setSubmit={setSubmit} />
   </>
 }

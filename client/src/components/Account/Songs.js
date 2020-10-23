@@ -39,7 +39,7 @@ const Songs = ({userId, profilePic, songIds, submit, setSubmit}) => {
   }, [songIds]);
 
   return <>
-    <Container fluid className='mt-4 mb-4'>
+    <Container fluid className='mb-4'>
       <div className='songs-list mt-2'>
         <SongsTable userId={userId} field='song' songsList={songsList} submit={submit} setSubmit={setSubmit}/>
       </div>

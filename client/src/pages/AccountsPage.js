@@ -152,7 +152,6 @@ const AccountPage = () => {
                     currentAbout={about}
                     currentInstruments={instruments}
                     currentLinks={links}
-                    style={{ height: '100%', overflow: 'auto' }}
                   />
                   <div style={{ height: '25vh' }}></div>
                   <div className='d-block d-sm-none' style={{ height: '50vh' }}></div>
@@ -161,8 +160,7 @@ const AccountPage = () => {
               </Row>
 
             </Tab.Pane>
-            <Tab.Pane eventKey="songs" style={{ height: '100%' }}>
-
+            <Tab.Pane eventKey="songs" style={{ height: '100%', overflow: 'auto' }}>
               <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
                 <Container fluid>
                   <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Songs</h1>
@@ -178,7 +176,7 @@ const AccountPage = () => {
               />
 
             </Tab.Pane>
-            <Tab.Pane eventKey="tutorials" style={{ height: '100%' }}>
+            <Tab.Pane eventKey="tutorials" style={{ height: '100%', overflow: 'auto' }}>
               <Jumbotron fluid className='p-2 mb-0 border-bottom' style={{ background: '#fff' }}>
                 <Container fluid>
                   <h1 className='mt-2' style={{ fontSize: '30px', fontWeight: 700 }}>Tutorials</h1>
