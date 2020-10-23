@@ -11,6 +11,7 @@ import Sidebar from '../components/Home/Sidebar';
 import Footer from '../components/Footer';
 import SongCard from '../components/SongCard';
 import SearchButton from '../components/Home/SearchButton';
+import PurchasedSongs from '../components/Home/PurchasedSongs';
 
 const styles = {
   home: {
@@ -149,6 +150,7 @@ class Home extends Component {
                   </Tab.Pane>
                   <Tab.Pane eventKey="purchasedSongs">
                     <h2 className='m-0'>Purchased Songs</h2>
+                    <PurchasedSongs />
                   </Tab.Pane>
                   <Tab.Pane eventKey="purchasedTutorials">
                     <h2 className='m-0'>Purchased Tutorials</h2>

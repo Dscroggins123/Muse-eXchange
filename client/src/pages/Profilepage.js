@@ -161,7 +161,7 @@ class Profile extends Component {
     if (!this.state.songs) return <h1>Loading...</h1>
     return (
       <div style={{ height: '100%', overflow: 'auto' }}>
-        <div style={{ background: '#000' }}>
+        <div style={{ background: '#000', overflow: 'hidden' }}>
           <Jumbotron fluid className='mb-0' style={{
             backgroundImage: `url(${this.state.profilePic})`,
             backgroundRepeat: 'no-repeat',
