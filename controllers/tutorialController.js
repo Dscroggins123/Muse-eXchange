@@ -15,14 +15,24 @@ module.exports = {
         .catch(err => res.status(422).json(err));
       },
       
-      
       findAllUserTutorials: function(req, res) {
         db.Tutorial.find({})
         .populate("tutorials")
         .then(dbUserTutorials => res.json(dbUserTutorials))
         .catch(err => res.status(422).json(err));
-      }
+      },
 
+      removeTutorialById: async function(req, res) {
+        await db.User.update(
+          {_id: req.params.userid },
+          { $pull: { 'profile.tutorials':  req.params.tutorialid }}
+        )
+
+        await db.Tutorial.findById({_id: req.params.tutorialid })
+        .then(dbTutorial => dbTutorial.remove())
+        .then(dbTutorial => res.json(dbTutorial))
+        .catch(err => res.status(422).json(err))
+      }
       
 
 

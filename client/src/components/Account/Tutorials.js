@@ -17,7 +17,13 @@ const Tutorials = ({userId, tutorialIds, submit, setSubmit}) => {
         API.getTutorialsByQuery(id)
           .then(res => {
             setTutorialsList(tutorialsList => [...tutorialsList, res.data[0]])
-          }).catch(err => console.log(err))
+          }).then(() => {
+            setTutorialsList(tutorialsList => {
+              tutorialsList = tutorialsList.sort((a, b) => (a.created_at > b.created_at) ? 1 : -1)
+              return tutorialsList;
+            })
+          })
+          .catch(err => console.log(err))
       })
     }
   }, [tutorialIds])

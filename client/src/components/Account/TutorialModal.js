@@ -39,12 +39,13 @@ function TutorialModal({ state, field, close, submit, setSubmit }) {
       dataTutorials.type = value.tutorialtype
     }
 
-    API.AddTutorials(user._id, dataTutorials)
+    await API.AddTutorials(user._id, dataTutorials)
     setLoading(false);
     setUploaded(true);
     setValue({});
     setSubmit(submit + 1);
     value.selectField = '';
+    close();
   }
 
   const modalClose = () => {

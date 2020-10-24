@@ -86,4 +86,7 @@ export default {
     return axios.post('/api/users/image/cloudinary', {publicid: picid});
   },
   
+  removeTutorial: function(userid, tutorialid) {
+    return axios.delete(`/api/tutorials/video/${userid}/${tutorialid}`);
+  }
 }

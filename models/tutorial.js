@@ -7,7 +7,13 @@ const tutorialSchema = new Schema({
   sessionType: String,
   title: String,
   link: String,
-  price: Number
+  price: Number,
+  createdAt: Number,
+  updatedAt: Number,
+}, {
+    timestamps: { 
+      createdAt: 'created_at' 
+    } 
 });
 
 const Tutorial = mongoose.model("Tutorial", tutorialSchema);

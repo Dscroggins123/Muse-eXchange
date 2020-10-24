@@ -57,6 +57,7 @@ function SongModal({ state, field, close, submit, setSubmit }) {
       setUploaded(true);
       setValue({});
       setSubmit(submit + 1);
+      close();
     }
     value.selectField = '';
   }

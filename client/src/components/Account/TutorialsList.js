@@ -7,11 +7,11 @@ import TutorialModal from './TutorialModal';
 // Icons
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
-// API 
-import API from '../../utils/API';
 // Components
 import MediaPlayer from '../MediaPlayer';
 // Icons
+// API 
+import API from '../../utils/API';
 
 const TutorialsList = ({ userId, submit, tutorialsList, setSubmit }) => {
 
@@ -25,6 +25,12 @@ const TutorialsList = ({ userId, submit, tutorialsList, setSubmit }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const deleteTutorial = e => {
+    let tutorialId = e.currentTarget.dataset.id;
+    API.removeTutorial(userId, tutorialId);
+    setSubmit(submit + 1);
+  }
 
   return <>
     {/* {console.log(tutorialsList)} */}
@@ -49,7 +55,11 @@ const TutorialsList = ({ userId, submit, tutorialsList, setSubmit }) => {
             <Col xs={3} className='p-0 pt-2 pr-2' style={{ height: '80px' }} >
               <Row xs={1} className='m-0 d-flex justify-content-between' style={{ fontSize: '14px', height: '100%' }}>
                 <Col className='p-0 text-left'><span style={{ fontWeight: 700 }}>Price: </span>${tutorial.price}</Col>
-                <Col className='p-0 text-right'><a href='#'><DeleteIcon style={{ cursor: 'pointer', color: '#747474' }} /></a></Col>
+                <Col className='p-0 text-right'>
+                  <a href='#' data-id={tutorial._id} onClick={deleteTutorial}>
+                    <DeleteIcon style={{ cursor: 'pointer', color: '#747474' }} />
+                  </a>
+                </Col>
               </Row>
             </Col>
           </Row>
