@@ -26,7 +26,10 @@ class CustomPlayPause extends Component {
         style={style}
         onClick={this._handlePlayPause}
       > 
-        {media.isPlaying ? <PauseIcon /> : <PlayArrowIcon /> }
+        {console.log(this.props.fontSize)}
+        {media.isPlaying ? 
+          <PauseIcon style={{ fontSize: `${this.props.fontSize}`}}/> 
+          : <PlayArrowIcon style={{ fontSize: `${this.props.fontSize}`}}/> }
       </button>
     )
   }

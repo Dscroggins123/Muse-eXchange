@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Image } from 'react-bootstrap';
 import "./style.css";
-import defaultProfilePic from '../../assets/svg/profile.svg';
+import defaultProfilePic from '../../../assets/svg/profile.svg';
 
 const styles ={ 
   profilePic: {

@@ -23,7 +23,9 @@ class VolumeButton extends Component {
         style={style}
         onClick={this._handlePlayPause}
       > 
-        {media.isMuted ? <VolumeOffIcon /> : <VolumeUpIcon /> }
+        {media.isMuted ? 
+          <VolumeOffIcon style={{ fontSize: `${this.props.fontSize}`}}/> 
+          : <VolumeUpIcon  style={{ fontSize: `${this.props.fontSize}`}}/> }
         {/* {media.isPlaying ? 'Pause' : 'Play'} */}
       </button>
     )

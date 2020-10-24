@@ -3,8 +3,8 @@ import API from '../utils/API';
 // Bootstrap
 import { Container, Row, Col, Image, Jumbotron, ListGroup, Badge } from 'react-bootstrap';
 // Components
-import ProfilePic from '../components/ProfilePic';
-import ProfileSongList from '../components/ProfileSongList';
+import ProfilePic from '../components/Profile/ProfilePic';
+import ProfileSongList from '../components/Profile/ProfileSongList';
 import Footer from '../components/Footer';
 // Icons
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -66,12 +66,6 @@ class Profile extends Component {
       this.setState({ user: JSON.parse(localStorage.getItem("currentUser")) });
     }
   }
-  // const [user, setUser] = useState();
-  // useEffect(()=> {
-  //   if(localStorage.getItem("currentUser")){
-  //     setUser(JSON.parse(localStorage.getItem("currentUser")));
-  //   }
-  // },[])
   componentDidUpdate(_, prevState) {
     const username = this.props.match.params.username
     if (prevState.username !== username) {
@@ -204,16 +198,6 @@ class Profile extends Component {
                         <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: `${colors[index]}` }}>{instrument}</Badge>
                       </>}
                     </>)}
-                    {/* <Badge pill className='text-light' style={{ fontSize: '16px', background: '#FE064C' }}>{this.state.profession}</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#FE064C' }}>Guitar</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#E11462' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#C52279' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#A8308F' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#8B3FA6' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#6E4DBC' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#525BD2' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#3569E9' }}>fdfad</Badge>
-                  <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: '#1877FF' }}>fdfad</Badge> */}
                     <Row className='d-flex justify-content-start'>
                       {this.state.links.linkedin && <>
                         <Col xs={1}>
