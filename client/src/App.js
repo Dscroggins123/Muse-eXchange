@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Home from '../src/pages/Home';
-import LandingPage from '../src/pages/LandingPage';
 import NoMatch from "../src/pages/NoMatch";
 import UserProfile from './pages/UserProfile';
 import AccountPage from './pages/AccountsPage';

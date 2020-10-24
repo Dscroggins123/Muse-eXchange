@@ -35,7 +35,7 @@
 
 .media-seek-bar > input[type='range'] {
   overflow: hidden;
-  width: 150px;
+  width: 100px;
   -webkit-appearance: none;
   background-color: #393939;
   outline: 0px;
@@ -47,5 +47,5 @@
   height: 10px;
   cursor: ew-resize;
   background: #E4E4E4;
-  box-shadow: -150px 0 0 150px #FE064C;
+  box-shadow: -100px 0 0 100px #FE064C;
 }

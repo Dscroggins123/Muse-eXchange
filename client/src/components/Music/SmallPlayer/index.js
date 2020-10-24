@@ -1,7 +1,7 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import './style.css';
+// import './style.css';
 
 import { Media, Player, controls, utils } from 'react-media-player'
 import PlayButton from '../../MediaPlayer/PlayButton';
@@ -46,7 +46,7 @@ const SmallPlayer = ({ song }) => {
             <CurrentTime className='align-self-center' style={{outline: 'none', color: '#000', fontSize: '12px'}}/>
             <span className='align-self-center' style={{color: '#000', fontSize: '12px'}}>/</span>
             <Duration className='align-self-center mr-1' style={{outline: 'none', color: '#000', fontSize: '12px'}}/>
-            <div className='media-seek-bar-profile align-self-center'>
+            <div className='media-seek-bar align-self-center'>
               <SeekBar />
             </div>
           </div>

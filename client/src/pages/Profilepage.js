@@ -6,6 +6,7 @@ import { Container, Row, Col, Image, Jumbotron, ListGroup, Badge } from 'react-b
 import ProfilePic from '../components/Profile/ProfilePic';
 import ProfileSongList from '../components/Profile/ProfileSongList';
 import Footer from '../components/Footer';
+import MediaPlayer from '../components/MediaPlayer';
 // Icons
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -111,12 +112,14 @@ class Profile extends Component {
           })
       }).then(() => {
         this.state.tutorials.map(tutorialid => {
+          console.log('call get', tutorialid)
           this.getTutorialsByQuery(tutorialid)
         })
       })
       .then(() => {
         /** ----- Songs ----- */
         this.state.songs.map(songid => {
+          console.log('call get songs', songid)
           this.getSongsByQuery(songid);
         });
       }).then(() => {
@@ -143,12 +146,12 @@ class Profile extends Component {
   }
   /** ---- Tutorials ---- */
   getTutorialsByQuery = id => {
-    API.getTutorialsByQuery(id)
-      .then(res => {
-        this.setState({ ...this.state, tutorialInfo: [...this.state.tutorialInfo, res.data[0]] })
-        this.setState({ ...this.state, tutorials: this.state.tutorialInfo })
-      })
-      .catch(err => console.log(err))
+    console.log('tutorial query should be called')
+    API.getTutorialsByQuery(id).then(res => {
+      console.log('get tutorials', res.data)
+      this.setState({ ...this.state, tutorialInfo: [...this.state.tutorialInfo, res.data[0]] })
+      this.setState({ ...this.state, tutorials: this.state.tutorialInfo })
+    }).catch(err => console.log(err))
   }
   render() {
 
@@ -192,7 +195,6 @@ class Profile extends Component {
                   </div>
                   <div>
                     <h3>{this.state.firstName} {this.state.lastName}</h3>
-                    {console.log(this.state.instruments)}
                     {instruments.map((instrument, index) => <>
                       {this.state.instruments[`${instrument.toLowerCase()}`] && <>
                         <Badge pill className='text-light m-1' style={{ fontSize: '16px', background: `${colors[index]}` }}>{instrument}</Badge>
@@ -272,9 +274,39 @@ class Profile extends Component {
                   />
                 </Col>
               </Row>
+              <div className='border-bottom border-secondary mb-3' style={{ width: '100%' }}>
+                <h2 className='text-center' style={styles.heading}>Tutorials</h2>
+              </div>
+              <Row xs={3} className='ml-3' style={{color: '#000' }}>
+                {this.state.tutorialInfo.map(tutorial => <>
+                  <Col className='mb-2 d-flex justify-content-center' >
+                    <div>
+                    <Row>
+                      <MediaPlayer link={tutorial.link} />
+                    </Row>
+                    <Row style={{ width: '300px', background: '#F8F8F8' }}>
+                      <Col xs={9} className='pt-2' style={{ height: '80px' }}>
+                        <p className='m-0' style={{ fontSize: '14px' }}>
+                         {tutorial.title}
+                        </p>
+                      </Col>
+                      <Col xs={3} className='p-0 pt-2 pr-2' style={{ height: '80px' }} >
+                        <Row xs={1} className='m-0 d-flex justify-content-between' style={{ fontSize: '14px', height: '100%'}}>
+                          <Col className='p-0 text-left'><span style={{ fontWeight: 700 }}>Price: </span>${tutorial.price}</Col>
+                          <Col className='p-0 text-right'>
+                            <div>buy</div>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                    </div>
+                    
+                  </Col>
+                </>)}
+              </Row>
             </div>
           </main>
-          <Footer />
+          {/* <Footer /> */}
           {/* <div style={{height: '25vh'}}></div>
           <div className='d-block d-sm-none' style={{height: '50vh'}}></div> */}
         </Container>
