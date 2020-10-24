@@ -7,8 +7,12 @@ import AddIcon from '@material-ui/icons/Add';
 // Components
 import ProductModal from './ProductModal';
 import SongModal from './SongModal';
+import PlayButton from '../MediaPlayer/PlayButton';
 // API
 import API from '../../utils/API';
+import { Media, Player, controls, utils } from 'react-media-player'
+
+
 const months = {
   0: 'Jan',
   1: 'Feb',
@@ -53,6 +57,7 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
     <Table responsive bordered size="sm" className='mb-1'>
       <thead>
         <tr>
+          <th style={{border: '0px'}}></th>
           <th>#</th>
           <th>Artist</th>
           <th>Title</th>
@@ -64,6 +69,18 @@ const SongsTable = ({ userId, songsList, submit, setSubmit }) => {
       <tbody>
         {songs.map((song, index) => <>
           <tr style={{background: '#F8F8F8'}}>
+            <td style={{border: '0px', background: '#fff', width: '20px'}}>
+              <Media>
+                <div className="media">
+                  <div className="media-player">
+                    <Player src={song.file} style={{display: 'none'}} />
+                    <div className="media-controls">
+                      <PlayButton style={{outline: 'none', color: '#747474'}}/>
+                    </div>
+                  </div>
+                </div>
+              </Media>
+            </td>
             <td>{(index + 1)}</td>
             <td>{song.author}</td>
             <td>{song.title}</td>
