@@ -4,11 +4,11 @@ import PlayButton from './PlayButton';
 import VolumeButton from './VolumeButton';
 import FullScreenButton from './FullScreenButton';
 import './style.css'
-const { 
-  PlayPause, 
-  MuteUnmute, 
-  Volume, 
-  Duration, 
+const {
+  PlayPause,
+  MuteUnmute,
+  Volume,
+  Duration,
   Progress,
   CurrentTime,
   SeekBar,
@@ -16,27 +16,27 @@ const {
 } = controls
 const { keyboardControls } = utils
 
-const MediaPlayer = ({link}) => {
-  return <> 
+const MediaPlayer = ({ link }) => {
+  return <>
     <Media>
       <div className="media">
-        <div className="media-player" style={{background: '#181818'}}>
+        <div className="media-player" style={{ background: '#181818' }}>
           <Player src={link} style={{ width: '300px', height: '169px' }} />
-          <div className="media-controls d-flex justify-content-between" style={{ width: '300px'}}>
-            <PlayButton style={{outline: 'none', color: '#fff'}}/>
-            <VolumeButton style={{outline: 'none', color: '#fff'}}/>
+          <div className="media-controls d-flex justify-content-between" style={{ width: '300px' }}>
+            <PlayButton style={{ outline: 'none', color: '#fff' }} />
+            <VolumeButton style={{ outline: 'none', color: '#fff' }} />
             <div className='media-vol'>
               <Volume className='media-vol' />
             </div>
             <div>
-            <CurrentTime className='align-self-center' style={{outline: 'none', color: '#fff', fontSize: '10px'}}/>
-            <span className='align-self-center' style={{color: '#fff', fontSize: '10px'}}>/</span>
-            <Duration className='align-self-center' style={{outline: 'none', color: '#fff', fontSize: '10px'}}/>
+              <CurrentTime className='align-self-center' style={{ outline: 'none', color: '#fff', fontSize: '10px' }} />
+              <span className='align-self-center' style={{ color: '#fff', fontSize: '10px' }}>/</span>
+              <Duration className='align-self-center' style={{ outline: 'none', color: '#fff', fontSize: '10px' }} />
             </div>
             <div className='media-seek-bar'>
               <SeekBar />
             </div>
-            <FullScreenButton style={{outline: 'none', color: '#fff'}}/>
+            <FullScreenButton style={{ outline: 'none', color: '#fff' }} />
           </div>
         </div>
       </div>
