@@ -105,6 +105,7 @@ class Home extends Component {
     return (
       !this.props.user && !this.props.pending ? <Redirect to="/signin" /> :
         <>
+        {console.log('home', this.props.user)}
           <Tab.Container id="left-tabs-example" defaultActiveKey="musicians">
             <Row style={{ height: '100%', fontFamily: 'Kumbh Sans, sans-serif' }}>
               <Col xs={12} md={2} style={styles.sideCol} className='pr-0 d-none d-sm-block'>
