@@ -1,63 +1,112 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 // Bootstrap
-import { Container, ListGroup } from 'react-bootstrap';
+import { Container, ListGroup, Table } from 'react-bootstrap';
 // Component
 import SongPlayer from './SongPlayer';
 // API
 import API from '../../utils/API';
 const PurchasedSongs = () => {
-  
+  /** ===== User Profile Info ====== */
+  const [userId, setUserId] = useState();
+  const [submit, setSubmit] = useState(1);
+
+  // Profile 
+  const [songs, setSongs] = useState('');
+  const [purchaseSongs, setPurchaseSongs] = useState([]);
+  const [songsList, setSongsList] = useState([]);
+  const [songAuthor, setSongAuthor] = useState('');
+  const [songTitle, setSongTitle] = useState('');
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    document.title = `Music eXchange | Songs`;
+    if (localStorage.getItem("currentUser")) {
+      const userObj = JSON.parse(localStorage.getItem("currentUser"));
+      setUserId(JSON.parse(localStorage.getItem("currentUser")))
+      setUserId(userObj._id)
+    }
+    // For demonstration purposes, we mock an API call.
+    API.getSavedUsersById(userId).then((res) => {
+      if (res.data) {
+        setPurchaseSongs(res.data.profile.purchaseSongs);
+        setSongs(res.data.profile.songs);
+      }
+      if (res.data.profile.purchaseSongs) {
+        res.data.profile.purchaseSongs.map(songid => {
+          API.getSongsByQuery(songid)
+            .then(res => {
+              setSongsList(songsList => [...songsList, res.data[0]])
+            }).then(() => {
+              // Sort songs list by date created
+              setSongsList(songsList => {
+                songsList = songsList.sort((a, b) => (a.created_at > b.created_at) ? 1 : -1)
+                return songsList;
+              })
+            }).catch(err => console.log(err));
+        })
+      }
+    }).catch(err => console.log(err));
+  }, [submit, userId]);
+
   const [link, setLink] = useState('');
 
   const selectSong = e => {
-    console.log(e.target.dataset.link)
-    setLink(e.target.dataset.link);
+    setLink(e.currentTarget.dataset.link);
+    setSongAuthor(e.currentTarget.dataset.author);
+    setSongTitle(e.currentTarget.dataset.title);
+    
   }
 
-  return <>
-    <ListGroup variant="flush">
-      <ListGroup.Item className='text-light' 
-        data-link='https://res.cloudinary.com/dxp5wxx2f/raw/upload/v1603596863/MusiceXchange/It_s_Hard_To_Find_Solace_-_1_5_19_10.01_PM_u3k8i0.m4a' 
-        style={{ background: '#181818', outline: 'none' }} onClick={selectSong}>Cras justo odio
-      </ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{ background: '#181818', outline: 'none' }}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
-      <ListGroup.Item className='text-light' style={{background: '#181818', outline: 'none'}}>Cras justo odio</ListGroup.Item>
+  const [hover, setHover] = useState(false);
+  const hoverTrue = () => {
+    setHover(true);
+  }
 
-    </ListGroup>
+  const hoverFalse = () => {
+    setHover(false);
+  }
+  const songInfoStyle = {
+    fontWeight: 700
+  }
+  let listStyle;
+  if (hover) {
+    listStyle = {
+      background: '#282828',
+      outline: 'none',
+      cursor: 'pointer'
+    }
+  } else {
+    listStyle = {
+      background: '#181818',
+      outline: 'none',
+      cursor: 'pointer'
+    }
+  }
+  return <>
+    {console.log('purchse songs page', songsList)}
+    <Table responsive size="sm" className='mb-1 text-light'>
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Title</th>
+          <th>Genre</th>
+        </tr>
+      </thead>
+      <tbody>
+        {songsList.map(song => <>
+          {(typeof song !== 'undefined') && <>
+            <tr data-link={song.file} data-author={song.author} data-title={song.title} onMouseEnter={hoverTrue} onMouseLeave={hoverFalse}
+            style={listStyle} onClick={selectSong}>
+              <td>{song.author}</td>
+              <td>{song.title}</td>
+              <td>{song.genre}</td>
+            </tr>
+          </>}
+        </>)}
+      </tbody>
+    </Table>
     <Container fluid className='player-div d-flex justify-content-center' style={{ width: '100%', background: '#282828', position: 'fixed', bottom: 0 }}>
-      <SongPlayer link={link}/>
+      <SongPlayer link={link} author={songAuthor} title={songTitle}/>
     </Container>
   </>
 }

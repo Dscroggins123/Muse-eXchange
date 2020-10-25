@@ -1,6 +1,7 @@
 import React from 'react';
 // Components
 import PlayButton from '../MediaPlayer/PlayButton';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeButton from '../MediaPlayer/VolumeButton';
 import { Container, Row, Col } from 'react-bootstrap';
 // React Media Player
@@ -20,7 +21,7 @@ const {
 } = controls
 const { keyboardControls } = utils
 
-const SongPlayer = ({ link }) => {
+const SongPlayer = ({ link, author, title }) => {
   return <>
     <Media>
       <div className="media" style={{ width: '100%' }}>
@@ -29,7 +30,11 @@ const SongPlayer = ({ link }) => {
           <Row className="media-controls"
             style={{ width: '100%', height: '80px' }}>
             <Col className='d-flex justify-content-start'>
-              <PlayButton fontSize='40px' className='align-self-center' style={{ outline: 'none', color: '#fff' }} />
+              {(link.length !== 0) ? <>
+                <PlayButton fontSize='40px' className='align-self-center' style={{ outline: 'none', color: '#fff' }} />
+              </> : <> 
+                <PlayArrowIcon  className='align-self-center' style={{ outline: 'none', color: '#fff', fontSize: '40px', cursor: 'pointer' }}/>
+              </>}
               <div className='align-self-center d-flex justify-content-start ml-4 mr-4'>
                 <CurrentTime className='align-self-center' style={{ outline: 'none', color: '#fff', fontSize: '10px' }} />
                 <span className='align-self-center'  style={{ color: '#fff', fontSize: '10px' }}>/</span>
@@ -44,9 +49,11 @@ const SongPlayer = ({ link }) => {
               </div>
             </Col>
             <Col className='mr-5 d-flex justify-content-center'>
-              <div className='media-vol align-self-center'>
-                Hello there
-              </div>
+              {(title && author) && <> 
+                <div className='media-vol align-self-center'>
+                  {title} by {author}
+                </div>
+              </>}
             </Col>
           </Row>
         </div>
