@@ -131,44 +131,13 @@ const Sidebar = () => {
             <div className='ml-2' style={{paddingTop: '2px'}}>Songs</div>
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item >
+        {/* <Nav.Item >
           <Nav.Link eventKey="purchasedTutorials" className='d-flex justify-content-left' onMouseEnter={hoverTrue} onMouseLeave={hoverFalse} style={purchaseTutorialStyle}>
             <VideoLibraryIcon />
             <div className='ml-2' style={{paddingTop: '2px'}}>Tutorials</div>
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </Nav>
-      
-      <div className='mt-2 mb-4'>
-        <h3 style={styles.h3}>New Songs</h3>
-        <ListGroup defaultActiveKey="#link1">
-          
-          <ListGroup.Item className='p-0 d-flex justify-content-between' style={{ background: '#181818', color: '#fff' }}>
-            <div style={{ width: '4rem' }}>
-              <SongCard />
-            </div>
-            <div className='w-100 ml-2 align-self-center' style={{ fontSize: '12px' }}>
-              <div>New Song 1</div>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item className='p-0 d-flex justify-content-between' style={{ background: '#181818', color: '#fff' }}>
-            <div style={{ width: '4rem' }}>
-              <SongCard />
-            </div>
-            <div className='w-100 ml-2 align-self-center' style={{ fontSize: '12px' }}>
-              <div>New Song 2</div>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item className='p-0 d-flex justify-content-between' style={{ background: '#181818', color: '#fff' }}>
-            <div style={{ width: '4rem' }}>
-              <SongCard />
-            </div>
-            <div className='w-100 ml-2 align-self-center' style={{ fontSize: '12px' }}>
-              <div>New Song 3</div>
-            </div>
-          </ListGroup.Item>
-        </ListGroup>
-      </div>
     </Container>
   </>
 }

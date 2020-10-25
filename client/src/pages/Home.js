@@ -12,6 +12,7 @@ import Footer from '../components/Footer';
 import SongCard from '../components/SongCard';
 import SearchButton from '../components/Home/SearchButton';
 import PurchasedSongs from '../components/Home/PurchasedSongs';
+import PurchasedTutorials from '../components/Home/PurchasedTutorials';
 
 const styles = {
   home: {
@@ -153,9 +154,10 @@ class Home extends Component {
                     <h2 className='m-0' style={{background: 'linear-gradient(#121212, #181818)', height: '100px'}}>Purchased Songs</h2>
                     <PurchasedSongs />
                   </Tab.Pane>
-                  <Tab.Pane eventKey="purchasedTutorials">
-                    <h2 className='m-0'>Purchased Tutorials</h2>
-                  </Tab.Pane>
+                  {/* <Tab.Pane eventKey="purchasedTutorials">
+                    <h2 className='m-0' style={{background: 'linear-gradient(#121212, #181818)', height: '100px'}}>Purchased Tutorials</h2>
+                    <PurchasedTutorials />
+                  </Tab.Pane> */}
                 </Tab.Content>
 
                 <div style={{ height: '25vh' }}></div>
