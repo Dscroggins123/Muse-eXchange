@@ -172,7 +172,7 @@ class Profile extends Component {
           }}>
           </Jumbotron>
         </div>
-        <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff', fontFamily: 'Kumbh Sans, sans-serif' }}>
+        <div style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff', fontFamily: 'Kumbh Sans, sans-serif' }}>
           <main className="profile-page" >
             <div className="container mx-auto"
               style={{
@@ -317,7 +317,7 @@ class Profile extends Component {
           {/* <Footer /> */}
           {/* <div style={{height: '25vh'}}></div>
           <div className='d-block d-sm-none' style={{height: '50vh'}}></div> */}
-        </Container>
+        </div>
       </div>)
   }
 }
