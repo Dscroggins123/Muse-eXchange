@@ -67,26 +67,6 @@ function GitHubUser({ login }) {
             </div>
             <a href={data.blog} target="_blank" style={{ color: '#000' }}>Portfolio</a>
           </div>
-          {/* <Card style={{ backgroundColor: 'transparent', width: '80%' }}>
-            <Card.Img variant='top' src={data.avatar_url} style={{ border: '0px'}} />
-            <Card.ImgOverlay className='image-overlay'
-              style={cardStyle}
-              onMouseEnter={hoverTrue} onMouseLeave={hoverFalse}
-              className='d-flex justify-content-center'>
-
-              <div className='align-self-center'>
-                <a href={data.html_url} >
-                  <Button variant='outline-light' >
-                    Visit GitHub Profile
-                  </Button>
-                </a>
-                
-              </div>
-
-
-            </Card.ImgOverlay>
-
-          </Card> */}
         </Col>
       </>
     )
@@ -97,8 +77,8 @@ function GitHubUser({ login }) {
 function Team(props) {
   console.log(props.user)
   return (<>
-    <Jumbotron className='mb-0 text-light' style={{ backgroundImage: `url(${teamWallpaper})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }}>
-      <div style={{width: '40%'}}>
+    <Jumbotron fluid className='mb-0 pt-5 pb-2 text-light' style={{ backgroundImage: `url(${teamWallpaper})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', }}>
+      <div class="pl-5"  style={{width: '40%'}}>
         <h1 className="font-weight-bold">Meet the Development Team!</h1>
         <hr className="my-4" style={{ background: "white" }} />
         <p>We are proud Full-Stack Web Developers and we are always open to discussing new project ideas or partnership opportunities.</p>
@@ -111,6 +91,7 @@ function Team(props) {
           <GitHubUser login={member} />
         )}
       </Row>
+      <div style={{height: '20vh'}}></div>
     </Container>
 
   </>)

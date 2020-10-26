@@ -79,7 +79,7 @@ const NavbarComponent = ({ handleLogout }) => {
           <Image src={navLogo} style={{ width: '40px' }} />
         </Navbar.Brand>
       </Link> */}
-      <Link to="/" className='d-flex justify-content-center' style={{textDecoration: 'none'}}>
+      <Link to="/" className='d-flex justify-content-center' style={{ textDecoration: 'none' }}>
         <Image src={navLogo} style={{ width: '40px' }} />
         <Navbar.Brand style={styles.fontMain}>Music e<span style={styles.X} >X</span>change</Navbar.Brand>
       </Link>
@@ -105,8 +105,14 @@ const NavbarComponent = ({ handleLogout }) => {
           <Button variant="none" style={{ background: "#FE064C", color: "#fff", fontFamily: 'Kumbh Sans, sans-serif' }} onClick={handleFormSubmit}>Search</Button>
     
         </Form> */}
+        <Nav>
+          <Nav.Link href="/" style={styles.fontMain}>
+            <Link to="/team"  style={styles.link}>Meet the team</Link>
+          </Nav.Link>
+        </Nav>
 
         <Nav className="ml-auto">
+
           <Nav.Link href="/" style={styles.fontMain}>
             <Link to="/account" style={styles.link}>Account</Link>
           </Nav.Link>
