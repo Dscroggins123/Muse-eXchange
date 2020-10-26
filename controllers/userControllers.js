@@ -43,6 +43,52 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
 
+  // Instrument
+  findByInstrumentGuitar: function(req, res) {
+    db.User.find({'profile.instruments.guitar': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentDrum: function(req, res) {
+    db.User.find({'profile.instruments.drums': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentBass: function(req, res) {
+    db.User.find({'profile.instruments.bass': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentKeyboard: function(req, res) {
+    db.User.find({'profile.instruments.keyboard': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentBeats: function(req, res) {
+    db.User.find({'profile.instruments.beats': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentTrumpet: function(req, res) {
+    db.User.find({'profile.instruments.trumpet': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentSaxophone: function(req, res) {
+    db.User.find({'profile.instruments.saxophone': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentViolin: function(req, res) {
+    db.User.find({'profile.instruments.violin': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
+  findByInstrumentCello: function(req, res) {
+    db.User.find({'profile.instruments.cello': true})
+      .then(dbUser => res.json(dbUser))
+      .catch(err => res.status(422).json(err));
+  },
 
   // Ask wilson if theres a way to not separate this
   updateUserProfile: function(req, res) {

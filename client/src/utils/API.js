@@ -88,5 +88,34 @@ export default {
   
   removeTutorial: function(userid, tutorialid) {
     return axios.delete(`/api/tutorials/video/${userid}/${tutorialid}`);
-  }
+  },
+
+  getGuitarUsers: function() {
+    return axios.get('/api/users/instruments/guitar');
+  },
+  getDrumUsers: function() {
+    return axios.get('/api/users/instruments/drum');
+  },
+  getBassUsers: function() {
+    return axios.get('/api/users/instruments/bass');
+  },
+  getKeyboardUsers: function() {
+    return axios.get('/api/users/instruments/keyboard');
+  },
+  getBeatsUsers: function() {
+    return axios.get('/api/users/instruments/beats');
+  },
+  getTrumpetUsers: function() {
+    return axios.get('/api/users/instruments/trumpet');
+  },
+  getSaxophoneUsers: function() {
+    return axios.get('/api/users/instruments/saxophone');
+  },
+  getViolinUsers: function() {
+    return axios.get('/api/users/instruments/violin');
+  },
+  getCelloUsers: function() {
+    return axios.get('/api/users/instruments/cello');
+  },
+
 }

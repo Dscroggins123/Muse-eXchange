@@ -48,15 +48,32 @@ router.route(`/purchasedsong/:songid/:userid`)
 router.route(`/purchasedtutorial/:tutorialid/:userid`)
 .get(userController.AddPurchasedTutorials)
 
-// router.route('/profile/profilePic/:userid')
-//   .put(userController.updateProfilePic)
+router.route('/instruments/guitar')
+.get(userController.findByInstrumentGuitar)
 
- 
-// router.route('/profile/firstName/:userid')
-//   .put(userController.updateFirstName);
+router.route('/instruments/drum')
+.get(userController.findByInstrumentDrum)
 
-// router.route('/profile/lastName/:userid')
-//   .put(userController.updateLastName);
+router.route('/instruments/bass')
+.get(userController.findByInstrumentBass)
+
+router.route('/instruments/keyboard')
+.get(userController.findByInstrumentKeyboard)
+
+router.route('/instruments/beats')
+.get(userController.findByInstrumentBeats)
+
+router.route('/instruments/trumpet')
+.get(userController.findByInstrumentTrumpet)
+
+router.route('/instruments/saxophone')
+.get(userController.findByInstrumentSaxophone)
+
+router.route('/instruments/violin')
+.get(userController.findByInstrumentViolin)
+
+router.route('/instruments/cello')
+.get(userController.findByInstrumentCello)
 
 router.route('/image/cloudinary')
   .post(function(req, res) {

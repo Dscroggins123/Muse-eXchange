@@ -309,10 +309,10 @@ class Profile extends Component {
                         </Col>
                       </Row>
                     </div>
-
                   </Col>
                 </>)}
               </Row>
+              <div style={{height: '30vh'}}></div>
             </div>
           </main>
           {/* <Footer /> */}

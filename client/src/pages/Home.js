@@ -50,9 +50,14 @@ class Home extends Component {
     users: [],
     musicians: [],
     guitars: [],
-    hipHop: [],
-    piano: [],
-    dancers: [],
+    drums: [],
+    bass: [],
+    keyboard: [],
+    beats: [],
+    trumpets: [],
+    saxophones: [],
+    violin: [],
+    cello: [],
     currentUser: {},
   }
 
@@ -61,10 +66,11 @@ class Home extends Component {
 
     document.title = `Music eXchange | Home`;
     this.getUsers();
-    this.getMusicians();
-    this.getGuitarist();
-    this.getHipHop();
-    this.getPiano();
+    this.getGuitars();
+    this.getDrums();
+    this.getBass();
+    this.getKeyboards();
+    this.getBeats();
   }
 
   /** Get all Users */
@@ -75,32 +81,41 @@ class Home extends Component {
   }
 
   /** Get all Musicians */
-  getMusicians = () => {
-    API.getUsersByProfession(professions[0])
-      .then(res => this.setState({ musicians: res.data }))
-      .catch(err => console.log(err));
-  }
-
-  /** Get all Musicians */
-  getGuitarist = () => {
-    API.getUsersByProfession(professions[1])
+  getGuitars = () => {
+    API.getGuitarUsers()
       .then(res => this.setState({ guitars: res.data }))
       .catch(err => console.log(err));
   }
 
-  /** Get all Musicians */
-  getHipHop = () => {
-    API.getUsersByProfession(professions[2])
-      .then(res => this.setState({ hipHop: res.data }))
+  getDrums = () => {
+    API.getDrumUsers()
+      .then(res => this.setState({ drums: res.data }))
       .catch(err => console.log(err));
   }
 
-  getPiano = () => {
-    API.getUsersByProfession(professions[3])
-      .then(res => this.setState({ piano: res.data }))
+  getBass = () => {
+    API.getBassUsers()
+      .then(res => this.setState({ bass: res.data }))
       .catch(err => console.log(err));
   }
 
+  getKeyboards = () => {
+    API.getKeyboardUsers()
+      .then(res => this.setState({ keyboard: res.data }))
+      .catch(err => console.log(err));
+  }
+
+  getBeats = () => {
+    API.getBeatsUsers()
+      .then(res => this.setState({ beats: res.data }))
+      .catch(err => console.log(err));
+  }
+
+  getTrumpets = () => {
+    API.getBeatsUsers()
+      .then(res => this.setState({ trumpets: res.data }))
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -118,36 +133,49 @@ class Home extends Component {
                   <Tab.Pane eventKey="musicians">
                     <Jumbotron />
                     <Container fluid>
-                      {this.state.users && (<>
+                      {(this.state.users.length !== 0) && (<>
                         <div className="mt-2 mb-2 d-flex justify-content-between" style={{ borderBottom: '1px solid #282828' }}>
                           <h2 className='mb-0 align-self-end' style={{fontSize: '20px'}}>Explore</h2>
                           <SearchButton />
                         </div>
-                        {/** Show All User */}
                         <UserList users={this.state.users} />
                       </>)}
 
-                      <div className="mt-2 mb-2">
-                        <h2 className='mb-0' style={styles.heading}>Guitar</h2>
-                      </div>
-                      {/** Show All User */}
-                      <UserList users={this.state.guitars} />
-
-                      {this.state.hipHop && (<>
+                      {(this.state.guitars.length !== 0) && <>
                         <div className="mt-2 mb-2">
-                          <h2 className='mb-0' style={styles.heading}>Hip Hop</h2>
+                          <h2 className='mb-0' style={styles.heading}>Guitar</h2>
                         </div>
-                        {/** Show All User */}
-                        <UserList users={this.state.hipHop} />
-                      </>)}
+                        <UserList users={this.state.guitars} />
+                      </>}    
 
-                      {this.state.piano && (<>
+                      {(this.state.drums.length !== 0) && <>
                         <div className="mt-2 mb-2">
-                          <h2 className='mb-0' style={styles.heading}>Piano</h2>
+                          <h2 className='mb-0' style={styles.heading}>Drums</h2>
                         </div>
-                        {/** Show All User */}
-                        <UserList users={this.state.piano} />
-                      </>)}
+                        <UserList users={this.state.drums} />
+                      </>}  
+
+                      {(this.state.bass.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Bass</h2>
+                        </div>
+                        <UserList users={this.state.bass} />
+                      </>}  
+
+                      {(this.state.keyboard.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Keyboard</h2>
+                        </div>
+                        <UserList users={this.state.keyboard} />
+                      </>} 
+
+                      {(this.state.beats.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Beats</h2>
+                        </div>
+                        <UserList users={this.state.beats} />
+                      </>} 
+                      
                     </Container>
                   </Tab.Pane>
                   <Tab.Pane eventKey="purchasedSongs">
