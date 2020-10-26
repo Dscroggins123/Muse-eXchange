@@ -110,3 +110,6 @@ Screenshots below are the current changes yet to be deployed
 ## Say hi to the team!
 ![team](./client/src/assets/screenshots/team.png)
 
+## (!) Disclaimer
+The music uploaded by Edward Reyes are his own work. But the any videos thus far are not. This app is a proof of concept first and foremost. We do not own any videos uploaded by other content users. Other's may upload music that are not theirs and again would be done for demonstration purposes. Any transactions are not official and we do not intend to make any transactions with other peoples work.
+
