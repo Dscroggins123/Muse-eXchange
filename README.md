@@ -15,6 +15,8 @@ Nick Guimarais, Juhee Kim, Dustin Scroggins, Edward Reyes
 
 * [Installation](#installation)
 
+* [Issues](#issues)
+
 * [Deployment](#Deployment)
 
 ## Description
@@ -81,6 +83,9 @@ To install the necessary dependencies:
 ```
 npm i
 ```
+
+## Issues
+The music media player styling is not rendering properly in FireFox. It's works finr in FireFox when ran locally, but deploying to Heroku has in some way impacted some of the styling. We recommend using this app on Chrome just so users can see how the app is intended to look. Other than that, everything else works as intended in either browser.
 
 ## Deployment
 Most recent deployment linK: (site still work in progress)
