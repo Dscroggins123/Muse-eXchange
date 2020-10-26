@@ -71,9 +71,36 @@ class Home extends Component {
     this.getBass();
     this.getKeyboards();
     this.getBeats();
+    this.getTrumpets();
+    this.getSaxophones();
+    this.getViolins();
+    this.getCellos();
   }
 
   /** Get all Users */
+  getCellos = () => {
+    API.getCelloUsers()
+      .then(res => this.setState({ cello: res.data }))
+      .catch(err => console.log(err));
+  }
+
+  getViolins = () => {
+    API.getViolinUsers()
+      .then(res => this.setState({ violin: res.data }))
+      .catch(err => console.log(err));
+  }
+  getSaxophones = () => {
+    API.getSaxophoneUsers()
+      .then(res => this.setState({ saxophones: res.data }))
+      .catch(err => console.log(err));
+  }
+
+  getTrumpets = () => {
+    API.getTrumpetUsers()
+      .then(res => this.setState({ trumpets: res.data }))
+      .catch(err => console.log(err));
+  }
+
   getUsers = () => {
     API.getSavedUsers()
       .then(res => this.setState({ users: res.data }))
@@ -174,6 +201,34 @@ class Home extends Component {
                           <h2 className='mb-0' style={styles.heading}>Beats</h2>
                         </div>
                         <UserList users={this.state.beats} />
+                      </>} 
+
+                      {(this.state.trumpets.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Trumpet</h2>
+                        </div>
+                        <UserList users={this.state.trumpets} />
+                      </>} 
+
+                      {(this.state.saxophones.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Saxophone</h2>
+                        </div>
+                        <UserList users={this.state.saxophones} />
+                      </>} 
+
+                      {(this.state.violin.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Violin</h2>
+                        </div>
+                        <UserList users={this.state.violin} />
+                      </>} 
+
+                      {(this.state.cello.length !== 0) && <>
+                        <div className="mt-2 mb-2">
+                          <h2 className='mb-0' style={styles.heading}>Cello</h2>
+                        </div>
+                        <UserList users={this.state.cello} />
                       </>} 
                       
                     </Container>
