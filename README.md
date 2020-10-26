@@ -89,7 +89,7 @@ npm i
 The music media player styling is not rendering properly in FireFox. It's works finr in FireFox when ran locally, but deploying to Heroku has in some way impacted some of the styling. We recommend using this app on Chrome just so users can see how the app is intended to look. Other than that, everything else works as intended in either browser.
 
 ## Deployment
-Most recent deployment linK:
+Deployment link:
 [Visit our site](https://musicexchangev2.herokuapp.com/)
 
 Screenshots below are the current changes yet to be deployed
