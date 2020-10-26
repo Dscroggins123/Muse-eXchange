@@ -22,8 +22,10 @@ const PurchasedSongs = () => {
     document.title = `Music eXchange | Songs`;
     if (localStorage.getItem("currentUser")) {
       const userObj = JSON.parse(localStorage.getItem("currentUser"));
-      setUserId(JSON.parse(localStorage.getItem("currentUser")))
-      setUserId(userObj._id)
+      if(userObj) {
+        setUserId(JSON.parse(localStorage.getItem("currentUser")))
+        setUserId(userObj._id)
+      }
     }
     // For demonstration purposes, we mock an API call.
     API.getSavedUsersById(userId).then((res) => {
@@ -58,30 +60,24 @@ const PurchasedSongs = () => {
   }
 
   const [hover, setHover] = useState(false);
-  const hoverTrue = () => {
-    setHover(true);
+  const hoverTrue = (e) => {
+    e.currentTarget.style.background = '#282828';
+    // setHover(true);
   }
 
-  const hoverFalse = () => {
-    setHover(false);
+  const hoverFalse = (e) => {
+    e.currentTarget.style.background = '#181818';
+    // setHover(false);
   }
   const songInfoStyle = {
     fontWeight: 700
   }
-  let listStyle;
-  if (hover) {
-    listStyle = {
-      background: '#282828',
-      outline: 'none',
-      cursor: 'pointer'
-    }
-  } else {
-    listStyle = {
-      background: '#181818',
-      outline: 'none',
-      cursor: 'pointer'
-    }
+  const listStyle = {
+    background: '#181818',
+    outline: 'none',
+    cursor: 'pointer'
   }
+
   return <>
     {console.log('purchse songs page', songsList)}
     <Table responsive size="sm" className='mb-1 text-light'>
@@ -95,7 +91,7 @@ const PurchasedSongs = () => {
       <tbody>
         {songsList.map(song => <>
           {(typeof song !== 'undefined') && <>
-            <tr data-link={song.file} data-author={song.author} data-title={song.title} onMouseEnter={hoverTrue} onMouseLeave={hoverFalse}
+            <tr data-link={song.file} data-author={song.author} data-title={song.title} onMouseEnter={hoverTrue.bind(this)} onMouseLeave={hoverFalse.bind(this)}
             style={listStyle} onClick={selectSong}>
               <td>{song.author}</td>
               <td>{song.title}</td>

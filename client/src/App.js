@@ -33,8 +33,8 @@ function App() {
   }
 
   const handleLogout = () => {
-    localStorage.remove('currentUser');
-    // handleSetCurrentUser(null)
+    // localStorage.clear();
+    handleSetCurrentUser(null)
   }
 
   // console.log(user)
