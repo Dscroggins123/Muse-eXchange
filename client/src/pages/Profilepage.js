@@ -172,15 +172,17 @@ class Profile extends Component {
           }}>
           </Jumbotron>
         </div>
-        <Container style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff', fontFamily: 'Kumbh Sans, sans-serif' }}>
+        <Container fluid style={{ paddingRight: '0px', paddingLeft: '0px', background: '#282828', color: '#fff', fontFamily: 'Kumbh Sans, sans-serif' }}>
           <main className="profile-page" >
-            <div
+            <div className='container'
               style={{
                 marginTop: "0px",
                 // position: 'relative',
                 bottom: '120px',
                 backgroundColor: 'transparent',
-                boxShadow: '0px 0px'
+                boxShadow: '0px 0px',
+                marginLeft: '80px',
+                marginRight: '80px'
               }}>
               <Row style={{ background: 'transparent' }} className='mb-5'>
                 {/** User Profile Pic */}
