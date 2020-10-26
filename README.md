@@ -1,10 +1,12 @@
 # Music eXchange 
-(Under construction)
 
 ## Authors
 Nick Guimarais, Juhee Kim, Dustin Scroggins, Edward Reyes
 
+![home](./client/src/assets/screenshots/home.png)
+
 ## Tables of Contents
+* [Description](#description)
 * [User-Story](#user-story)
 
 * [Technologies](#technologies)
@@ -14,6 +16,9 @@ Nick Guimarais, Juhee Kim, Dustin Scroggins, Edward Reyes
 * [Installation](#installation)
 
 * [Deployment](#Deployment)
+
+## Description
+This a MERN Stack e-commerce music app that allows users to upload their songs and videos and to share sell their music to other members. User's can manage their profile page by updating their profile picture, descriptions about themselves, adding social media links, and list instruments a member has experience with. Users who purchase other music can listen to all their purchased music on the home page. 
 
 ## User-Story
 * I want an application that I can use to build a portfolio of music and offer my services to fans and anyone who wants to learn something for a fee. 
@@ -31,7 +36,6 @@ Nick Guimarais, Juhee Kim, Dustin Scroggins, Edward Reyes
 * This program allows artists to have a direct relationship with their fans without the ability to perform live. 
 
 ## Technologies
-MERN
 
 ### Frontend:
 HTML, CSS, JavaScript, React Bootstrap, React, Parallax, Calendly, React Media Players, Material-UI
@@ -39,9 +43,11 @@ HTML, CSS, JavaScript, React Bootstrap, React, Parallax, Calendly, React Media P
 ### Backend:
 Node.js, Express, Mongo, Mongoose, Cloudinary
 
+The uses localstorage for authentication. New user's have to sign in in order to view the app. In order to display videos and play music, the app implements react-media-player package. We are using the PayPal API to handle transactions. Transactions are in sandbox mode and not live, so no real transaction are taking place currently. To test this app you can create a PayPal sandbox account in order to finalize a demo transaction. In order to store audio files and images we are using Cloudinary. Every time a user uploads a profile picture or an audio file, it will be stored in Cloudinary and will return a link to the uploaded files. If users change their profile picture or delete an existing song, they will also be removed from Cloudinary as well by using cloudinary package in Node.js.
+
 ## Contributions
 
-## Frontend
+### Frontend
 Juhee Kim, Dustin Scroggins
 * Design landing page that allows users to input their login info
 * Design the user profiles and artist profiles
@@ -50,14 +56,23 @@ Juhee Kim, Dustin Scroggins
 * Create media player to play demo songs, and songs purchased by the user. 
 * Create front-end routes to submit forms and send requests to the backend
 
-## Backend
+### Backend
 Nick Guimarais, Edward Reyes
+
 * Create HTML and API routes to visit user profiles, purchase songs, save favorite users, save songs, and create and save requests.
 * Create User’s table that stores information for each user
 * Create songs table and schema
 * Create purchased songs array that stores the purchased songs
 * Create table and schema for tutorials
-* Create routes and controller functions to allow a user to edit their profile* 
+* Create routes and controller functions to allow a user to edit their profile
+* Creating search functionality to allow users to search for other users.
+* Created the account page forms to update account information
+* Used Cloudinary Node.js Package to upload audio and images and added functions to remove stored Cloudinary files dynamically.
+* Used React-multi-carousel to display user by instrument.
+* Used react-image-crop to allow users to crop their select profile picture, this was done to keep all profile styling consistent.
+* Created the Songs page and media players to allow users to view their songs on their account, profile page, and home page. 
+* Responsible for the styling and placement of all media players.
+* Created Jumbotron images and logos using Adobe XD.
 
 ## Installation
 
@@ -69,16 +84,29 @@ npm i
 
 ## Deployment
 Most recent deployment linK: (site still work in progress)
-[Visit our site](https://arcane-everglades-49918.herokuapp.com/)
+[Visit our site](https://musicexchangev2.herokuapp.com/)
 
 Screenshots below are the current changes yet to be deployed
 
-## Home page
-![home](./client/src/assets/screenshots/home.png)
 ## View other Music eXchange Members
 ![explore](./client/src/assets/screenshots/explore.png)
-## View member profiles and purchase thier music!
+## Update your profile page to let others know more about you
+![account-page](./client/src/assets/screenshots/account.png)
+## Crop your photo!
+![account-page](./client/src/assets/screenshots/account-5.png)
+## Upload music to share with others
+![account-page](./client/src/assets/screenshots/account-4.png)
+## Share your music videos and/or lessons 
+![account-page](./client/src/assets/screenshots/account-3.png)
+## View member profiles and purchase their music
 ![profile-page](./client/src/assets/screenshots/profile-page.png)
+![profile-page](./client/src/assets/screenshots/profile-2.png)
+![profile-page](./client/src/assets/screenshots/profile-3.png)
+## PayPal
+![paypal](./client/src/assets/screenshots/paypal.png)
+![paypal](./client/src/assets/screenshots/paypal-2.png)
+## Listen to purchased music whenever you want
+![song](./client/src/assets/screenshots/songs.png)
 ## Say hi to the team!
 ![team](./client/src/assets/screenshots/team.png)
 
